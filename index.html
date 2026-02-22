@@ -4,172 +4,852 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rivera Concierge | Tapizado de Muebles a Domicilio</title>
-    <meta name="description"
-        content="Servicio exclusivo de tapizado y restauración de muebles a domicilio. Rivera Concierge transforma tus espacios con acabados premium.">
+    <title>Anti Gravity | Bio-Link</title>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Panic';
+            src: url('assets/fonts/Panic.ttf') format('truetype');
+        }
+
+        :root {
+            --bg-base: #030303;
+            --primary-glow: #ff0033;
+            --secondary-glow: #990000;
+            --text-main: #ffffff;
+            --text-dim: #888888;
+            --glass-bg: rgba(10, 10, 12, 0.45);
+            --glass-border: rgba(255, 0, 51, 0.15);
+        }
+
+        /* ----- CUSTOM CURSOR EN TIRE BODY ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            user-select: none;
+            /* Hide default cursor to use custom one */
+            cursor: none !important;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        /* Interactive Custom Cursor */
+        #custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--primary-glow);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.5);
+            mix-blend-mode: screen;
+        }
+
+        #custom-cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 5px #fff;
+        }
+
+        .cursor-hover {
+            width: 50px !important;
+            height: 50px !important;
+            background: rgba(255, 0, 51, 0.1);
+            border-color: #fff !important;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6) !important;
+        }
+
+        /* Animated Bloody Background */
+        .ambient-light {
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(255, 0, 51, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: breathe 8s infinite alternate ease-in-out;
+        }
+
+        .hex-bg {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image:
+                linear-gradient(rgba(3, 3, 3, 0.8), rgba(3, 3, 3, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='60' height='104' viewBox='0 0 60 104' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 52l30-17.32V17.32L30 0 0 17.32v34.64L30 52zm0 104l30-17.32V104h-60V86.68L30 104zm0-52l30 17.32v34.64L30 104 0 86.68V52.04L30 52z' fill='%23ff0033' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: -1;
+            animation: slideBg 40s linear infinite;
+        }
+
+        @keyframes slideBg {
+            0% {
+                transform: rotate(0deg) translate(0, 0);
+            }
+
+            100% {
+                transform: rotate(5deg) translate(-10%, -10%);
+            }
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* High-End Entry Screen */
+        #entry-screen {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 500;
+            transition: transform 1.2s cubic-bezier(0.86, 0, 0.07, 1), opacity 1.2s;
+        }
+
+        #entry-screen.open {
+            transform: scale(1.5) translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .enter-title {
+            font-size: 4rem;
+            font-weight: 200;
+            letter-spacing: 20px;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(90deg, #fff, var(--primary-glow), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textShine 4s linear infinite;
+            text-shadow: 0 0 20px rgba(255, 0, 51, 0.3);
+        }
+
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .enter-desc {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: var(--text-dim);
+            animation: pulse-op 2s infinite;
+        }
+
+        @keyframes pulse-op {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* MAIN CONTAINER (3D Tilt) */
+        #main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+
+        #main-content.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Profile Card - Enhanced Gradient & Glow */
+        .profile-card {
+            background: linear-gradient(145deg, rgba(25, 0, 5, 0.6) 0%, rgba(5, 5, 5, 0.9) 100%);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 0 20px rgba(255, 0, 51, 0.05),
+                0 0 20px rgba(255, 0, 51, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(20px);
+            /* 3D pop */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-card:hover {
+            border-color: rgba(255, 0, 51, 0.4);
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(255, 0, 51, 0.3);
+        }
+
+        /* Sweeping light ray inside card */
+        .profile-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: skewX(-20deg);
+            animation: sweep 6s infinite;
+        }
+
+        @keyframes sweep {
+            0% {
+                left: -100%;
+            }
+
+            20% {
+                left: 200%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        /* Profile Image */
+        .img-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .img-wrapper::before,
+        .img-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--primary-glow), transparent, var(--secondary-glow), transparent);
+            animation: rotateGlow 4s linear infinite;
+            z-index: -1;
+            filter: blur(8px);
+        }
+
+        .img-wrapper::after {
+            filter: blur(15px);
+            opacity: 0.6;
+        }
+
+        @keyframes rotateGlow {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #000;
+        }
+
+        .profile-name {
+            font-family: 'Panic', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            position: relative;
+            animation: glowShift 3s infinite alternate ease-in-out, floatText 4s infinite ease-in-out;
+        }
+
+        @keyframes glowShift {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 0, 30, 0.6), 0 0 20px rgba(255, 0, 51, 0.4), 0 0 30px rgba(0, 0, 0, 0.8);
+            }
+
+            100% {
+                text-shadow: 0 0 15px rgba(255, 0, 30, 0.9), 0 0 25px rgba(100, 0, 0, 0.6), 0 0 40px rgba(20, 0, 0, 1);
+            }
+        }
+
+        @keyframes floatText {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-4px) rotate(1deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(-1deg);
+            }
+        }
+
+        .profile-bio {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Views */
+        .views-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 0, 51, 0.2);
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .views-badge i {
+            color: var(--primary-glow);
+            text-shadow: 0 0 5px var(--primary-glow);
+        }
+
+        /* Discord Ultra Widget */
+        .discord-widget {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discord-widget:hover {
+            background: rgba(20, 20, 20, 0.8);
+            border-color: rgba(255, 0, 51, 0.3);
+            transform: scale(1.02);
+        }
+
+        .dc-avatar {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .dc-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .dc-status {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+            background: #23a559;
+            border-radius: 50%;
+            border: 2px solid #111;
+            box-shadow: 0 0 8px #23a559;
+        }
+
+        .dc-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dc-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .dc-time {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        /* Lyrics Background */
+        .lyrics-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6vw;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: transparent;
+            background: linear-gradient(90deg, #ff0033, #cc0000, #ff0033, #880000);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textShine 4s linear infinite;
+            opacity: 0;
+            z-index: 100;
+            white-space: nowrap;
+            pointer-events: none;
+            transition: opacity 1s ease-in-out;
+            text-shadow: none;
+        }
+
+        .lyrics-bg.show {
+            opacity: 0.7;
+        }
+
+        /* Social Hub */
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 0, 51, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            background: var(--primary-glow);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+            filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-8px) scale(1.1);
+            background: rgba(255, 0, 51, 0.2);
+            border-color: var(--primary-glow);
+            color: #fff;
+        }
+
+        .social-btn:hover::before {
+            opacity: 0.5;
+        }
+
+        /* Music Player */
+        .music-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            backdrop-filter: blur(10px);
+            transform: translateZ(10px);
+            transition: transform 0.3s;
+        }
+
+        .music-card:hover {
+            transform: translateZ(10px) scale(1.02);
+            border-color: rgba(255, 0, 51, 0.3);
+        }
+
+        .album-cover {
+            width: 55px;
+            height: 55px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            animation: spin 8s linear infinite paused;
+        }
+
+        .album-cover.playing {
+            border-radius: 50%;
+            border: 2px solid var(--primary-glow);
+            animation-play-state: running;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .player-core {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .song-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff0033, #ff4d4d);
+            border-radius: 3px;
+            box-shadow: 0 0 8px #ff0033;
+            transition: width 0.1s linear;
+        }
+
+        .times {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+
+        .play-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 10px;
+            transition: color 0.3s, transform 0.3s;
+            outline: none;
+        }
+
+        .play-btn:hover {
+            color: var(--primary-glow);
+            transform: scale(1.2);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        @media (max-width: 480px) {
+            .enter-title {
+                font-size: 2.5rem;
+                letter-spacing: 10px;
+            }
+
+            #main-content {
+                padding: 15px;
+            }
+
+            .profile-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .profile-name {
+                font-size: 1.8rem;
+            }
+
+            #custom-cursor,
+            #custom-cursor-dot {
+                display: none;
+            }
+
+            /* Disable custom cursor on mobile */
+            * {
+                cursor: auto !important;
+            }
+
+            .lyrics-bg {
+                font-size: 10vw;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Splash Screen -->
-    <div id="splash-screen">
-        <h1 class="roman-title">RIVERA<br>CONCIERGE</h1>
+
+    <!-- CUSTOM CURSOR DOM -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-dot"></div>
+
+    <audio id="bg-audio" src="src/sistemadenotas1/Yo sé.mp3"></audio>
+
+    <div class="ambient-light"></div>
+    <div class="hex-bg"></div>
+    <div id="lyrics-bg" class="lyrics-bg">BANDIDA FINA</div>
+
+    <!-- ENTRY -->
+    <div id="entry-screen" class="interactive-element">
+        <h1 class="enter-title">DIEGO GRAVITY</h1>
+        <div class="enter-desc">[ CLICK TO INITIALIZE ]</div>
     </div>
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">Rivera Concierge</a>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#contacto" class="btn-nav">Contacto</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- MAIN -->
+    <div id="main-content">
 
-    <header id="inicio" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content container">
-            <h1 class="fade-in-up">Renueva la Esencia <br>de tu Hogar</h1>
-            <p class="fade-in-up delay-1">Servicio exclusivo de tapizado y restauración de muebles a domicilio.</p>
-            <div class="hero-btns fade-in-up delay-2">
-                <a href="#contacto" class="btn btn-primary">Agendar Visita</a>
-                <a href="#galeria" class="btn btn-outline">Ver Trabajos</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-        </div>
-    </header>
+        <div class="profile-card">
 
-    <section id="about" class="section about-section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text reveal-left">
-                    <h2>Excelencia en Cada Detalle</h2>
-                    <p>En <strong>Rivera Concierge</strong>, entendemos que tus muebles son parte de tu historia. No
-                        solo cambiamos telas; revitalizamos espacios.</p>
-                    <p>Nuestro servicio "Concierge" significa que no tienes que mover un dedo. Nosotros vamos a tu casa,
-                        evaluamos, y realizamos el trabajo con la máxima limpieza y profesionalismo.</p>
-                </div>
-                <div class="about-image reveal-right">
-                    <img src="assets/real_work_3.png" alt="Artesanía en tapizado">
-                </div>
+            <div class="img-wrapper interactive-element">
+                <!-- Cover photo changed to Roblox logo as requested -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Roblox_Logo_2022.jpg/512px-Roblox_Logo_2022.jpg"
+                    alt="Profile" class="profile-img"
+                    onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'150\'><rect width=\'150\' height=\'150\' fill=\'%23111\'/></svg>'">
             </div>
-        </div>
-    </section>
 
-    <section id="servicios" class="section services-section">
-        <div class="container">
-            <h2 class="section-title reveal">Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="card-image">
-                        <img src="assets/real_work_1.png" alt="Tapizado Premium">
-                    </div>
-                    <div class="card-content">
-                        <h3>Tapizado Premium</h3>
-                        <p>Selección de telas importadas y nacionales de alta gama. Acabados perfectos que duran años.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-card reveal delay-1">
-                    <div class="card-image">
-                        <img src="assets/real_work_2.jpg" alt="Restauración">
-                    </div>
-                    <div class="card-content">
-                        <h3>Restauración</h3>
-                        <p>Recuperamos la estructura y comodidad de tus muebles antiguos, devolviéndoles su gloria
-                            original.</p>
-                    </div>
-                </div>
-                <div class="service-card reveal delay-2">
-                    <div class="card-image">
-                        <img src="assets/real_work_4.png" alt="Diseño Personalizado">
-                    </div>
-                    <div class="card-content">
-                        <h3>Diseño Personalizado</h3>
-                        <p>Asesoría en diseño de interiores para que tus muebles combinen perfectamente con tu espacio.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <h1 class="profile-name">C H I P I</h1>
+            <div class="profile-bio">editor fracasado e inge</div>
 
-    <section id="galeria" class="section gallery-section">
-        <div class="container">
-            <h2 class="section-title reveal">Galería de Transformaciones</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item reveal">
-                    <img src="assets/real_work_2.jpg" alt="Terraza Moderna">
-                    <div class="overlay">
-                        <span>Terraza Moderna</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal delay-1">
-                    <img src="assets/real_work_3.png" alt="Silla Blanca">
-                    <div class="overlay">
-                        <span>Silla Blanca</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal delay-2">
-                    <img src="assets/real_work_4.png" alt="Silla Gamer">
-                    <div class="overlay">
-                        <span>Silla Gamer</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal delay-2">
-                    <img src="assets/real_work_1.png" alt="Selección de Telas">
-                    <div class="overlay">
-                        <span>Selección de Telas</span>
-                    </div>
-                </div>
+            <div class="views-badge interactive-element">
+                <i class="fa-solid fa-eye"></i>
+                <span id="views">324</span> VIEWS
             </div>
-        </div>
-    </section>
 
-    <section id="contacto" class="section contact-section">
-        <div class="container">
-            <div class="contact-box reveal">
-                <h2>¿Listo para renovar?</h2>
-                <p>Contáctanos hoy mismo para una cotización gratuita a domicilio.</p>
-                <div class="phone-number">
-                    <a href="tel:+51997317630" class="phone-link">
-                        <span class="icon">📞</span> +51 997 317 630
-                    </a>
+            <div class="discord-widget interactive-element"
+                onclick="window.open('https://discord.gg/Nmb9ccZFUf', '_blank')" style="cursor: pointer;">
+                <div class="dc-avatar">
+                    <!-- USING User's uploaded Discord Avatar -->
+                    <img src="src/sistemadenotas1/discord-avatar.png" alt="Discord"
+                        onerror="this.src='https://via.placeholder.com/150/111/fff?text=DC'">
+                    <div class="dc-status"></div>
                 </div>
-                <p class="availability">Atendemos en todo Lima.</p>
-                <a href="https://wa.me/51997317630" class="btn btn-whatsapp">Escribir al WhatsApp</a>
+                <div class="dc-info">
+                    <span class="dc-name">mamertocholito_98372</span>
+                    <span class="dc-time">last seen 1 hour ago</span>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 Rivera Concierge. Todos los derechos reservados.</p>
-            <div class="socials">
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
+            <div class="social-grid">
+                <a href="https://www.instagram.com/chipi__diego/" target="_blank"
+                    class="social-btn interactive-element"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.roblox.com/es/users/8047369809/profile" target="_blank"
+                    class="social-btn interactive-element"><img src="assets/roblox-logo.svg" alt="Roblox"
+                        style="width: 28px; height: 28px; object-fit: contain;"></a>
+                <a href="https://www.tiktok.com/@chipis_catolicos?is_from_webapp=1&sender_device=pc" target="_blank"
+                    class="social-btn interactive-element"><i class="fa-brands fa-tiktok"></i></a>
             </div>
+
         </div>
-    </footer>
+
+        <div class="music-card interactive-element" onclick="togglePlay()">
+            <!-- If album art isn't generated, fallback to dark generic -->
+            <img src="src/sistemadenotas1/yose%20imagen.png" alt="Album" class="album-cover" id="album-img"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'150\'><rect width=\'150\' height=\'150\' fill=\'%23050505\'/></svg>'">
+
+            <div class="player-core">
+                <div class="song-name">Yo sé</div>
+                <div class="bar-bg" id="bar-container">
+                    <div class="bar-fill" id="bar-fill"></div>
+                </div>
+                <div class="times">
+                    <span id="c-time">0:00</span>
+                    <span id="d-time">0:00</span>
+                </div>
+            </div>
+
+            <button class="play-btn">
+                <i class="fa-solid fa-play" id="play-icon"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // --- Custom Cursor Logic ---
+        const cursor = document.getElementById('custom-cursor');
+        const dot = document.getElementById('custom-cursor-dot');
+        const interactives = document.querySelectorAll('.interactive-element, a, button, #entry-screen');
+
+        document.addEventListener('mousemove', (e) => {
+            // Smooth delay for outer ring
+            cursor.animate({
+                left: `${e.clientX}px`,
+                top: `${e.clientY}px`
+            }, { duration: 200, fill: "forwards" });
+
+            // Instant for dot
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
+        });
+
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('cursor-hover');
+                dot.style.transform = "translate(-50%, -50%) scale(0)";
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('cursor-hover');
+                dot.style.transform = "translate(-50%, -50%) scale(1)";
+            });
+        });
+
+        // --- 3D Tilt Effect ---
+        const mainContent = document.getElementById('main-content');
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 768) return; // Disable on mobile
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+            mainContent.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // --- Entry & Audio Logic ---
+        const entry = document.getElementById('entry-screen');
+        const audio = document.getElementById('bg-audio');
+        let isPlaying = false;
+
+        entry.addEventListener('click', () => {
+            entry.classList.add('open');
+            setTimeout(() => {
+                document.getElementById('main-content').classList.add('visible');
+                togglePlay(true);
+            }, 500);
+        });
+
+        // --- Music Player ---
+        const playIcon = document.getElementById('play-icon');
+        const albumImg = document.getElementById('album-img');
+        const barFill = document.getElementById('bar-fill');
+        const barContainer = document.getElementById('bar-container');
+        const cTime = document.getElementById('c-time');
+        const dTime = document.getElementById('d-time');
+
+        function togglePlay(forcePlay = false) {
+            if (forcePlay || !isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    updateUI();
+                }).catch(e => console.log("Auto-play blocked", e));
+            } else {
+                audio.pause();
+                isPlaying = false;
+                updateUI();
+            }
+        }
+
+        function updateUI() {
+            if (isPlaying) {
+                playIcon.className = 'fa-solid fa-pause';
+                albumImg.classList.add('playing');
+            } else {
+                playIcon.className = 'fa-solid fa-play';
+                albumImg.classList.remove('playing');
+            }
+        }
+
+        function fmt(secs) {
+            if (isNaN(secs)) return "0:00";
+            const m = Math.floor(secs / 60);
+            const s = Math.floor(secs % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        audio.addEventListener('loadedmetadata', () => dTime.textContent = fmt(audio.duration));
+        audio.addEventListener('timeupdate', () => {
+            if (!isNaN(audio.duration)) {
+                barFill.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+                cTime.textContent = fmt(audio.currentTime);
+
+                const bgLyrics = document.getElementById('lyrics-bg');
+                // Target second 11 to 13
+                if (audio.currentTime >= 11 && audio.currentTime <= 13) {
+                    bgLyrics.classList.add('show');
+                } else if (audio.currentTime > 13) {
+                    bgLyrics.classList.remove('show');
+                } else if (audio.currentTime < 11) {
+                    // Reset if user seeks back
+                    bgLyrics.classList.remove('show');
+                }
+            }
+        });
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            updateUI();
+            barFill.style.width = '0%';
+        });
+
+        barContainer.addEventListener('click', (e) => {
+            // Prevent toggling play state when clicking the bar
+            e.stopPropagation();
+            if (!isNaN(audio.duration)) {
+                audio.currentTime = (e.offsetX / barContainer.clientWidth) * audio.duration;
+            }
+        });
+
+        // Fallback fake time if no audio
+        setTimeout(() => {
+            if (isNaN(audio.duration)) dTime.textContent = "2:09";
+        }, 1000);
+
+    </script>
 </body>
 
 </html>
