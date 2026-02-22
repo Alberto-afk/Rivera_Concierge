@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivera Concierge | Tapizado de Muebles a Domicilio</title>
+    <meta name="description"
+        content="Servicio exclusivo de tapizado y restauración de muebles a domicilio. Rivera Concierge transforma tus espacios con acabados premium.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <h1 class="roman-title">RIVERA<br>CONCIERGE</h1>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Rivera Concierge</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1 class="fade-in-up">Renueva la Esencia <br>de tu Hogar</h1>
+            <p class="fade-in-up delay-1">Servicio exclusivo de tapizado y restauración de muebles a domicilio.</p>
+            <div class="hero-btns fade-in-up delay-2">
+                <a href="#contacto" class="btn btn-primary">Agendar Visita</a>
+                <a href="#galeria" class="btn btn-outline">Ver Trabajos</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </header>
+
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text reveal-left">
+                    <h2>Excelencia en Cada Detalle</h2>
+                    <p>En <strong>Rivera Concierge</strong>, entendemos que tus muebles son parte de tu historia. No
+                        solo cambiamos telas; revitalizamos espacios.</p>
+                    <p>Nuestro servicio "Concierge" significa que no tienes que mover un dedo. Nosotros vamos a tu casa,
+                        evaluamos, y realizamos el trabajo con la máxima limpieza y profesionalismo.</p>
+                </div>
+                <div class="about-image reveal-right">
+                    <img src="assets/real_work_3.png" alt="Artesanía en tapizado">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section services-section">
+        <div class="container">
+            <h2 class="section-title reveal">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="card-image">
+                        <img src="assets/real_work_1.png" alt="Tapizado Premium">
+                    </div>
+                    <div class="card-content">
+                        <h3>Tapizado Premium</h3>
+                        <p>Selección de telas importadas y nacionales de alta gama. Acabados perfectos que duran años.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card reveal delay-1">
+                    <div class="card-image">
+                        <img src="assets/real_work_2.jpg" alt="Restauración">
+                    </div>
+                    <div class="card-content">
+                        <h3>Restauración</h3>
+                        <p>Recuperamos la estructura y comodidad de tus muebles antiguos, devolviéndoles su gloria
+                            original.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal delay-2">
+                    <div class="card-image">
+                        <img src="assets/real_work_4.png" alt="Diseño Personalizado">
+                    </div>
+                    <div class="card-content">
+                        <h3>Diseño Personalizado</h3>
+                        <p>Asesoría en diseño de interiores para que tus muebles combinen perfectamente con tu espacio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="section gallery-section">
+        <div class="container">
+            <h2 class="section-title reveal">Galería de Transformaciones</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal">
+                    <img src="assets/real_work_2.jpg" alt="Terraza Moderna">
+                    <div class="overlay">
+                        <span>Terraza Moderna</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal delay-1">
+                    <img src="assets/real_work_3.png" alt="Silla Blanca">
+                    <div class="overlay">
+                        <span>Silla Blanca</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal delay-2">
+                    <img src="assets/real_work_4.png" alt="Silla Gamer">
+                    <div class="overlay">
+                        <span>Silla Gamer</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal delay-2">
+                    <img src="assets/real_work_1.png" alt="Selección de Telas">
+                    <div class="overlay">
+                        <span>Selección de Telas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section contact-section">
+        <div class="container">
+            <div class="contact-box reveal">
+                <h2>¿Listo para renovar?</h2>
+                <p>Contáctanos hoy mismo para una cotización gratuita a domicilio.</p>
+                <div class="phone-number">
+                    <a href="tel:+51997317630" class="phone-link">
+                        <span class="icon">📞</span> +51 997 317 630
+                    </a>
+                </div>
+                <p class="availability">Atendemos en todo Lima.</p>
+                <a href="https://wa.me/51997317630" class="btn btn-whatsapp">Escribir al WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Rivera Concierge. Todos los derechos reservados.</p>
+            <div class="socials">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
