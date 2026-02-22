@@ -459,6 +459,124 @@
             opacity: 0.7;
         }
 
+        .lyrics-bg-2 {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5.5vw;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            letter-spacing: 6px;
+            color: transparent;
+            background: linear-gradient(90deg, #ff69b4, #c850c0, #ff69b4, #9b59b6);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textShine 3s linear infinite;
+            opacity: 0;
+            z-index: 100;
+            white-space: nowrap;
+            pointer-events: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .lyrics-bg-2.show {
+            opacity: 0.7;
+        }
+
+        /* GLITCH EFFECT */
+        @keyframes glitch1 {
+            0% {
+                clip-path: inset(20% 0 60% 0);
+                transform: translate(-3px, 2px);
+            }
+
+            20% {
+                clip-path: inset(50% 0 10% 0);
+                transform: translate(3px, -2px);
+            }
+
+            40% {
+                clip-path: inset(10% 0 70% 0);
+                transform: translate(-2px, 3px);
+            }
+
+            60% {
+                clip-path: inset(80% 0 5% 0);
+                transform: translate(2px, -1px);
+            }
+
+            80% {
+                clip-path: inset(30% 0 40% 0);
+                transform: translate(-1px, 2px);
+            }
+
+            100% {
+                clip-path: inset(45% 0 35% 0);
+                transform: translate(0, 0);
+            }
+        }
+
+        .glitch-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+
+        .glitch-overlay.active {
+            opacity: 1;
+        }
+
+        .glitch-overlay .glitch-slice {
+            position: absolute;
+            inset: 0;
+        }
+
+        .glitch-overlay.active .glitch-r {
+            animation: glitch1 0.15s infinite linear;
+            background: rgba(255, 0, 0, 0.08);
+            mix-blend-mode: screen;
+        }
+
+        .glitch-overlay.active .glitch-g {
+            animation: glitch1 0.12s infinite linear reverse;
+            background: rgba(0, 255, 0, 0.05);
+            mix-blend-mode: screen;
+        }
+
+        .glitch-overlay.active .glitch-b {
+            animation: glitch1 0.18s infinite linear;
+            background: rgba(0, 0, 255, 0.05);
+            mix-blend-mode: screen;
+        }
+
+        .glitch-overlay.active .glitch-lines {
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+        }
+
+        .glitch-strong.active .glitch-r {
+            animation-duration: 0.08s;
+            background: rgba(255, 0, 0, 0.15);
+        }
+
+        .glitch-strong.active .glitch-g {
+            animation-duration: 0.06s;
+            background: rgba(0, 255, 100, 0.1);
+        }
+
+        .glitch-strong.active .glitch-b {
+            animation-duration: 0.1s;
+            background: rgba(0, 50, 255, 0.1);
+        }
+
+        body.glitch-active {
+            animation: glitch1 0.3s infinite;
+        }
+
         /* Social Hub */
         .social-grid {
             display: flex;
@@ -632,6 +750,11 @@
                 font-size: 10vw;
                 letter-spacing: 4px;
             }
+
+            .lyrics-bg-2 {
+                font-size: 9vw;
+                letter-spacing: 3px;
+            }
         }
     </style>
 </head>
@@ -647,6 +770,15 @@
     <div class="ambient-light"></div>
     <div class="hex-bg"></div>
     <div id="lyrics-bg" class="lyrics-bg">BANDIDA FINA</div>
+    <div id="lyrics-bg-2" class="lyrics-bg-2">ELLA ME LO MAMA</div>
+
+    <!-- Glitch Overlay -->
+    <div id="glitch-overlay" class="glitch-overlay">
+        <div class="glitch-slice glitch-r"></div>
+        <div class="glitch-slice glitch-g"></div>
+        <div class="glitch-slice glitch-b"></div>
+        <div class="glitch-slice glitch-lines"></div>
+    </div>
 
     <!-- ENTRY -->
     <div id="entry-screen" class="interactive-element">
@@ -660,10 +792,9 @@
         <div class="profile-card">
 
             <div class="img-wrapper interactive-element">
-                <!-- Cover photo changed to Roblox logo as requested -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Roblox_Logo_2022.jpg/512px-Roblox_Logo_2022.jpg"
-                    alt="Profile" class="profile-img"
+                <img src="assets/profile-avatar.png" alt="Profile" class="profile-img"
                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'150\'><rect width=\'150\' height=\'150\' fill=\'%23111\'/></svg>'">
+
             </div>
 
             <h1 class="profile-name">C H I P I</h1>
@@ -689,13 +820,13 @@
             </div>
 
             <div class="social-grid">
-                <a href="https://www.instagram.com/chipi__diego/" target="_blank"
-                    class="social-btn interactive-element"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linktw.in/KAlHuM" target="_blank" class="social-btn interactive-element"><i
+                        class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.roblox.com/es/users/8047369809/profile" target="_blank"
                     class="social-btn interactive-element"><img src="assets/roblox-logo.svg" alt="Roblox"
                         style="width: 28px; height: 28px; object-fit: contain;"></a>
-                <a href="https://www.tiktok.com/@chipis_catolicos?is_from_webapp=1&sender_device=pc" target="_blank"
-                    class="social-btn interactive-element"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://linktw.in/zUykyi" target="_blank" class="social-btn interactive-element"><i
+                        class="fa-brands fa-tiktok"></i></a>
             </div>
 
         </div>
@@ -812,42 +943,68 @@
             return `${m}:${s < 10 ? '0' : ''}${s}`;
         }
 
+        // --- Glitch System (CSS-only, optimized) ---
+        const glitchOverlay = document.getElementById('glitch-overlay');
+        let glitchTimeout = null;
+
+        function triggerGlitch(duration = 2000, strong = false) {
+            if (glitchTimeout) clearTimeout(glitchTimeout);
+            if (strong) glitchOverlay.classList.add('glitch-strong');
+            glitchOverlay.classList.add('active');
+            document.body.classList.add('glitch-active');
+            glitchTimeout = setTimeout(() => {
+                glitchOverlay.classList.remove('active', 'glitch-strong');
+                document.body.classList.remove('glitch-active');
+                glitchTimeout = null;
+            }, duration);
+        }
+
+        // --- Timed Events ---
+        let glitch7Fired = false;
+        let glitch25Fired = false;
+        let lyrics25Fired = false;
+
         audio.addEventListener('loadedmetadata', () => dTime.textContent = fmt(audio.duration));
         audio.addEventListener('timeupdate', () => {
-            if (!isNaN(audio.duration)) {
-                barFill.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
-                cTime.textContent = fmt(audio.currentTime);
+            if (isNaN(audio.duration)) return;
+            const t = audio.currentTime;
+            barFill.style.width = `${(t / audio.duration) * 100}%`;
+            cTime.textContent = fmt(t);
 
-                const bgLyrics = document.getElementById('lyrics-bg');
-                // Target second 11 to 13
-                if (audio.currentTime >= 11 && audio.currentTime <= 13) {
-                    bgLyrics.classList.add('show');
-                } else if (audio.currentTime > 13) {
-                    bgLyrics.classList.remove('show');
-                } else if (audio.currentTime < 11) {
-                    // Reset if user seeks back
-                    bgLyrics.classList.remove('show');
-                }
-            }
+            const bgLyrics1 = document.getElementById('lyrics-bg');
+            const bgLyrics2 = document.getElementById('lyrics-bg-2');
+
+            // Second 7: Glitch (2s)
+            if (t >= 7 && t < 9 && !glitch7Fired) { glitch7Fired = true; triggerGlitch(2000, false); }
+            if (t < 7) glitch7Fired = false;
+
+            // Second 11-13: BANDIDA FINA
+            if (t >= 11 && t <= 13) { bgLyrics1.classList.add('show'); }
+            else { bgLyrics1.classList.remove('show'); }
+
+            // Second 25-27: ELLA ME LO MAMA
+            if (t >= 25 && t <= 27) { bgLyrics2.classList.add('show'); }
+            else { bgLyrics2.classList.remove('show'); if (t < 25) lyrics25Fired = false; }
+
+            // Second 26.5: Strong glitch on "mama" (2s)
+            if (t >= 26.5 && t < 28.5 && !glitch25Fired) { glitch25Fired = true; triggerGlitch(2000, true); }
+            if (t < 26.5) glitch25Fired = false;
         });
+
         audio.addEventListener('ended', () => {
-            isPlaying = false;
-            updateUI();
-            barFill.style.width = '0%';
+            isPlaying = false; updateUI(); barFill.style.width = '0%';
+            glitch7Fired = false; glitch25Fired = false; lyrics25Fired = false;
         });
 
         barContainer.addEventListener('click', (e) => {
-            // Prevent toggling play state when clicking the bar
             e.stopPropagation();
             if (!isNaN(audio.duration)) {
                 audio.currentTime = (e.offsetX / barContainer.clientWidth) * audio.duration;
+                glitch7Fired = false; glitch25Fired = false;
             }
         });
 
-        // Fallback fake time if no audio
-        setTimeout(() => {
-            if (isNaN(audio.duration)) dTime.textContent = "2:09";
-        }, 1000);
+        setTimeout(() => { if (isNaN(audio.duration)) dTime.textContent = "2:09"; }, 1000);
 
     </script>
 </body>
