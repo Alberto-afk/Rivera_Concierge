@@ -511,6 +511,16 @@
                 letter-spacing: 2px;
             }
         }
+
+        /* Card slide down to reveal logo in video */
+        #main-content.card-down {
+            transform: translateY(35vh) scale(0.92) !important;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        #main-content.card-up {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
     </style>
 </head>
 
@@ -714,6 +724,28 @@
         document.addEventListener('gesturestart', (e) => e.preventDefault());
         document.addEventListener('gesturechange', (e) => e.preventDefault());
         document.addEventListener('gestureend', (e) => e.preventDefault());
+
+        // ===== SLIDE CARD DOWN TO REVEAL LOGO IN VIDEO =====
+        const mainCard = document.getElementById('main-content');
+        let cardIsDown = false;
+
+        video.addEventListener('timeupdate', () => {
+            const t = video.currentTime;
+            // Check if we're in a "logo visible" window
+            const shouldBeDown = (t >= 11 && t <= 14) || (t >= 37 && t <= 41);
+
+            if (shouldBeDown && !cardIsDown) {
+                cardIsDown = true;
+                mainCard.classList.remove('card-up');
+                mainCard.classList.add('card-down');
+            } else if (!shouldBeDown && cardIsDown) {
+                cardIsDown = false;
+                mainCard.classList.remove('card-down');
+                mainCard.classList.add('card-up');
+                // Clean up class after animation
+                setTimeout(() => mainCard.classList.remove('card-up'), 800);
+            }
+        });
     </script>
 </body>
 
