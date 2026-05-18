@@ -21,6 +21,8 @@
             --glass-border: rgba(255, 255, 255, 0.08);
             --accent-gold: #D4AF37;
             --accent-gold-light: #F5E6CC;
+            --accent-wine: #8b0000;
+            --accent-wine-light: #000000;
         }
 
         * {
@@ -48,6 +50,7 @@
             position: relative;
             touch-action: manipulation;
             overscroll-behavior: none;
+            cursor: url('assets/cursor.svg') 2 2, auto;
         }
 
         /* Prevent all zooming and dragging on mobile */
@@ -192,7 +195,12 @@
             background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
-            animation: textShine 4s linear infinite;
+            animation: slideUpFadeTitle 1.5s ease-out, textShine 4s linear infinite;
+        }
+
+        @keyframes slideUpFadeTitle {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes textShine {
@@ -316,12 +324,17 @@
             letter-spacing: 4px;
             margin-bottom: 5px;
             text-transform: uppercase;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light), var(--accent-gold));
+            background: linear-gradient(135deg, var(--accent-wine), var(--accent-wine-light), var(--accent-wine));
             background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: textShine 5s linear infinite;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        #main-content.visible .profile-name {
+            animation: fadeUpText 1.2s ease-out 0.3s forwards, textShine 5s linear infinite;
         }
 
         .profile-bio {
@@ -330,9 +343,23 @@
             margin-bottom: 20px;
             font-weight: 300;
             letter-spacing: 1px;
+            opacity: 0;
         }
 
-        /* Views Badge */
+        #main-content.visible .profile-bio {
+            animation: fadeInText 1.2s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeUpText {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .views-badge {
             display: flex;
             align-items: center;
@@ -344,6 +371,11 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: #ccc;
             margin-bottom: 20px;
+            opacity: 0;
+        }
+
+        #main-content.visible .views-badge {
+            animation: fadeInText 0.6s ease-out 0.8s forwards;
         }
 
         .views-badge i {
@@ -566,7 +598,7 @@
 
             <div class="views-badge">
                 <i class="fa-solid fa-eye"></i>
-                <span id="views">32,902</span> VIEWS
+                <span id="views">56.924</span> VIEWS
             </div>
 
             <div class="discord-widget" id="discord-widget"
@@ -683,8 +715,42 @@
 
             setTimeout(() => {
                 document.getElementById('main-content').classList.add('visible');
+                startViewsCounter();
             }, 500);
         });
+
+        // ===== VIEWS COUNTER =====
+        function startViewsCounter() {
+            const viewsEl = document.getElementById('views');
+            let start = 10000;
+            const end = 56924;
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // easeOutQuart
+                const easeProgress = 1 - Math.pow(1 - progress, 4);
+                
+                const currentVal = Math.floor(start + (end - start) * easeProgress);
+                
+                // Format with dot separator (e.g. 56.924)
+                viewsEl.textContent = currentVal.toLocaleString('es-ES').replace(/,/g, '.');
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    viewsEl.textContent = "56.924";
+                }
+            }
+            
+            // Delay counter slightly to match fade-in
+            setTimeout(() => {
+                requestAnimationFrame(updateCounter);
+            }, 800);
+        }
 
         // ===== PAUSE AUDIO ON SOCIAL LINK CLICK (MOBILE) =====
         document.querySelectorAll('.social-link, .discord-widget').forEach(link => {
