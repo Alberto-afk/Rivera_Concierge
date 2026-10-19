@@ -1,0 +1,1853 @@
+/* ==========================================================================
+   RIVERA CONCIERGE — Tapicería de Muebles | Luxury Motion Graphics System
+   Ultra-Optimized 60fps CSS Architecture (Mobile, Tablet & Desktop)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Luxury Dark Palette */
+  --bg-void: #060606;
+  --bg-primary: #0b0b0b;
+  --bg-secondary: #121212;
+  --bg-elevated: #181715;
+  --bg-card: #151412;
+  --bg-glass: rgba(14, 13, 12, 0.86);
+
+  /* Champagne & Sovereign Gold Accents */
+  --gold: #c9a96e;
+  --gold-bright: #e5c992;
+  --gold-deep: #9c7a3c;
+  --gold-glow: rgba(201, 169, 110, 0.22);
+  --border-subtle: rgba(201, 169, 110, 0.14);
+  --border-gold: rgba(201, 169, 110, 0.42);
+
+  /* Editorial Ivory Typography Colors */
+  --text-primary: #f6f2eb;
+  --text-secondary: #b5ada0;
+  --text-muted: #787065;
+
+  /* Conversion Colors */
+  --whatsapp: #25d366;
+  --whatsapp-dark: #1da851;
+
+  /* Fonts */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Fluid Layout & Spacing */
+  --container-width: 1280px;
+  --section-pad-y: clamp(64px, 9vw, 120px);
+  --container-pad-x: clamp(14px, 4vw, 36px);
+
+  /* GPU-Friendly Easing Curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* --- Base Reset & Hardware Acceleration Defaults --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body.locked {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-pad-x);
+}
+
+/* Below-the-fold rendering optimization for low-end devices */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
+/* ==========================================================================
+   1. MOTION GRAPHICS INTRO PRELOADER (RIVERA CONCIERGE — TAPICERÍA DE MUEBLES)
+   ========================================================================== */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 10000;
+  background: radial-gradient(circle at 50% 45%, #171410 0%, #070707 75%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.85s var(--ease-in-out-quart), opacity 0.65s ease;
+  will-change: transform, opacity;
+}
+
+.intro-overlay.exit {
+  transform: translate3d(0, -102%, 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-overlay.hidden {
+  display: none !important;
+}
+
+/* Animated geometric frame inside intro */
+.intro-frame {
+  position: relative;
+  padding: clamp(28px, 6vw, 56px) clamp(24px, 7vw, 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 680px;
+  width: 100%;
+}
+
+.intro-svg-border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.intro-svg-border rect {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.2;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: drawStroke 2.2s var(--ease-out-expo) forwards;
+}
+
+.intro-crest {
+  width: clamp(54px, 10vw, 72px);
+  height: clamp(54px, 10vw, 72px);
+  margin-bottom: 20px;
+}
+
+.intro-crest path,
+.intro-crest polygon,
+.intro-crest circle {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawStroke 1.6s var(--ease-out-expo) 0.1s forwards;
+}
+
+.intro-eyebrow {
+  font-size: clamp(0.65rem, 1.8vw, 0.78rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  animation: mgRevealUp 0.7s var(--ease-out-expo) 0.25s forwards;
+  margin-bottom: 10px;
+}
+
+.intro-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 6.5vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.08;
+  background: linear-gradient(120deg, #fff8eb 0%, #e5c992 35%, #c9a96e 55%, #fff8eb 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  transform: translate3d(0, 20px, 0) scale(0.97);
+  animation:
+    mgRevealTitle 0.85s var(--ease-out-expo) 0.4s forwards,
+    goldShimmer 3.5s linear infinite;
+}
+
+.intro-subtitle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 14px;
+  width: 100%;
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  animation: mgRevealUp 0.8s var(--ease-out-expo) 0.65s forwards;
+}
+
+.intro-stitch-line {
+  height: 1px;
+  width: clamp(28px, 8vw, 64px);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px,
+    var(--gold) 6px,
+    transparent 6px,
+    transparent 10px
+  );
+}
+
+.intro-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 2.2vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.intro-legacy-tag {
+  margin-top: 8px;
+  font-size: clamp(0.68rem, 1.8vw, 0.8rem);
+  color: var(--text-secondary);
+  letter-spacing: 0.14em;
+  opacity: 0;
+  animation: mgFadeIn 0.8s ease 0.85s forwards;
+}
+
+/* Animated golden needle progress bar */
+.intro-progress-track {
+  margin-top: 28px;
+  width: min(240px, 70vw);
+  height: 2px;
+  background: rgba(201, 169, 110, 0.16);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.intro-progress-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright));
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: introProgress 1.9s var(--ease-in-out-quart) 0.2s forwards;
+}
+
+.intro-skip-btn {
+  margin-top: 22px;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 6px 16px;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  border-radius: 50px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.intro-skip-btn:hover {
+  color: var(--gold-bright);
+  border-color: var(--gold);
+}
+
+/* ==========================================================================
+   2. NAVIGATION (DESKTOP + ADAPTIVE MOBILE/TABLET)
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 900;
+  padding: 16px 0;
+  transition: background-color 0.35s ease, padding 0.35s ease, border-color 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar.scrolled {
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 11px 0;
+  border-bottom-color: var(--border-subtle);
+}
+
+/* Low-end device optimization: avoid expensive blur repaint on scroll */
+body.perf-low .navbar.scrolled {
+  background-color: rgba(11, 11, 11, 0.97);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.2vw, 1.38rem);
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-logo span {
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.nav-logo-sub {
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(18px, 2.5vw, 32px);
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.35s var(--ease-out-expo);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold-bright);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.perf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 50px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.perf-badge:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.perf-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #25d366;
+}
+
+.nav-cta-mini {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+  color: var(--bg-void);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav-cta-mini:hover {
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 6px 20px var(--gold-glow);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 7px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+}
+
+.nav-toggle span {
+  width: 100%;
+  height: 1.5px;
+  background: var(--gold);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   3. HERO SECTION WITH GPU MOTION GRAPHICS
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 110px var(--container-pad-x) 48px;
+  overflow: hidden;
+}
+
+.hero-bg-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-bg-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.22;
+  transform: scale(1.04);
+  animation: heroSlowZoom 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+body.perf-low .hero-bg-media img {
+  animation: none;
+  transform: none;
+}
+
+.hero-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(201, 169, 110, 0.12) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(6, 6, 6, 0.75) 0%, rgba(11, 11, 11, 0.82) 55%, var(--bg-primary) 100%);
+  z-index: 1;
+}
+
+/* Lightweight 2D Canvas for golden threads / dust particles */
+#heroMotionCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  width: 100%;
+  padding: clamp(20px, 4vw, 44px);
+}
+
+/* Motion graphics decorative corner brackets */
+.mg-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: var(--border-gold);
+  border-style: solid;
+  pointer-events: none;
+  transition: width 0.5s var(--ease-out-expo), height 0.5s var(--ease-out-expo);
+}
+.mg-corner.tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.mg-corner.tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.mg-corner.bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.mg-corner.br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+.hero-content:hover .mg-corner {
+  width: 42px;
+  height: 42px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 18px;
+  border: 1px solid var(--border-gold);
+  border-radius: 50px;
+  background: rgba(201, 169, 110, 0.07);
+  font-size: clamp(0.65rem, 1.6vw, 0.76rem);
+  color: var(--gold-bright);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+}
+
+.hero-brand-kicker {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 6vw, 4.75rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  background: linear-gradient(120deg, var(--gold-bright), var(--gold), #fff2d6, var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.92rem, 1.9vw, 1.12rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 620px;
+  margin: 0 auto 32px;
+  line-height: 1.75;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 34px;
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold), var(--gold-bright));
+  color: var(--bg-void);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+}
+
+.btn-gold:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 12px 32px rgba(201, 169, 110, 0.32);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border: 1px solid var(--border-gold);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(201, 169, 110, 0.1);
+  border-color: var(--gold-bright);
+  color: var(--gold-bright);
+}
+
+/* Unified Multi-Device Metrics Ribbon (Looks great on PC, Tablet, AND Mobile) */
+.hero-metrics {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(32px, 5vw, 56px);
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.metric-pill {
+  background: rgba(20, 19, 17, 0.78);
+  border: 1px solid var(--border-subtle);
+  padding: 16px 12px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.metric-pill:hover {
+  border-color: var(--border-gold);
+  transform: translate3d(0, -2px, 0);
+}
+
+.metric-val {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-weight: 600;
+  color: var(--gold-bright);
+  line-height: 1.1;
+}
+
+.metric-lbl {
+  font-size: clamp(0.64rem, 1.3vw, 0.72rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   4. SECTION HEADERS & ANIMATED SVG STITCH DIVIDERS
+   ========================================================================== */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(36px, 5vw, 60px);
+}
+
+.section-kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.85rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.section-title em {
+  color: var(--gold-bright);
+  font-style: italic;
+}
+
+.stitch-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px auto;
+}
+
+.stitch-divider-line {
+  width: 56px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px,
+    var(--gold) 6px,
+    transparent 6px,
+    transparent 10px
+  );
+}
+
+.stitch-diamond {
+  color: var(--gold);
+  font-size: 0.75rem;
+}
+
+.section-desc {
+  font-size: clamp(0.88rem, 1.7vw, 1rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   5. ABOUT / LEGACY SECTION (MAESTRO RIVERA ATELIER PORTRAIT)
+   ========================================================================== */
+.about {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+.about-portrait-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  background: var(--bg-card);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.about-portrait-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out-expo);
+}
+
+.about-portrait-card:hover img {
+  transform: scale(1.03);
+}
+
+.about-portrait-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  padding: 14px 18px;
+  background: rgba(10, 10, 10, 0.88);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.about-portrait-badge strong {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--gold-bright);
+  display: block;
+}
+
+.about-portrait-badge span {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-year-seal {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.about-copy h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.about-copy h3 em {
+  color: var(--gold-bright);
+  font-style: italic;
+}
+
+.about-copy p {
+  color: var(--text-secondary);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  font-weight: 300;
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+}
+
+.highlight-icon {
+  color: var(--gold);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.highlight-item div strong {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--text-primary);
+}
+
+.highlight-item div span {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   6. PORTFOLIO / BENTO GALLERY (ADAPTIVE MULTI-COLUMN ON PC, TABLET & MOBILE)
+   ========================================================================== */
+.gallery {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-primary);
+}
+
+/* Filter Controls + Mobile Layout Switcher */
+.gallery-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 9px 18px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  border-radius: 50px;
+  transition: all 0.25s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+  color: var(--bg-void);
+  border-color: var(--gold-bright);
+  font-weight: 700;
+}
+
+.view-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border-subtle);
+  padding: 4px;
+  border-radius: 6px;
+  background: var(--bg-card);
+}
+
+.view-btn {
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.view-btn.active {
+  background: rgba(201, 169, 110, 0.2);
+  color: var(--gold-bright);
+  font-weight: 600;
+}
+
+/* Bento Grid System */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(10px, 2vw, 20px);
+}
+
+.gallery-card {
+  grid-column: span 4;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s var(--ease-out-expo), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery-card.featured {
+  grid-column: span 8;
+}
+
+.gallery-card.wide {
+  grid-column: span 6;
+}
+
+.gallery-card.hidden-card {
+  display: none !important;
+}
+
+.gallery-card:hover {
+  border-color: var(--border-gold);
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.55);
+}
+
+.gallery-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0d0c0b;
+}
+
+.gallery-card.featured .gallery-card-media {
+  aspect-ratio: 16 / 9;
+}
+
+.gallery-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s var(--ease-out-expo);
+}
+
+.gallery-card:hover .gallery-card-media img {
+  transform: scale(1.05);
+}
+
+.card-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 4px 10px;
+  background: rgba(8, 8, 8, 0.82);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-bright);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.card-zoom-hint {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(8, 8, 8, 0.78);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.gallery-card:hover .card-zoom-hint {
+  background: var(--gold);
+  color: var(--bg-void);
+}
+
+.gallery-card-info {
+  padding: clamp(10px, 1.8vw, 18px);
+  background: linear-gradient(180deg, #161513 0%, #11100f 100%);
+  border-top: 1px solid rgba(201, 169, 110, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.gallery-card-info h4 {
+  font-family: var(--font-heading);
+  font-size: clamp(0.88rem, 1.6vw, 1.15rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.gallery-card-info p {
+  font-size: clamp(0.68rem, 1.2vw, 0.8rem);
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   7. INTERACTIVE CRAFTSMANSHIP & BEFORE/AFTER SLIDER SECTION
+   ========================================================================== */
+.craftsmanship {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.craft-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
+}
+
+/* Interactive Before/After Comparison Slider */
+.ba-slider-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  padding: clamp(14px, 2.5vw, 24px);
+  display: flex;
+  flex-direction: column;
+}
+
+.ba-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ba-header h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  color: var(--text-primary);
+}
+
+.ba-header span {
+  font-size: 0.72rem;
+  color: var(--gold-bright);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ba-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 3px;
+  user-select: none;
+  touch-action: pan-y;
+  border: 1px solid var(--border-subtle);
+}
+
+.ba-viewport img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-before-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(0 50% 0 0);
+  will-change: clip-path;
+}
+
+.ba-label {
+  position: absolute;
+  bottom: 12px;
+  padding: 5px 12px;
+  background: rgba(8, 8, 8, 0.85);
+  border: 1px solid var(--border-gold);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.ba-label.left { left: 12px; }
+.ba-label.right { right: 12px; color: var(--gold-bright); }
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--gold-bright);
+  z-index: 4;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.ba-handle-knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-void);
+  border: 2px solid var(--gold-bright);
+  color: var(--gold-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.65);
+}
+
+.ba-range-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 5;
+}
+
+/* Internal Materials Stack (Zebra Foam & Restoration) */
+.materials-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.material-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.material-card:hover {
+  border-color: var(--border-gold);
+  transform: translate3d(0, -2px, 0);
+}
+
+.material-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 125px;
+  object-fit: cover;
+}
+
+.material-card-body {
+  padding: 14px 16px;
+}
+
+.material-card-body span {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.material-card-body h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin: 4px 0 6px;
+}
+
+.material-card-body p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   8. VALUES SECTION (COMPACT MULTI-COLUMN LUXURY CARDS)
+   ========================================================================== */
+.values {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 3vw, 32px);
+}
+
+.value-card {
+  padding: clamp(24px, 4vw, 42px) clamp(18px, 3vw, 30px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  position: relative;
+  transition: transform 0.35s var(--ease-out-expo), border-color 0.35s ease;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 42px;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.35s var(--ease-out-expo);
+}
+
+.value-card:hover {
+  transform: translate3d(0, -4px, 0);
+  border-color: var(--border-gold);
+}
+
+.value-card:hover::before {
+  width: 84px;
+}
+
+.value-num {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--gold);
+  opacity: 0.85;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.value-card h4 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.value-card p {
+  font-size: clamp(0.82rem, 1.5vw, 0.92rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* ==========================================================================
+   9. CTA / CONVERSION SECTION & FOOTER
+   ========================================================================== */
+.cta-section {
+  padding: var(--section-pad-y) 0;
+  background: radial-gradient(circle at 50% 50%, rgba(201, 169, 110, 0.1) 0%, var(--bg-secondary) 70%);
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.cta-box {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 56px);
+  border: 1px solid var(--border-gold);
+  background: rgba(12, 12, 11, 0.85);
+  position: relative;
+}
+
+.cta-box h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.8rem);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.cta-box h2 em {
+  color: var(--gold-bright);
+  font-style: italic;
+}
+
+.cta-box p {
+  color: var(--text-secondary);
+  font-size: clamp(0.9rem, 1.7vw, 1.05rem);
+  margin-bottom: 28px;
+}
+
+.footer {
+  padding: 40px 0 96px;
+  background: var(--bg-void);
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-sub {
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+.footer p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   10. LIGHTBOX MODAL FOR FULLSCREEN PORTFOLIO INSPECTION
+   ========================================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: rgba(5, 5, 5, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 3vw, 32px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-dialog {
+  max-width: 1020px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  max-height: 90vh;
+  max-height: 90dvh;
+  position: relative;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(8, 8, 8, 0.85);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-bright);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-media {
+  background: #080808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  max-height: 75vh;
+}
+
+.lightbox-media img {
+  width: 100%;
+  height: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+}
+
+.lightbox-details {
+  padding: clamp(18px, 3.5vw, 34px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lightbox-cat {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.lightbox-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.lightbox-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   11. FLOATING WHATSAPP & ADAPTIVE MOBILE DOCK
+   ========================================================================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9000;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  background: var(--whatsapp);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.35);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  background: var(--whatsapp-dark);
+  transform: translate3d(0, -3px, 0);
+}
+
+.whatsapp-float svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Mobile Bottom Luxury App Dock (keeps mobile interface structured like PC) */
+.mobile-dock {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 8900;
+  background: rgba(10, 10, 10, 0.95);
+  border-top: 1px solid var(--border-gold);
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.dock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 4px 2px;
+  font-size: 0.62rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.dock-item.active,
+.dock-item:hover {
+  color: var(--gold-bright);
+}
+
+.dock-item.dock-wa {
+  color: #25d366;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   12. GPU KEYFRAMES & SCROLL REVEAL
+   ========================================================================== */
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes mgRevealUp {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes mgRevealTitle {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes mgFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes goldShimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes introProgress {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes heroSlowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition: opacity 0.65s var(--ease-out-expo), transform 0.65s var(--ease-out-expo);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ==========================================================================
+   13. MULTI-DEVICE ADAPTIVE BREAKPOINTS (TABLET & MOBILE PARITY WITH PC)
+   ========================================================================== */
+
+/* Tablet Landscape & Small Desktops (<= 1024px) */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .gallery-card {
+    grid-column: span 6;
+  }
+
+  .gallery-card.featured {
+    grid-column: span 12;
+  }
+
+  .craft-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .materials-stack {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .material-card {
+    grid-template-columns: 1fr;
+  }
+
+  .material-card img {
+    height: 150px;
+  }
+}
+
+/* Tablet Portrait & Mobile Phones (<= 768px) */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(300px, 80vw);
+    height: 100vh;
+    height: 100dvh;
+    background: #11100f;
+    border-left: 1px solid var(--border-gold);
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    transform: translate3d(102%, 0, 0);
+    transition: transform 0.35s var(--ease-out-expo);
+    z-index: 950;
+  }
+
+  .nav-links.active {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .nav-toggle {
+    display: flex;
+    z-index: 960;
+  }
+
+  .nav-cta-mini {
+    display: none;
+  }
+
+  /* Hero metrics: 2x2 balanced grid on mobile so it looks structured like PC */
+  .hero-metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* About grid: compact editorial layout */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-portrait-card {
+    max-width: 440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* CRITICAL MOBILE PARITY: Keep 2-column luxury bento grid on mobile! */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .gallery-card,
+  .gallery-card.wide {
+    grid-column: span 1;
+  }
+
+  .gallery-card.featured {
+    grid-column: span 2;
+  }
+
+  /* Allow user to switch to 1-column detail view on mobile if desired */
+  .gallery-grid.mobile-single-col {
+    grid-template-columns: 1fr;
+  }
+  .gallery-grid.mobile-single-col .gallery-card,
+  .gallery-grid.mobile-single-col .gallery-card.featured,
+  .gallery-grid.mobile-single-col .gallery-card.wide {
+    grid-column: span 1;
+  }
+
+  .materials-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .material-card {
+    grid-template-columns: 110px 1fr;
+  }
+
+  .material-card img {
+    height: 100%;
+  }
+
+  /* Values grid: horizontal scroll-snap or 3-card compact layout */
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .lightbox-dialog {
+    grid-template-columns: 1fr;
+    max-height: 92dvh;
+    overflow-y: auto;
+  }
+
+  .lightbox-media {
+    max-height: 50dvh;
+  }
+
+  /* Show bottom luxury app dock on mobile and position WhatsApp button cleanly */
+  .mobile-dock {
+    display: grid;
+  }
+
+  .whatsapp-float {
+    bottom: 74px;
+    right: 14px;
+    padding: 11px 18px;
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 92px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-gold,
+  .btn-outline {
+    width: 100%;
+    padding: 14px 20px;
+  }
+
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    width: 100%;
+    scrollbar-width: none;
+  }
+
+  .filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="description" content="Rivera_Concierge — Tapicería de Muebles. 29 años de excelencia en tapicería fina artesanal, restauración y retapizado de muebles de lujo en Miraflores, Surco y Lima.">
+  <meta name="keywords" content="Rivera_Concierge, Rivera Concierge, tapicería de muebles, tapicería fina, retapizado de muebles, Miraflores, Surco, San Isidro, Lima">
+  <meta name="author" content="Rivera_Concierge">
+  <meta name="theme-color" content="#070707">
+
+  <!-- Open Graph / Link Preview Metadata -->
+  <meta property="og:site_name" content="Rivera_Concierge">
+  <meta property="og:title" content="Rivera_Concierge — Tapicería de Muebles | Artesanía Fina">
+  <meta property="og:description" content="29 años de legado en tapicería de muebles hecha a mano. Acabados de alta costura para residencias exclusivas.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/sofa-curvo-terracota.jpg">
+
+  <title>Rivera_Concierge — Tapicería de Muebles | Artesanía Fina</title>
+
+  <!-- Luxury Gold Emblem Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230b0b0b'/><polygon points='50,12 88,50 50,88 12,50' fill='none' stroke='%23c9a96e' stroke-width='6'/><text x='50' y='63' font-family='serif' font-size='38' font-weight='bold' fill='%23e5c992' text-anchor='middle'>R</text></svg>">
+
+  <!-- Preload critical hero & portrait assets -->
+  <link rel="preload" as="image" href="assets/img/sofa-curvo-terracota.jpg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="locked">
+
+  <!-- ========================================================================
+       1. MOTION GRAPHICS INTRO PRELOADER
+       "RIVERA CONCIERGE" + Subtítulo "TAPICERÍA DE MUEBLES"
+       ======================================================================== -->
+  <div class="intro-overlay" id="introOverlay" role="dialog" aria-label="Bienvenida a Rivera Concierge">
+    <div class="intro-frame">
+      <!-- Animated SVG Golden Frame -->
+      <svg class="intro-svg-border" viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true">
+        <rect x="6" y="6" width="588" height="328" rx="2" />
+      </svg>
+
+      <!-- Animated SVG Needle & Diamond Crest -->
+      <svg class="intro-crest" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,8 92,50 50,92 8,50" />
+        <polygon points="50,20 80,50 50,80 20,50" />
+        <circle cx="50" cy="50" r="6" />
+        <path d="M26,74 L74,26" />
+      </svg>
+
+      <div class="intro-eyebrow">Desde 1996 · Lima, Perú</div>
+      <div class="intro-title">Rivera Concierge</div>
+
+      <div class="intro-subtitle-wrap">
+        <span class="intro-stitch-line"></span>
+        <span class="intro-subtitle">Tapicería de Muebles</span>
+        <span class="intro-stitch-line"></span>
+      </div>
+
+      <div class="intro-legacy-tag">29 Años de Artesanía Fina Hecha a Mano</div>
+
+      <div class="intro-progress-track" aria-hidden="true">
+        <div class="intro-progress-bar"></div>
+      </div>
+
+      <button type="button" class="intro-skip-btn" id="skipIntroBtn">
+        Entrar al Catálogo →
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       2. NAVIGATION BAR
+       ======================================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#inicio" class="nav-brand" aria-label="Rivera_Concierge — Inicio">
+        <div class="nav-logo">Rivera <span>Concierge</span></div>
+        <div class="nav-logo-sub">Tapicería de Muebles</div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio" class="active">Inicio</a></li>
+        <li><a href="#nosotros">Legado</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#proceso">Proceso &amp; Interior</a></li>
+        <li><a href="#valores">Valores</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="perf-badge" id="perfToggleBtn" title="Cambiar modo de fluidez gráfica">
+          <span class="perf-dot" id="perfDot"></span>
+          <span id="perfLabel">60 FPS</span>
+        </button>
+
+        <a href="https://wa.me/51997317630?text=Hola%20Rivera%20Concierge%2C%20quisiera%20solicitar%20un%20presupuesto%20de%20tapicer%C3%ADa"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="nav-cta-mini">
+          Cotizar
+        </a>
+
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       3. HERO SECTION WITH HARDWARE-ACCELERATED MOTION GRAPHICS
+       ======================================================================== -->
+  <header class="hero" id="inicio">
+    <div class="hero-bg-media">
+      <img src="assets/img/sofa-curvo-terracota.jpg"
+           alt="Sofá curvo tapizado en terciopelo terracota por Rivera Concierge"
+           width="1200"
+           height="600"
+           fetchpriority="high">
+    </div>
+    <div class="hero-bg-gradient"></div>
+
+    <!-- Adaptive 2D Motion Graphics Canvas (Golden Threads) -->
+    <canvas id="heroMotionCanvas" aria-hidden="true"></canvas>
+
+    <div class="hero-content">
+      <span class="mg-corner tl"></span>
+      <span class="mg-corner tr"></span>
+      <span class="mg-corner bl"></span>
+      <span class="mg-corner br"></span>
+
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span>Rivera_Concierge · Tapicería de Muebles</span>
+      </div>
+
+      <div class="hero-brand-kicker">Maestro Artesano · 29 Años de Legado</div>
+
+      <h1>Artesanía en<br><em>Tapicería Fina</em></h1>
+
+      <p class="hero-subtitle">
+        Renovamos y creamos mobiliario de alta gama con acabados hechos 100% a mano.
+        Atención exclusiva a domicilio en Miraflores, Santiago de Surco y San Isidro.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="https://wa.me/51997317630?text=Hola%20Rivera%20Concierge%2C%20quisiera%20solicitar%20un%20presupuesto%20para%20mis%20muebles"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-gold">
+          Solicitar Presupuesto
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+        </a>
+        <a href="#portafolio" class="btn-outline">
+          Explorar Colección (16)
+        </a>
+      </div>
+    </div>
+
+    <!-- Multi-Device Metrics Ribbon (4 cols on PC, 2x2 on Mobile) -->
+    <div class="hero-metrics">
+      <div class="metric-pill">
+        <span class="metric-val">29 Años</span>
+        <span class="metric-lbl">De Maestría Artesanal</span>
+      </div>
+      <div class="metric-pill">
+        <span class="metric-val">500+</span>
+        <span class="metric-lbl">Salas &amp; Proyectos</span>
+      </div>
+      <div class="metric-pill">
+        <span class="metric-val">100%</span>
+        <span class="metric-lbl">Acabado a Mano</span>
+      </div>
+      <div class="metric-pill">
+        <span class="metric-val">Garantía</span>
+        <span class="metric-lbl">Puntualidad Absoluta</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       4. ABOUT / LEGACY SECTION (ENHANCED ATELIER PORTRAIT)
+       ======================================================================== -->
+  <section class="about cv-auto" id="nosotros">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-kicker">Rivera Concierge · Tapicería de Muebles</span>
+        <h2 class="section-title">Un Legado de <em>Excelencia</em></h2>
+        <div class="stitch-divider">
+          <span class="stitch-divider-line"></span>
+          <span class="stitch-diamond">◆</span>
+          <span class="stitch-divider-line"></span>
+        </div>
+        <p class="section-desc">Tradición, precisión sartorial y materiales nobles desde 1996</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-portrait-card reveal">
+          <img src="assets/img/papa-atelier.jpg"
+               alt="Maestro artesano Rivera en su atelier de tapicería fina"
+               width="900"
+               height="900"
+               loading="lazy"
+               decoding="async">
+          <div class="about-portrait-badge">
+            <div>
+              <strong>Maestro Rivera</strong>
+              <span>Fundador &amp; Especialista en Tapicería Fina</span>
+            </div>
+            <div class="about-year-seal">29</div>
+          </div>
+        </div>
+
+        <div class="about-copy reveal">
+          <h3>Donde cada puntada cuenta una <em>historia de perfección</em></h3>
+          <p>
+            En <strong>Rivera Concierge</strong>, entendemos que un mueble es el corazón de su hogar.
+            Con 29 años de trayectoria ininterrumpida, nuestro maestro artesano transforma sofás,
+            poltronas, sillas de comedor y mobiliario de terraza con rigor de alta costura.
+          </p>
+          <p>
+            No solo renovamos la piel exterior: reconstruimos la ergonomía interna utilizando
+            espumas ortopédicas de alta densidad, cinchas importadas y costuras reforzadas a mano
+            para que cada pieza luzca impecable por décadas.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✦</span>
+              <div>
+                <strong>Cueros &amp; Texturas Nobles</strong>
+                <span>Bouclé, terciopelo, lino y piel genuina</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✦</span>
+              <div>
+                <strong>Reconstrucción Interna</strong>
+                <span>Espuma Zebra de alta densidad indeformable</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✦</span>
+              <div>
+                <strong>Asesoría Personalizada</strong>
+                <span>Muestrario físico llevado a su domicilio</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✦</span>
+              <div>
+                <strong>Entrega Puntual</strong>
+                <span>Recojo y entrega cuidadosa en fecha exacta</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. PORTFOLIO / BENTO GALLERY (16 ENHANCED REAL PROJECTS)
+       ======================================================================== -->
+  <section class="gallery cv-auto" id="portafolio">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-kicker">Portafolio Oficial · Rivera_Concierge</span>
+        <h2 class="section-title">Obras Reales de <em>Tapicería Fina</em></h2>
+        <div class="stitch-divider">
+          <span class="stitch-divider-line"></span>
+          <span class="stitch-diamond">◆</span>
+          <span class="stitch-divider-line"></span>
+        </div>
+        <p class="section-desc">Toque cualquier proyecto para inspeccionar el acabado en pantalla completa</p>
+      </div>
+
+      <!-- Interactive Category Filter + Mobile/PC View Mode Switcher -->
+      <div class="gallery-controls reveal">
+        <div class="filter-tabs" role="tablist" aria-label="Filtrar portafolio por categoría">
+          <button type="button" class="filter-btn active" data-filter="all">Todos (16)</button>
+          <button type="button" class="filter-btn" data-filter="sofas">Sofás &amp; Seccionales</button>
+          <button type="button" class="filter-btn" data-filter="poltronas">Poltronas &amp; Sillas</button>
+          <button type="button" class="filter-btn" data-filter="terraza">Terraza &amp; Exterior</button>
+        </div>
+
+        <div class="view-mode-toggle" aria-label="Modo de visualización de cuadrícula">
+          <button type="button" class="view-btn active" id="viewBentoBtn" title="Vista Bento Multicelda">
+            ⊞ Bento
+          </button>
+          <button type="button" class="view-btn" id="viewSingleBtn" title="Vista Grande Detallada">
+            ▭ Grande
+          </button>
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- 1. Sofá Curvo Terracota (Featured Panoramic) -->
+        <article class="gallery-card featured reveal"
+                 data-category="sofas"
+                 data-title="Sofá Curvo Orgánico en Terciopelo Terracota"
+                 data-cat-label="Sofás de Diseño · Residencia Exclusiva"
+                 data-desc="Confección y tapizado a medida de sofá seccional curvo en terciopelo importado tono terracota con cojines decorativos en contraste y espuma de alta densidad."
+                 data-img="assets/img/sofa-curvo-terracota.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Destacado · Sala Curva</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/sofa-curvo-terracota.jpg" alt="Sofá curvo en terciopelo terracota" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Sofá Curvo en Terciopelo Terracota</h4>
+            <p>Tapicería orgánica de alta precisión · Miraflores</p>
+          </div>
+        </article>
+
+        <!-- 2. Seccional en L de Cuero Gris Perla -->
+        <article class="gallery-card reveal"
+                 data-category="sofas"
+                 data-title="Seccional en L en Cuero Gris Perla"
+                 data-cat-label="Sofás &amp; Seccionales · Cuero Fino"
+                 data-desc="Retapizado integral de sala seccional en L con piel tono gris perla, costuras de alta resistencia, capitoné hundido en asientos y cojines microperforados."
+                 data-img="assets/img/seccional-cuero-gris.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Cuero Gris Perla</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/seccional-cuero-gris.jpg" alt="Seccional en L tapizado en cuero gris perla" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Seccional en L · Cuero Gris Perla</h4>
+            <p>Acabado sartorial con costuras reforzadas</p>
+          </div>
+        </article>
+
+        <!-- 3. Poltrona Bergère Capitoné Gris -->
+        <article class="gallery-card reveal"
+                 data-category="poltronas"
+                 data-title="Poltrona Bergère con Botones Capitoné"
+                 data-cat-label="Poltronas &amp; Butacas · Hecho a Mano"
+                 data-desc="Poltrona de respaldo alto retapizada en tejido texturizado gris perla con vivo perimetral hecho a mano, cuatro botones capitoné y base de madera nogal."
+                 data-img="assets/img/poltrona-bergere-gris.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Poltrona de Autor</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/poltrona-bergere-gris.jpg" alt="Poltrona Bergère gris con botones capitoné" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Poltrona Bergère Capitoné</h4>
+            <p>Vivo perimetral sastre y botones forrados</p>
+          </div>
+        </article>
+
+        <!-- 4. Sofá Contemporáneo en Gamuza Taupe -->
+        <article class="gallery-card reveal"
+                 data-category="sofas"
+                 data-title="Sofá Contemporáneo en Gamuza Taupe"
+                 data-cat-label="Sofás &amp; Salas · Gamuza Premium"
+                 data-desc="Sofá de líneas arquitectónicas tapizado en gamuza antimanchas color taupe con estructura interna renovada en espuma Zebra de alta densidad."
+                 data-img="assets/img/sofa-gamuza-taupe.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Gamuza Taupe</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/sofa-gamuza-taupe.jpg" alt="Sofá contemporáneo en gamuza taupe" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Sofá Contemporáneo Taupe</h4>
+            <p>Gamuza suave de alto tránsito y base en madera</p>
+          </div>
+        </article>
+
+        <!-- 5. Butaca Moderna en Bouclé Marfil -->
+        <article class="gallery-card reveal"
+                 data-category="poltronas"
+                 data-title="Butaca Arquitectónica en Tela Bouclé Marfil"
+                 data-cat-label="Poltronas &amp; Butacas · Tendencia Europea"
+                 data-desc="Butaca de brazos anchos tapizada en genuina tela bouclé texturizada color blanco marfil, con espuma ortopédica de máximo confort."
+                 data-img="assets/img/butaca-boucle-marfil.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Bouclé Marfil</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/butaca-boucle-marfil.jpg" alt="Butaca moderna tapizada en tela bouclé blanco marfil" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Butaca en Bouclé Marfil</h4>
+            <p>Textura orgánica de lujo y volumen perfecto</p>
+          </div>
+        </article>
+
+        <!-- 6. Sillón Tejido en Cuero Cognac y Madera (Featured Panoramic) -->
+        <article class="gallery-card featured reveal"
+                 data-category="terraza"
+                 data-title="Sillón Entrelazado en Correas de Cuero &amp; Madera"
+                 data-cat-label="Terraza &amp; Exterior · Trabajo Artesanal"
+                 data-desc="Exclusivo trabajo de entramado manual con fajas de cuero color cognac sobre estructura de madera noble y cojines impermeables en tono crema."
+                 data-img="assets/img/sillon-tejido-cuero.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Entramado en Cuero</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/sillon-tejido-cuero.jpg" alt="Sillón tejido en cuero y madera con cojines crema" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Sillón Entrelazado en Cuero &amp; Madera</h4>
+            <p>Tejido artesanal de fajas de cuero y cojinería a medida</p>
+          </div>
+        </article>
+
+        <!-- 7. Sofá Clásico en Cuero Envejecido Caoba -->
+        <article class="gallery-card wide reveal"
+                 data-category="sofas"
+                 data-title="Sofá en Cuero Envejecido Tono Caoba"
+                 data-cat-label="Sofás &amp; Salas · Cuero Marroquí"
+                 data-desc="Sofá de dos cuerpos tapizado en cuero marroquí veteado tono caoba/vino con brazos redondeados y doble costura de precisión."
+                 data-img="assets/img/sofa-cuero-caoba.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Cuero Caoba</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/sofa-cuero-caoba.jpg" alt="Sofá tapizado en cuero envejecido color caoba" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Sofá en Cuero Envejecido Caoba</h4>
+            <p>Acabado clásico en piel veteada de alta durabilidad</p>
+          </div>
+        </article>
+
+        <!-- 8. Sofá Residencial Avena con Cojines -->
+        <article class="gallery-card wide reveal"
+                 data-category="sofas"
+                 data-title="Sofá Residencial en Lino Avena con Vivos"
+                 data-cat-label="Sofás &amp; Salas · Estilo Clásico"
+                 data-desc="Sofá de dos cuerpos en lino estructurado tono avena con vivos perimetrales hechos a mano y juego de cojines bordados."
+                 data-img="assets/img/sofa-clasico-cojines.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Lino Estructurado</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/sofa-clasico-cojines.jpg" alt="Sofá beige con cojines decorativos en sala elegante" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Sofá Residencial en Lino Avena</h4>
+            <p>Confección con vivos a medida y espuma indeformable</p>
+          </div>
+        </article>
+
+        <!-- 9. Silla de Comedor en Cuero con Tachuelas -->
+        <article class="gallery-card reveal"
+                 data-category="poltronas"
+                 data-title="Silla de Comedor Imperial con Tachuelas"
+                 data-cat-label="Sillas de Comedor · Detalle en Bronce"
+                 data-desc="Silla de comedor en madera maciza tapizada en cuero veteado marrón con aplicación simétrica de tachuelas decorativas de bronce envejecido."
+                 data-img="assets/img/silla-comedor-tachuelas.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Comedor de Lujo</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/silla-comedor-tachuelas.jpg" alt="Silla de comedor en cuero con tachuelas decorativas" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Silla de Comedor con Tachuelas</h4>
+            <p>Alineación milimétrica de tachuelas colocadas a mano</p>
+          </div>
+        </article>
+
+        <!-- 10. Silla Gamer & Ejecutiva en Cuero Negro -->
+        <article class="gallery-card reveal"
+                 data-category="poltronas"
+                 data-title="Silla Ejecutiva &amp; Gamer en Cuero Genuino"
+                 data-cat-label="Estudio &amp; Oficina · Cuero Premium"
+                 data-desc="Reemplazo total del vinilo sintético original por cuero genuino negro de alta resistencia con costuras ergonómicas acolchadas."
+                 data-img="assets/img/silla-gamer-estudio.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Cuero Ejecutivo</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/silla-gamer-estudio.jpg" alt="Silla gamer y ejecutiva retapizada en cuero negro" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Silla Ejecutiva &amp; Gamer en Cuero</h4>
+            <p>Transformación en piel legítima que no se pela</p>
+          </div>
+        </article>
+
+        <!-- 11. Sillón de Terraza Minimalista -->
+        <article class="gallery-card reveal"
+                 data-category="terraza"
+                 data-title="Poltrona de Terraza Urbana Impermeable"
+                 data-cat-label="Terraza &amp; Balcón · Protección UV"
+                 data-desc="Cojinería de líneas rectas confeccionada en tela acrílica impermeable con tratamiento antimanchas y protección solar para terrazas."
+                 data-img="assets/img/sillon-terraza-moderno.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Textil Náutico UV</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/sillon-terraza-moderno.jpg" alt="Sillón de terraza moderno con cojines impermeables" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Poltrona de Terraza Minimalista</h4>
+            <p>Tejido impermeable resistente al sol y humedad</p>
+          </div>
+        </article>
+
+        <!-- 12. Lounge de Terraza a Medida (Featured Panoramic) -->
+        <article class="gallery-card featured reveal"
+                 data-category="terraza"
+                 data-title="Lounge Completo de Terraza a Medida"
+                 data-cat-label="Proyectos Integrales · Exterior"
+                 data-desc="Fabricación y tapizado integral de colchonetas y respaldos a medida para terraza panorámica con espuma de drenaje rápido."
+                 data-img="assets/img/terraza-sofas.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Terraza Panorámica</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/terraza-sofas.jpg" alt="Sofás de terraza tapizados a medida" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Lounge de Terraza a Medida</h4>
+            <p>Colchonetas y respaldos exactos para arquitectura exterior</p>
+          </div>
+        </article>
+
+        <!-- 13. Banca Artesanal en Cuero Bicolor -->
+        <article class="gallery-card reveal"
+                 data-category="poltronas"
+                 data-title="Banca de Autor en Cuero &amp; Madera"
+                 data-cat-label="Piezas de Galería · Diseño Exclusivo"
+                 data-desc="Banca de recibidor o pie de cama tapizada en cuero fino bitono con pliegues sastre en los apoyabrazos."
+                 data-img="assets/img/banca-elegante.png">
+          <div class="gallery-card-media">
+            <span class="card-tag">Pieza de Autor</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/banca-elegante.png" alt="Banca elegante tapizada en cuero" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Banca Artesanal en Cuero</h4>
+            <p>Acabado de galería en piel fina bitono</p>
+          </div>
+        </article>
+
+        <!-- 14. Sillón Nórdico Mostaza -->
+        <article class="gallery-card reveal"
+                 data-category="poltronas"
+                 data-title="Poltrona Nórdica en Lino Mostaza"
+                 data-cat-label="Poltronas &amp; Lectura · Color Vibrante"
+                 data-desc="Poltrona de lectura retapizada en lino pesado color mostaza dorado con botones forrados y patas cónicas de madera."
+                 data-img="assets/img/sillon-mostaza.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Estilo Nórdico</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/sillon-mostaza.jpg" alt="Sillón clásico tapizado en color mostaza" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Poltrona Nórdica Mostaza</h4>
+            <p>Lino pesado de tacto cálido y vivo perimetral</p>
+          </div>
+        </article>
+
+        <!-- 15. Conjunto Moderno de Butaca y Bancas -->
+        <article class="gallery-card reveal"
+                 data-category="poltronas"
+                 data-title="Conjunto Modular de Butaca &amp; Bancas"
+                 data-cat-label="Colección a Medida · Versatilidad"
+                 data-desc="Juego coordinado compuesto por taburete en cuero marrón, butaca curva en piel marfil y banqueta doble en textil celeste."
+                 data-img="assets/img/conjunto-muebles.png">
+          <div class="gallery-card-media">
+            <span class="card-tag">Juego Coordinado</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/conjunto-muebles.png" alt="Conjunto de muebles tapizados" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Conjunto Modular &amp; Bancas</h4>
+            <p>Combinación armónica de cueros y tejidos</p>
+          </div>
+        </article>
+
+        <!-- 16. Silla Clásica Tallada -->
+        <article class="gallery-card reveal"
+                 data-category="poltronas"
+                 data-title="Sillón Clásico de Madera con Tapiz Jacquard"
+                 data-cat-label="Restauración Clásica · Comedor"
+                 data-desc="Restauración de acolchado y retapizado con tela jacquard geométrica e hilo de vivo en contraste."
+                 data-img="assets/img/silla-clasica-tallada.jpg">
+          <div class="gallery-card-media">
+            <span class="card-tag">Tapiz Jacquard</span>
+            <span class="card-zoom-hint" aria-hidden="true">⤢</span>
+            <img src="assets/img/silla-clasica-tallada.jpg" alt="Silla clásica de madera retapizada" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-card-info">
+            <h4>Sillón Clásico con Tapiz Jacquard</h4>
+            <p>Acolchado renovado con patrón perfectamente centrado</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       6. INTERACTIVE PROCESS & BEFORE/AFTER SECTION ("DEL TALLER A SU SALA")
+       ======================================================================== -->
+  <section class="craftsmanship cv-auto" id="proceso">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-kicker">Transparencia y Calidad Interna</span>
+        <h2 class="section-title">Del Taller al Showroom: <em>El Secreto del Interior</em></h2>
+        <div class="stitch-divider">
+          <span class="stitch-divider-line"></span>
+          <span class="stitch-diamond">◆</span>
+          <span class="stitch-divider-line"></span>
+        </div>
+        <p class="section-desc">Deslice el comparador interactivo y conozca los materiales que garantizan décadas de confort</p>
+      </div>
+
+      <div class="craft-grid">
+        <!-- Interactive Drag/Touch Comparison Slider -->
+        <div class="ba-slider-card reveal">
+          <div class="ba-header">
+            <h3>Transformación Real: Taller vs. Presentación Final</h3>
+            <span>⇄ Deslice para comparar</span>
+          </div>
+
+          <div class="ba-viewport" id="baViewport">
+            <!-- After Image (Full background) -->
+            <img src="assets/img/poltrona-bergere-gris.jpg"
+                 alt="Poltrona Bergère terminada en showroom de lujo"
+                 loading="lazy"
+                 decoding="async">
+
+            <!-- Before Image (Clipped layer) -->
+            <div class="ba-before-layer" id="baBeforeLayer">
+              <img src="assets/img/taller-antes-bergere.jpg"
+                   alt="Poltrona Bergère durante el proceso artesanal en el taller"
+                   loading="lazy"
+                   decoding="async">
+            </div>
+
+            <span class="ba-label left">En el Taller Artesanal</span>
+            <span class="ba-label right">Acabado Final de Lujo</span>
+
+            <div class="ba-handle" id="baHandle">
+              <div class="ba-handle-knob">↔</div>
+            </div>
+
+            <input type="range"
+                   min="5"
+                   max="95"
+                   value="50"
+                   class="ba-range-input"
+                   id="baRangeInput"
+                   aria-label="Comparar foto en el taller y resultado final">
+          </div>
+        </div>
+
+        <!-- Internal Materials Cards (From the new folder photos!) -->
+        <div class="materials-stack reveal">
+          <div class="material-card"
+               data-title="Renovación Total: Espuma Antigua vs. Nuevo Núcleo"
+               data-cat-label="Calidad Interna · Antes y Después"
+               data-desc="Retiramos por completo la espuma amarilla oxidada y vencida, reemplazándola por un núcleo nuevo forrado en tela protectora blanca para evitar fricción y deformaciones."
+               data-img="assets/img/proceso-espuma-comparacion.jpg">
+            <img src="assets/img/proceso-espuma-comparacion.jpg"
+                 alt="Comparación de espuma antigua deteriorada y cojín interno nuevo"
+                 loading="lazy"
+                 decoding="async">
+            <div class="material-card-body">
+              <span>01 · Antes vs. Después Interno</span>
+              <h4>Reemplazo de Espuma Vencida</h4>
+              <p>Cambio integral del relleno deteriorado por bloques nuevos con funda blanca protectora.</p>
+            </div>
+          </div>
+
+          <div class="material-card"
+               data-title="Espuma Zebra de Alta Densidad Cortada a Medida"
+               data-cat-label="Materiales Ortopédicos · Durabilidad"
+               data-desc="Trabajamos con espuma Zebra de alta densidad (bloques rosado y celeste) moldeada ergonómicamente para que sus asientos jamás se hundan."
+               data-img="assets/img/espuma-zebra-alta-densidad.jpg">
+            <img src="assets/img/espuma-zebra-alta-densidad.jpg"
+                 alt="Cojines de espuma Zebra de alta densidad en el taller"
+                 loading="lazy"
+                 decoding="async">
+            <div class="material-card-body">
+              <span>02 · Ergonomía Indeformable</span>
+              <h4>Espuma Zebra de Alta Densidad</h4>
+              <p>Núcleos ortopédicos multicapa que conservan su firmeza y rebote por años.</p>
+            </div>
+          </div>
+
+          <div class="material-card"
+               data-title="Catálogo Selecto de Terciopelos, Bouclé y Cueros"
+               data-cat-label="Muestrario a Domicilio · Lima"
+               data-desc="Más de 300 tonalidades en terciopelos importados, telas antimanchas para mascotas, bouclé, lino pesado y cueros genuinos."
+               data-img="assets/img/telas-colores.jpg">
+            <img src="assets/img/telas-colores.jpg"
+                 alt="Muestrario de telas premium de distintos colores"
+                 loading="lazy"
+                 decoding="async">
+            <div class="material-card-body">
+              <span>03 · Texturas Importadas</span>
+              <h4>Muestrario Exclusivo de Telas</h4>
+              <p>Llevamos el catálogo completo a su hogar para elegir el tono ideal con su iluminación.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. VALUES SECTION
+       ======================================================================== -->
+  <section class="values cv-auto" id="valores">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-kicker">Nuestro Compromiso</span>
+        <h2 class="section-title">Los Pilares de <em>Rivera Concierge</em></h2>
+        <div class="stitch-divider">
+          <span class="stitch-divider-line"></span>
+          <span class="stitch-diamond">◆</span>
+          <span class="stitch-divider-line"></span>
+        </div>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <span class="value-num">01</span>
+          <h4>Puntualidad Rigurosa</h4>
+          <p>
+            Valoramos su tiempo y la organización de su hogar. Cada mueble es entregado
+            exactamente en la fecha acordada, con transporte seguro y protegido.
+          </p>
+        </div>
+
+        <div class="value-card reveal">
+          <span class="value-num">02</span>
+          <h4>Maestría Hecha a Mano</h4>
+          <p>
+            29 años perfeccionando costuras invisibles, vivos simétricos y capitoné tradicional.
+            Cada pieza pasa por las manos directas del Maestro Rivera.
+          </p>
+        </div>
+
+        <div class="value-card reveal">
+          <span class="value-num">03</span>
+          <h4>Trato Cálido y Honesto</h4>
+          <p>
+            Le asesoramos con total transparencia sobre los mejores materiales para su familia,
+            brindando una experiencia amable, respetuosa y de máxima confianza.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. CONVERSION CTA SECTION
+       ======================================================================== -->
+  <section class="cta-section cv-auto" id="contacto">
+    <div class="container">
+      <div class="cta-box reveal">
+        <span class="mg-corner tl"></span>
+        <span class="mg-corner tr"></span>
+        <span class="mg-corner bl"></span>
+        <span class="mg-corner br"></span>
+
+        <span class="section-kicker">Atención Inmediata · Lima, Perú</span>
+        <h2>Transformemos sus muebles en <em>obras de arte</em></h2>
+        <p>
+          Envíenos una foto de su mueble por WhatsApp al <strong>997 317 630</strong> y reciba
+          un presupuesto detallado y asesoría sin compromiso.
+        </p>
+
+        <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera%2C%20le%20escribo%20desde%20la%20web%20Rivera_Concierge%20para%20cotizar%20el%20tapizado%20de%20un%20mueble"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-gold">
+          Solicitar Presupuesto por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       9. FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">Rivera_Concierge</div>
+      <div class="footer-sub">Tapicería de Muebles · Artesanía Fina</div>
+      <p>&copy; 2026 Rivera Concierge · 29 Años de Legado Artesanal · Miraflores, Surco &amp; Lima, Perú · Tel: +51 997 317 630</p>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       10. FULLSCREEN PORTFOLIO LIGHTBOX MODAL
+       ======================================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Detalle del trabajo de tapicería">
+    <div class="lightbox-dialog">
+      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Cerrar vista detallada">✕</button>
+      <div class="lightbox-media">
+        <img src="" alt="" id="lightboxImg">
+      </div>
+      <div class="lightbox-details">
+        <span class="lightbox-cat" id="lightboxCat">Categoría</span>
+        <h3 class="lightbox-title" id="lightboxTitle">Título del Proyecto</h3>
+        <p class="lightbox-desc" id="lightboxDesc">Descripción detallada del trabajo artesanal.</p>
+        <a href="https://wa.me/51997317630"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-gold"
+           id="lightboxWaBtn">
+          Cotizar un Trabajo Similar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       11. FLOATING WHATSAPP & ADAPTIVE MOBILE APP DOCK
+       ======================================================================== -->
+  <a href="https://wa.me/51997317630?text=Hola%20Rivera%20Concierge%2C%20quisiera%20solicitar%20un%20presupuesto"
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Solicitar presupuesto por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 0 0 .611.611l4.458-1.495A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 0 1-5.39-1.585l-.386-.238-2.648.888.888-2.648-.238-.386A9.94 9.94 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    <span>Solicitar Presupuesto</span>
+  </a>
+
+  <!-- Bottom App Dock on Mobile/Tablet so UI feels structured like PC -->
+  <nav class="mobile-dock" aria-label="Navegación rápida móvil">
+    <a href="#inicio" class="dock-item active">
+      <span>◆</span>
+      <span>Inicio</span>
+    </a>
+    <a href="#nosotros" class="dock-item">
+      <span>✦</span>
+      <span>Legado</span>
+    </a>
+    <a href="#portafolio" class="dock-item">
+      <span>⊞</span>
+      <span>Catálogo</span>
+    </a>
+    <a href="#proceso" class="dock-item">
+      <span>⇄</span>
+      <span>Proceso</span>
+    </a>
+    <a href="https://wa.me/51997317630?text=Hola%20Rivera%20Concierge%2C%20quisiera%20solicitar%20un%20presupuesto"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="dock-item dock-wa">
+      <span>✆</span>
+      <span>Cotizar</span>
+    </a>
+  </nav>
+
+  <!-- ========================================================================
+       12. ZERO-LAG MOTION GRAPHICS & ADAPTIVE PERFORMANCE ENGINE
+       ======================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ----------------------------------------------------------------------
+         A. ADAPTIVE HARDWARE PERFORMANCE DETECTION (LOW / MID / HIGH TIER)
+         Ensures 60fps with zero lag on low-end phones, tablets, and PCs
+         ---------------------------------------------------------------------- */
+      const cores = navigator.hardwareConcurrency || 4;
+      const memory = navigator.deviceMemory || 4;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      let perfTier = 'high';
+      if (reducedMotion || cores <= 2 || memory <= 2) {
+        perfTier = 'low';
+      } else if (cores <= 4 || memory <= 4) {
+        perfTier = 'mid';
+      }
+
+      const perfLabel = document.getElementById('perfLabel');
+      const perfDot = document.getElementById('perfDot');
+      const perfToggleBtn = document.getElementById('perfToggleBtn');
+
+      function applyPerfTier(tier) {
+        perfTier = tier;
+        document.body.classList.remove('perf-low', 'perf-mid', 'perf-high');
+        document.body.classList.add('perf-' + tier);
+
+        if (tier === 'low') {
+          perfLabel.textContent = 'Modo Eco 60fps';
+          perfDot.style.background = '#c9a96e';
+        } else if (tier === 'mid') {
+          perfLabel.textContent = '60 FPS · Auto';
+          perfDot.style.background = '#25d366';
+        } else {
+          perfLabel.textContent = '60 FPS · Ultra';
+          perfDot.style.background = '#25d366';
+        }
+      }
+
+      applyPerfTier(perfTier);
+
+      perfToggleBtn.addEventListener('click', () => {
+        const nextTier = perfTier === 'low' ? 'high' : 'low';
+        applyPerfTier(nextTier);
+      });
+
+      /* ----------------------------------------------------------------------
+         B. MOTION GRAPHICS INTRO PRELOADER CONTROLLER
+         ---------------------------------------------------------------------- */
+      const introOverlay = document.getElementById('introOverlay');
+      const skipIntroBtn = document.getElementById('skipIntroBtn');
+      let introDismissed = false;
+
+      function dismissIntro() {
+        if (introDismissed) return;
+        introDismissed = true;
+        document.body.classList.remove('locked');
+        introOverlay.classList.add('exit');
+        setTimeout(() => {
+          introOverlay.classList.add('hidden');
+        }, 850);
+      }
+
+      skipIntroBtn.addEventListener('click', dismissIntro);
+      introOverlay.addEventListener('click', (e) => {
+        if (e.target === introOverlay) dismissIntro();
+      });
+
+      // Automatically lift curtain right as the golden needle progress finishes
+      setTimeout(dismissIntro, reducedMotion ? 400 : 2150);
+
+      /* ----------------------------------------------------------------------
+         C. LIGHTWEIGHT 2D CANVAS MOTION GRAPHICS (GOLDEN THREADS & DUST)
+         Automatically scales particle count by device tier & pauses offscreen
+         ---------------------------------------------------------------------- */
+      const canvas = document.getElementById('heroMotionCanvas');
+      const ctx = canvas ? canvas.getContext('2d', { alpha: true }) : null;
+      let particles = [];
+      let heroVisible = true;
+      let rafId = null;
+
+      function initParticles() {
+        if (!ctx) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const count = perfTier === 'low' ? 0 : (perfTier === 'mid' || w < 768 ? 14 : 26);
+        particles = [];
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: -Math.random() * 0.35 - 0.1,
+            size: Math.random() * 1.8 + 0.7,
+            alpha: Math.random() * 0.45 + 0.15
+          });
+        }
+      }
+
+      function renderCanvas() {
+        if (!ctx || !heroVisible || perfTier === 'low') {
+          rafId = null;
+          return;
+        }
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
+        ctx.clearRect(0, 0, w, h);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.y < -10) p.y = h + 10;
+          if (p.x < -10) p.x = w + 10;
+          if (p.x > w + 10) p.x = -10;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(229, 201, 146, ${p.alpha})`;
+          ctx.fill();
+
+          // Draw subtle golden thread connection to nearby particle
+          if (i + 1 < particles.length) {
+            const p2 = particles[i + 1];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const distSq = dx * dx + dy * dy;
+            if (distSq < 18000) {
+              const lineAlpha = (1 - distSq / 18000) * 0.12;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(201, 169, 110, ${lineAlpha})`;
+              ctx.lineWidth = 0.7;
+              ctx.stroke();
+            }
+          }
+        }
+        rafId = requestAnimationFrame(renderCanvas);
+      }
+
+      if (canvas && ctx) {
+        initParticles();
+        renderCanvas();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            initParticles();
+            if (!rafId && heroVisible && perfTier !== 'low') {
+              renderCanvas();
+            }
+          }, 180);
+        }, { passive: true });
+
+        // Pause canvas when Hero section scrolls out of viewport (zero wasted CPU/GPU)
+        const heroSection = document.getElementById('inicio');
+        const heroObserver = new IntersectionObserver((entries) => {
+          heroVisible = entries[0].isIntersecting;
+          if (heroVisible && !rafId && perfTier !== 'low') {
+            renderCanvas();
+          }
+        }, { threshold: 0.05 });
+        heroObserver.observe(heroSection);
+      }
+
+      /* ----------------------------------------------------------------------
+         D. PASSIVE SCROLL NAVBAR & REVEAL ANIMATIONS
+         ---------------------------------------------------------------------- */
+      const navbar = document.getElementById('navbar');
+      let scrollTicking = false;
+
+      window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+          requestAnimationFrame(() => {
+            navbar.classList.toggle('scrolled', window.scrollY > 45);
+            scrollTicking = false;
+          });
+          scrollTicking = true;
+        }
+      }, { passive: true });
+
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+
+      /* ----------------------------------------------------------------------
+         E. PORTFOLIO FILTERING & BENTO / SINGLE VIEW SWITCHER
+         ---------------------------------------------------------------------- */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const galleryCards = document.querySelectorAll('.gallery-card');
+      const galleryGrid = document.getElementById('galleryGrid');
+      const viewBentoBtn = document.getElementById('viewBentoBtn');
+      const viewSingleBtn = document.getElementById('viewSingleBtn');
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+
+          galleryCards.forEach((card) => {
+            const cat = card.getAttribute('data-category');
+            const match = filter === 'all' || cat === filter;
+            card.classList.toggle('hidden-card', !match);
+          });
+        });
+      });
+
+      viewBentoBtn.addEventListener('click', () => {
+        viewBentoBtn.classList.add('active');
+        viewSingleBtn.classList.remove('active');
+        galleryGrid.classList.remove('mobile-single-col');
+      });
+
+      viewSingleBtn.addEventListener('click', () => {
+        viewSingleBtn.classList.add('active');
+        viewBentoBtn.classList.remove('active');
+        galleryGrid.classList.add('mobile-single-col');
+      });
+
+      /* ----------------------------------------------------------------------
+         F. INTERACTIVE BEFORE / AFTER COMPARISON SLIDER (60FPS)
+         ---------------------------------------------------------------------- */
+      const baRangeInput = document.getElementById('baRangeInput');
+      const baBeforeLayer = document.getElementById('baBeforeLayer');
+      const baHandle = document.getElementById('baHandle');
+
+      if (baRangeInput && baBeforeLayer && baHandle) {
+        baRangeInput.addEventListener('input', (e) => {
+          const val = e.target.value;
+          baBeforeLayer.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
+          baHandle.style.left = `${val}%`;
+        }, { passive: true });
+      }
+
+      /* ----------------------------------------------------------------------
+         G. FULLSCREEN LIGHTBOX INSPECTOR WITH DIRECT WHATSAPP QUOTE
+         ---------------------------------------------------------------------- */
+      const lightbox = document.getElementById('lightbox');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCat = document.getElementById('lightboxCat');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxDesc = document.getElementById('lightboxDesc');
+      const lightboxWaBtn = document.getElementById('lightboxWaBtn');
+
+      function openLightbox(el) {
+        const title = el.getAttribute('data-title') || '';
+        const cat = el.getAttribute('data-cat-label') || 'Rivera Concierge';
+        const desc = el.getAttribute('data-desc') || '';
+        const img = el.getAttribute('data-img') || '';
+
+        lightboxImg.src = img;
+        lightboxImg.alt = title;
+        lightboxCat.textContent = cat;
+        lightboxTitle.textContent = title;
+        lightboxDesc.textContent = desc;
+
+        const waText = encodeURIComponent(
+          `Hola Rivera Concierge, vi en su catálogo el proyecto "${title}" y quisiera solicitar una cotización similar.`
+        );
+        lightboxWaBtn.href = `https://wa.me/51997317630?text=${waText}`;
+
+        lightbox.classList.add('open');
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+      }
+
+      document.querySelectorAll('.gallery-card, .material-card').forEach((card) => {
+        card.addEventListener('click', () => openLightbox(card));
+      });
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
