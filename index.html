@@ -2,953 +2,180 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0e0d0c">
-    <title>RIVERA CONCIERGE | Tapicería Fina de Muebles · 29 Años de Legado</title>
-    <meta name="description" content="Rivera Concierge: Taller de tapicería fina hecha a mano con 29 años de experiencia atendiendo en Miraflores, Surco y San Isidro. Restauración y tapizado artesanal.">
-
-    <!-- Preload tipografía minimalista local (0 latencia externa) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f2ec">
+    <title>Rivera Concierge · Tapicería de muebles en Lima</title>
+    <meta name="description" content="Restauración y tapizado de muebles en Lima. 29 años de oficio, atención directa y trabajo a medida. Consulte por WhatsApp al 997 317 630.">
     <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/photos/sofa-curvo-terracota.jpg" as="image">
-
-    <!-- Tipografías complementarias para lectura cálida -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
 </head>
-<body class="perf-high">
-
-    <!-- 1. MOTION GRAPHICS INTRO MINIMALISTA -->
-    <div id="introScreen" class="intro-screen" role="dialog" aria-label="Presentación Rivera Concierge">
-        <div class="intro-inner">
-            <div class="intro-line-top" aria-hidden="true"></div>
-            <p class="intro-brand">Rivera Concierge</p>
-            <div class="intro-rule" aria-hidden="true"></div>
-            <p class="intro-sub">Tapicería de Muebles</p>
-            <button type="button" id="introSkipBtn" class="intro-skip">Entrar al Atelier</button>
-        </div>
-    </div>
-
-    <!-- 2. NAVEGACIÓN SOBRIA Y CLARA -->
+<body class="perf-low">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header">
         <div class="container nav-bar">
-            <a href="#inicio" class="brand-mark" aria-label="Rivera Concierge Inicio">
+            <a class="brand-mark" href="#inicio" aria-label="Rivera Concierge, inicio">
                 <span class="brand-name">Rivera Concierge</span>
-                <span class="brand-caption">Tapicería de Muebles · Lima</span>
+                <span class="brand-caption">Tapicería de muebles · Lima</span>
             </a>
-
             <nav aria-label="Navegación principal">
-                <ul class="nav-links">
-                    <li><a href="#espacio-3d">Estudio 3D</a></li>
-                    <li><a href="#maestro">El Maestro</a></li>
-                    <li><a href="#catalogo">Obras Reales</a></li>
-                    <li><a href="#proceso">Antes y Después</a></li>
-                </ul>
+                <a href="#catalogo">Trabajos</a>
+                <a href="#maestro">El taller</a>
+                <a href="#contacto">Contacto</a>
             </nav>
-
-            <div class="nav-actions">
-                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20solicitar%20un%20presupuesto%20de%20tapicer%C3%ADa."
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn-nav-contact">
-                    Cotizar · 997 317 630
-                </a>
-            </div>
+            <a class="header-contact" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20un%20mueble." target="_blank" rel="noopener noreferrer">Escríbanos <span aria-hidden="true">↗</span></a>
         </div>
     </header>
 
-    <main id="inicio">
-        <!-- 3. HERO EDITORIAL -->
-        <section class="hero">
+    <main id="contenido" tabindex="-1">
+        <section class="hero" id="inicio" aria-labelledby="heroHeading">
             <div class="container">
                 <div class="hero-header">
-                    <span class="eyebrow">29 Años de Oficio Real · Miraflores · Surco · San Isidro</span>
-                    <h1 class="hero-title">Artesanía en Tapicería Fina</h1>
-
-                    <div class="hero-lead-row">
-                        <p class="hero-subtitle">
-                            Sin plantillas artificiales ni intermediarios. Casi tres décadas restaurando y confeccionando muebles a mano en nuestro taller y en residencias reales de Lima, cuidando cada costura, espuma interna y estructura de madera.
-                        </p>
-                        <div class="hero-cta-group">
-                            <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20le%20env%C3%ADo%20una%20foto%20de%20mi%20mueble%20para%20solicitar%20presupuesto."
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               class="btn-primary">
-                                Solicitar Presupuesto
-                            </a>
-                            <a href="#catalogo" class="btn-outline">Ver Trabajos Reales</a>
-                        </div>
-                    </div>
+                    <div><p class="eyebrow">Tapicería a medida · Desde hace 29 años</p><h1 id="heroHeading">Muebles con<br>historia.</h1></div>
+                    <div class="hero-copy"><p>Los de siempre, para seguir viviendo.<br>Restauramos y tapizamos sus muebles con el cuidado de un trabajo hecho a mano.</p><a class="text-link" href="#catalogo">Conozca nuestro trabajo <span aria-hidden="true">↓</span></a></div>
                 </div>
-
-                <!-- Fotografías 100% reales de entregas y taller -->
-                <div class="hero-showcase">
-                    <figure class="hero-figure hero-figure-main">
-                        <img src="assets/photos/sofa-curvo-terracota.jpg"
-                             srcset="assets/photos/sofa-curvo-terracota-sm.jpg 720w, assets/photos/sofa-curvo-terracota.jpg 1600w"
-                             sizes="(max-width: 768px) 100vw, 65vw"
-                             width="1200"
-                             height="750"
-                             fetchpriority="high"
-                             alt="Sofá seccional curvo tapizado en terciopelo terracota entregado en terraza residencial">
-                        <figcaption class="figure-caption">
-                            <span class="figure-caption-title">Seccional Curvo Terracota</span>
-                            <span class="figure-caption-meta">Entrega real en residencia · Miraflores</span>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="hero-figure hero-figure-side">
-                        <img src="assets/photos/taller-maestro.jpg"
-                             srcset="assets/photos/taller-maestro-sm.jpg 720w, assets/photos/taller-maestro.jpg 1600w"
-                             sizes="(max-width: 768px) 100vw, 35vw"
-                             width="800"
-                             height="1000"
-                             decoding="async"
-                             alt="Maestro Rivera trabajando a mano en el tapizado y vivo perimetral de una poltrona en su taller">
-                        <figcaption class="figure-caption">
-                            <span class="figure-caption-title">Trabajo Manual en Taller</span>
-                            <span class="figure-caption-meta">Maestro Rivera en proceso de acabado</span>
-                        </figcaption>
-                    </figure>
-                </div>
-
-                <!-- Cifras reales sin adornos excesivos -->
-                <div class="metrics-strip" aria-label="Trayectoria Rivera Concierge">
-                    <div class="metric-cell">
-                        <span class="metric-value">29 AÑOS</span>
-                        <span class="metric-label">De oficio continuo en tapicería fina hecha a mano.</span>
-                    </div>
-                    <div class="metric-cell">
-                        <span class="metric-value">100% REAL</span>
-                        <span class="metric-label">Fotografías auténticas de nuestras entregas y nuestro taller.</span>
-                    </div>
-                    <div class="metric-cell">
-                        <span class="metric-value">A MEDIDA</span>
-                        <span class="metric-label">Toma de medidas y muestrario de telas a domicilio.</span>
-                    </div>
-                    <div class="metric-cell">
-                        <span class="metric-value">PUNTUAL</span>
-                        <span class="metric-label">Fechas de recojo y entrega cumplidas con exactitud.</span>
-                    </div>
-                </div>
+                <figure class="hero-figure">
+                    <img src="assets/photos/sofa-curvo-terracota.jpg" srcset="assets/photos/sofa-curvo-terracota-sm.jpg 720w, assets/photos/sofa-curvo-terracota.jpg 1600w" sizes="(max-width: 1440px) 100vw, 1360px" width="1600" height="582" alt="Sofá curvo tapizado en terracota, junto a una ventana de la residencia" fetchpriority="high">
+                    <figcaption><span>01 / Seccional terracota</span><span>Confección a medida</span></figcaption>
+                </figure>
+                <div class="hero-note"><p>Un oficio que se aprende con las manos.</p><p>Miraflores · Surco · San Isidro</p></div>
             </div>
         </section>
 
-        <!-- 4. EXPERIENCIA ESPACIAL 3D (ADAPTATIVA SEGÚN GAMA DEL EQUIPO) -->
-        <section id="espacio-3d" class="spatial-section" aria-labelledby="spatialHeading">
+        <section class="spatial-section" id="espacio-3d" aria-labelledby="spatialHeading">
             <div class="container">
-                <div class="section-header-bar">
-                    <div>
-                        <span class="eyebrow">Recorrido Espacial · Arquitectura Textil</span>
-                        <h2 id="spatialHeading" class="section-title">Perspectiva en Profundidad</h2>
-                    </div>
-                    <div>
-                        <p class="section-desc">
-                            Mueva el cursor o deslice la página para explorar los planos reales de confección. En dispositivos de bajos recursos se activa automáticamente el modo estático ligero para garantizar fluidez total.
-                        </p>
-                    </div>
-                    <button type="button" id="perfToggleBtn" class="perf-control" aria-pressed="true" title="Cambiar entre vista 3D interactiva y vista estática ligera">
-                        <span class="perf-dot" aria-hidden="true"></span>
-                        <span id="perfStatusLabel">Modo 3D Activo</span>
-                    </button>
+                <div class="section-header spatial-header">
+                    <div><p class="eyebrow">La textura. La forma. El detalle.</p><h2 id="spatialHeading">El oficio,<br>de cerca.</h2></div>
+                    <div class="spatial-caption"><p>Un recorrido por las piezas y los detalles de nuestro taller.</p><button type="button" id="perfToggleBtn" class="perf-control" hidden aria-pressed="false" aria-label="Movimiento en la galería" aria-controls="spatialStage"><span class="perf-dot" aria-hidden="true"></span><span id="perfStatusLabel">Vista estática</span></button></div>
                 </div>
-
-                <div id="spatialStage" class="spatial-stage">
+                <div class="spatial-stage" id="spatialStage">
                     <div class="spatial-grid">
-                        <!-- Plano 1: Z +40px -->
-                        <article class="spatial-plane plane-1"
-                                 data-speed="-0.06"
-                                 style="--depth-z: 36px; --depth-x: 16px; --depth-y: 12px;">
-                            <div class="spatial-media">
-                                <span class="spatial-coord">Plano 01 · Residencia</span>
-                                <img src="assets/photos/seccional-cuero-gris.jpg"
-                                     srcset="assets/photos/seccional-cuero-gris-sm.jpg 720w, assets/photos/seccional-cuero-gris.jpg 1600w"
-                                     sizes="(max-width: 768px) 100vw, 58vw"
-                                     width="1200"
-                                     height="825"
-                                     loading="lazy"
-                                     decoding="async"
-                                     alt="Sofá seccional en L tapizado en cuero gris humo en departamento">
-                            </div>
-                            <div class="spatial-info">
-                                <h3 class="spatial-title">Seccional en L · Cuero Gris Humo</h3>
-                                <span class="spatial-tag">Doble Pespunte</span>
-                            </div>
-                        </article>
-
-                        <!-- Plano 2: Z -30px -->
-                        <article class="spatial-plane plane-2"
-                                 data-speed="0.07"
-                                 style="--depth-z: -24px; --depth-x: -14px; --depth-y: -10px;">
-                            <div class="spatial-media">
-                                <span class="spatial-coord">Plano 02 · Detalle de Costura</span>
-                                <img src="assets/photos/poltrona-detalle.jpg"
-                                     srcset="assets/photos/poltrona-detalle-sm.jpg 720w, assets/photos/poltrona-detalle.jpg 1600w"
-                                     sizes="(max-width: 768px) 100vw, 40vw"
-                                     width="900"
-                                     height="960"
-                                     loading="lazy"
-                                     decoding="async"
-                                     alt="Detalle macro de vivo perimetral y botones forrados en tela tejida">
-                            </div>
-                            <div class="spatial-info">
-                                <h3 class="spatial-title">Vivo Perimetral y Botonería</h3>
-                                <span class="spatial-tag">Tensión Exacta</span>
-                            </div>
-                        </article>
-
-                        <!-- Plano 3: Z +20px -->
-                        <article class="spatial-plane plane-3"
-                                 data-speed="-0.04"
-                                 style="--depth-z: 22px; --depth-x: 12px; --depth-y: -12px;">
-                            <div class="spatial-media">
-                                <span class="spatial-coord">Plano 03 · Terraza</span>
-                                <img src="assets/photos/sillon-cuero-tejido.jpg"
-                                     srcset="assets/photos/sillon-cuero-tejido-sm.jpg 720w, assets/photos/sillon-cuero-tejido.jpg 1600w"
-                                     sizes="(max-width: 768px) 100vw, 42vw"
-                                     width="900"
-                                     height="960"
-                                     loading="lazy"
-                                     decoding="async"
-                                     alt="Poltrona con entramado de fajas de cuero coñac y cojinería marfil">
-                            </div>
-                            <div class="spatial-info">
-                                <h3 class="spatial-title">Entramado en Cuero Suela</h3>
-                                <span class="spatial-tag">Tejido Manual</span>
-                            </div>
-                        </article>
-
-                        <!-- Plano 4: Z -15px -->
-                        <article class="spatial-plane plane-4"
-                                 data-speed="0.05"
-                                 style="--depth-z: -16px; --depth-x: -16px; --depth-y: 14px;">
-                            <div class="spatial-media">
-                                <span class="spatial-coord">Plano 04 · Sala Principal</span>
-                                <img src="assets/photos/sofa-cuerda-terraza.jpg"
-                                     srcset="assets/photos/sofa-cuerda-terraza-sm.jpg 720w, assets/photos/sofa-cuerda-terraza.jpg 1600w"
-                                     sizes="(max-width: 768px) 100vw, 50vw"
-                                     width="1100"
-                                     height="750"
-                                     loading="lazy"
-                                     decoding="async"
-                                     alt="Sofá de terraza con estructura encordada y cojines impermeables blancos">
-                            </div>
-                            <div class="spatial-info">
-                                <h3 class="spatial-title">Sofá Encordado de Exterior</h3>
-                                <span class="spatial-tag">Textil Hidrorrepelente</span>
-                            </div>
-                        </article>
+                        <figure class="spatial-plane plane-1" data-speed="-0.04" style="--depth-z: 28px; --depth-x: 14px; --depth-y: 10px;">
+                            <img src="assets/photos/seccional-cuero-gris.jpg" srcset="assets/photos/seccional-cuero-gris-sm.jpg 720w, assets/photos/seccional-cuero-gris.jpg 896w" sizes="(max-width: 760px) 100vw, 55vw" width="896" height="1200" alt="Costuras y cojines de un sofá seccional gris en una sala" loading="lazy" decoding="async">
+                            <figcaption><span>01 / La forma</span><span>Seccional gris</span></figcaption>
+                        </figure>
+                        <figure class="spatial-plane plane-2" data-speed="0.06" style="--depth-z: -18px; --depth-x: -12px; --depth-y: -10px;">
+                            <img src="assets/photos/poltrona-detalle.jpg" srcset="assets/photos/poltrona-detalle-sm.jpg 720w, assets/photos/poltrona-detalle.jpg 806w" sizes="(max-width: 760px) 50vw, 30vw" width="806" height="1228" alt="Detalle de la tela, los botones y el vivo de una poltrona" loading="lazy" decoding="async">
+                            <figcaption><span>02 / La costura</span></figcaption>
+                        </figure>
+                        <figure class="spatial-plane plane-3" data-speed="-0.03" style="--depth-z: 16px; --depth-x: 10px; --depth-y: -8px;">
+                            <img src="assets/photos/sillon-cuero-tejido.jpg" srcset="assets/photos/sillon-cuero-tejido-sm.jpg 720w, assets/photos/sillon-cuero-tejido.jpg 1120w" sizes="(max-width: 760px) 50vw, 30vw" width="1120" height="1008" alt="Respaldo tejido de una butaca con cojines claros" loading="lazy" decoding="async">
+                            <figcaption><span>03 / El material</span></figcaption>
+                        </figure>
                     </div>
                 </div>
+                <p class="spatial-footnote">Cada pieza tiene su propia forma de hacerse.</p>
             </div>
         </section>
 
-        <!-- 5. EL MAESTRO ARTESANO (AUTENTICIDAD HUMANA) -->
-        <section id="maestro" class="atelier-section" aria-labelledby="maestroHeading">
+        <section class="portfolio-section" id="catalogo" aria-labelledby="catalogoHeading">
             <div class="container">
-                <div class="atelier-layout">
-                    <div class="atelier-photos">
-                        <figure class="atelier-card">
-                            <img src="assets/photos/maestro-rivera.jpg"
-                                 srcset="assets/photos/maestro-rivera-sm.jpg 720w, assets/photos/maestro-rivera.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 25vw"
-                                 width="700"
-                                 height="875"
-                                 loading="lazy"
-                                 decoding="async"
-                                 alt="Retrato real del Maestro Rivera junto a sofá capitoné azul hecho a mano">
-                            <figcaption class="atelier-card-caption">Maestro Rivera · 29 Años de Oficio</figcaption>
-                        </figure>
-
-                        <figure class="atelier-card atelier-card-offset">
-                            <img src="assets/photos/visita-medicion.jpg"
-                                 srcset="assets/photos/visita-medicion-sm.jpg 720w, assets/photos/visita-medicion.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 25vw"
-                                 width="700"
-                                 height="875"
-                                 loading="lazy"
-                                 decoding="async"
-                                 alt="Toma de medidas y moldes directamente en casa del cliente">
-                            <figcaption class="atelier-card-caption">Atención y Medición en Domicilio</figcaption>
-                        </figure>
+                <div class="section-header"><div><p class="eyebrow">Una selección del taller</p><h2 id="catalogoHeading">Nuestro trabajo.</h2></div><p class="section-desc">Sofás, butacas y piezas a medida.<br>De nuestro taller a su casa.</p></div>
+                <div class="catalog-controls">
+                    <div class="filter-bar" hidden role="group" aria-label="Filtrar trabajos" aria-controls="catalogGrid">
+                        <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">Todos</button>
+                        <button class="filter-btn" type="button" data-filter="salas" aria-pressed="false">Sofás</button>
+                        <button class="filter-btn" type="button" data-filter="butacas" aria-pressed="false">Sillas y butacas</button>
+                        <button class="filter-btn" type="button" data-filter="terrazas" aria-pressed="false">Terrazas</button>
                     </div>
-
-                    <div class="atelier-copy">
-                        <span class="eyebrow">Trato Directo con el Artesano</span>
-                        <h2 id="maestroHeading" class="section-title" style="margin-bottom: 1.5rem;">
-                            El Valor de lo Hecho a Mano
-                        </h2>
-                        <p>
-                            En tiempos donde abundan catálogos genéricos e imágenes creadas por computadora, en <strong>Rivera Concierge</strong> preferimos mostrar nuestro trabajo tal como es: madera sólida, espuma de alta densidad y costuras hechas con paciencia en nuestro taller.
-                        </p>
-                        <p>
-                            Durante <strong>29 años</strong>, mi compromiso con las familias de <strong>Miraflores, Surco y San Isidro</strong> se ha sostenido sobre tres principios simples: escuchar con amabilidad, trabajar cada mueble como si fuera para nuestra propia casa y cumplir con rigor la fecha prometida.
-                        </p>
-
-                        <div class="atelier-pillars">
-                            <div class="pillar-item">
-                                <h3>Puntualidad</h3>
-                                <p>Cronograma claro de recojo y entrega, respetando el tiempo de su hogar.</p>
-                            </div>
-                            <div class="pillar-item">
-                                <h3>Amabilidad</h3>
-                                <p>Asesoría honesta y trato cordial directamente con el maestro tapicero.</p>
-                            </div>
-                            <div class="pillar-item">
-                                <h3>Detalle Manual</h3>
-                                <p>Refuerzo de estructura interna, cinchas elásticas y costuras alineadas a pulso.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p id="catalogStatus" class="catalog-status" role="status" aria-live="polite" aria-atomic="true">12 trabajos</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- 6. CATÁLOGO DE OBRAS REALES -->
-        <section id="catalogo" class="portfolio-section" aria-labelledby="catalogoHeading">
-            <div class="container">
-                <div class="section-header-bar">
-                    <div>
-                        <span class="eyebrow">Archivo Fotográfico Real · Sin Filtros Artificiales</span>
-                        <h2 id="catalogoHeading" class="section-title">Trabajos Entregados y en Taller</h2>
-                    </div>
-                    <p class="section-desc">
-                        Cada fotografía corresponde a un proyecto real ejecutado por nuestras manos, desde sofás residenciales hasta muebles de terraza y butacas clásicas.
-                    </p>
-                </div>
-
-                <!-- Filtros simples y claros -->
-                <div class="filter-bar" role="tablist" aria-label="Filtrar trabajos por categoría">
-                    <button type="button" class="filter-btn is-active" data-filter="all">Todos (12)</button>
-                    <button type="button" class="filter-btn" data-filter="salas">Salas y Sofás</button>
-                    <button type="button" class="filter-btn" data-filter="butacas">Poltronas y Sillas</button>
-                    <button type="button" class="filter-btn" data-filter="terrazas">Terrazas y Exterior</button>
-                </div>
-
                 <div class="catalog-grid" id="catalogGrid">
-                    <!-- 1 -->
                     <article class="work-card" data-category="salas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/sofa-curvo-terracota.jpg"
-                                 srcset="assets/photos/sofa-curvo-terracota-sm.jpg 720w, assets/photos/sofa-curvo-terracota.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Seccional curvo terracota en terraza residencial">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Salas Residenciales</span>
-                                <h3 class="work-title">Seccional Curvo Terracota</h3>
-                                <p class="work-desc">Confección a medida en terciopelo antimanchas con respaldos curvos continuos y cojinería decorativa.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Entrega en Residencia</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20me%20interesa%20cotizar%20un%20trabajo%20como%20el%20Seccional%20Curvo%20Terracota." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20me%20interesa%20cotizar%20un%20trabajo%20como%20el%20Seccional%20Curvo%20Terracota." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Seccional terracota en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/sofa-curvo-terracota.jpg" srcset="assets/photos/sofa-curvo-terracota-sm.jpg 720w, assets/photos/sofa-curvo-terracota.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1600" height="582" alt="Seccional curvo terracota en terraza residencial" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Seccional terracota</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 2 -->
                     <article class="work-card" data-category="salas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/sofa-boucle.jpg"
-                                 srcset="assets/photos/sofa-boucle-sm.jpg 720w, assets/photos/sofa-boucle.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Sofá dos cuerpos en tela bouclé crema en taller">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">En Taller · Acabado Real</span>
-                                <h3 class="work-title">Sofá Dos Cuerpos Bouclé</h3>
-                                <p class="work-desc">Tapizado en bouclé marfil de alto gramaje con brazos arquitectónicos anchos y espuma Zebra Paraíso.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Bouclé Marfil</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20me%20interesa%20cotizar%20un%20Sof%C3%A1%20en%20tela%20Boucl%C3%A9." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20me%20interesa%20cotizar%20un%20Sof%C3%A1%20en%20tela%20Boucl%C3%A9." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Sofá bouclé en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/sofa-boucle.jpg" srcset="assets/photos/sofa-boucle-sm.jpg 720w, assets/photos/sofa-boucle.jpg 1152w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1152" height="720" alt="Sofá dos cuerpos en tela bouclé crema en taller" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Sofá bouclé</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 3 -->
                     <article class="work-card" data-category="butacas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/butaca-boucle.jpg"
-                                 srcset="assets/photos/butaca-boucle-sm.jpg 720w, assets/photos/butaca-boucle.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Butaca moderna tapizada en bouclé marfil">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Poltronas de Autor</span>
-                                <h3 class="work-title">Butaca Arquitectónica Bouclé</h3>
-                                <p class="work-desc">Volumen geométrico limpio con encaje simétrico de costuras y asiento de firmeza ortopédica confortable.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Hecho a Mano</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20una%20Butaca%20en%20Boucl%C3%A9." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20una%20Butaca%20en%20Boucl%C3%A9." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Butaca bouclé en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/butaca-boucle.jpg" srcset="assets/photos/butaca-boucle-sm.jpg 720w, assets/photos/butaca-boucle.jpg 755w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="755" height="691" alt="Butaca moderna tapizada en bouclé marfil" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Butaca bouclé</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 4 -->
                     <article class="work-card" data-category="salas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/sofa-avena-cojines.jpg"
-                                 srcset="assets/photos/sofa-avena-cojines-sm.jpg 720w, assets/photos/sofa-avena-cojines.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Sofá lino avena con cuatro cojines decorativos en sala">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Salas Residenciales</span>
-                                <h3 class="work-title">Sofá Lino Avena & Cojinería</h3>
-                                <p class="work-desc">Tapizado integral en lino pesado tono avena con vivos perimetrales y juego de cuatro cojines en contraste.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Lino Importado</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20un%20Sof%C3%A1%20en%20Lino%20Avena." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20un%20Sof%C3%A1%20en%20Lino%20Avena." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Sofá lino avena en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/sofa-avena-cojines.jpg" srcset="assets/photos/sofa-avena-cojines-sm.jpg 720w, assets/photos/sofa-avena-cojines.jpg 1177w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1177" height="864" alt="Sofá lino avena con cuatro cojines decorativos en sala" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Sofá lino avena</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 5 -->
                     <article class="work-card" data-category="butacas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/poltrona-gris.jpg"
-                                 srcset="assets/photos/poltrona-gris-sm.jpg 720w, assets/photos/poltrona-gris.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Poltrona wingback gris perla con botones forrados">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Poltronas Clásicas</span>
-                                <h3 class="work-title">Poltrona Nórdica Gris Perla</h3>
-                                <p class="work-desc">Respaldo envolvente con cuatro botones forrados a mano y vivo continuo que perfila toda la silueta.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Tejido Texturizado</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20una%20Poltrona%20N%C3%B3rdica." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20una%20Poltrona%20N%C3%B3rdica." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Poltrona gris perla en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/poltrona-gris.jpg" srcset="assets/photos/poltrona-gris-sm.jpg 720w, assets/photos/poltrona-gris.jpg 921w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="921" height="748" alt="Poltrona wingback gris perla con botones forrados" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Poltrona gris perla</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 6 -->
                     <article class="work-card" data-category="salas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/sofa-gamuza-taupe.jpg"
-                                 srcset="assets/photos/sofa-gamuza-taupe-sm.jpg 720w, assets/photos/sofa-gamuza-taupe.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Sofá tapizado en gamuza taupe en taller">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">En Taller · Acabado Real</span>
-                                <h3 class="work-title">Sofá en Gamuza Taupe</h3>
-                                <p class="work-desc">Acabado extrasuave de tacto aterciopelado con asientos de alta recuperación y costuras reforzadas.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Gamuza Antifluidos</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20un%20Sof%C3%A1%20en%20Gamuza%20Taupe." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20un%20Sof%C3%A1%20en%20Gamuza%20Taupe." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Sofá en gamuza en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/sofa-gamuza-taupe.jpg" srcset="assets/photos/sofa-gamuza-taupe-sm.jpg 720w, assets/photos/sofa-gamuza-taupe.jpg 1075w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1075" height="691" alt="Sofá tapizado en gamuza taupe en taller" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Sofá en gamuza</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 7 -->
                     <article class="work-card" data-category="salas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/sofa-cuero-caoba.jpg"
-                                 srcset="assets/photos/sofa-cuero-caoba-sm.jpg 720w, assets/photos/sofa-cuero-caoba.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Sofá en cuero envejecido tono caoba">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Cuero & Marroquinería</span>
-                                <h3 class="work-title">Sofá en Cuero Caoba</h3>
-                                <p class="work-desc">Tapizado en piel veteada tono caoba clásico con pespuntes dobles de alta resistencia para estudio o sala.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Piel Veteada</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20un%20Sof%C3%A1%20en%20Cuero%20Caoba." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20un%20Sof%C3%A1%20en%20Cuero%20Caoba." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Sofá en cuero en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/sofa-cuero-caoba.jpg" srcset="assets/photos/sofa-cuero-caoba-sm.jpg 720w, assets/photos/sofa-cuero-caoba.jpg 1408w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1408" height="936" alt="Sofá en cuero envejecido tono caoba" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Sofá en cuero</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 8 -->
                     <article class="work-card" data-category="butacas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/poltrona-mostaza.jpg"
-                                 srcset="assets/photos/poltrona-mostaza-sm.jpg 720w, assets/photos/poltrona-mostaza.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Poltrona reclinable en terciopelo mostaza con capitoné">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Poltronas Clásicas</span>
-                                <h3 class="work-title">Poltrona Capitoné Mostaza</h3>
-                                <p class="work-desc">Restauración completa de sillón de lectura con respaldo capitoné profundo y mecanismo reclinable.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Terciopelo Dorado</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20una%20Poltrona%20Capiton%C3%A9." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20una%20Poltrona%20Capiton%C3%A9." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Poltrona mostaza en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/poltrona-mostaza.jpg" srcset="assets/photos/poltrona-mostaza-sm.jpg 720w, assets/photos/poltrona-mostaza.jpg 768w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="768" height="1024" alt="Poltrona reclinable en terciopelo mostaza con capitoné" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Poltrona mostaza</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 9 -->
                     <article class="work-card" data-category="butacas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/silla-tachuelas.jpg"
-                                 srcset="assets/photos/silla-tachuelas-sm.jpg 720w, assets/photos/silla-tachuelas.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Silla de comedor en cuero marrón con tachuelas de bronce">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Comedor & Estudio</span>
-                                <h3 class="work-title">Silla de Comedor con Tachuelas</h3>
-                                <p class="work-desc">Tapizado en cuero marrón envejecido con aplicación manual de tachuelas de bronce oxidado una por una.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Tachuelas a Mano</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20Sillas%20de%20Comedor." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20Sillas%20de%20Comedor." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Silla con tachuelas en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/silla-tachuelas.jpg" srcset="assets/photos/silla-tachuelas.jpg 576w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="576" height="1024" alt="Silla de comedor en cuero marrón con tachuelas de bronce" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Silla con tachuelas</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 10 -->
                     <article class="work-card" data-category="butacas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/silla-clasica.jpg"
-                                 srcset="assets/photos/silla-clasica-sm.jpg 720w, assets/photos/silla-clasica.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Sillón de madera tallada con tapiz jacquard geométrico">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Restauración Clásica</span>
-                                <h3 class="work-title">Sillón Tallado en Jacquard</h3>
-                                <p class="work-desc">Centrado simétrico de patrón geométrico en respaldo y asiento sobre estructura de madera noble.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Jacquard Europeo</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20Sillones%20Cl%C3%A1sicos." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20Sillones%20Cl%C3%A1sicos." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Sillón en jacquard en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/silla-clasica.jpg" srcset="assets/photos/silla-clasica.jpg 506w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="506" height="675" alt="Sillón de madera tallada con tapiz jacquard geométrico" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Sillón en jacquard</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 11 -->
                     <article class="work-card" data-category="terrazas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/sillon-terraza.jpg"
-                                 srcset="assets/photos/sillon-terraza-sm.jpg 720w, assets/photos/sillon-terraza.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Sillón de terraza en balcón con cojines beige impermeables">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Terrazas & Balcones</span>
-                                <h3 class="work-title">Sillón de Balcón Impermeable</h3>
-                                <p class="work-desc">Confección de cojines a medida resistentes al sol y la humedad marina para departamentos con vista exterior.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Protección UV</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20cojines%20para%20Terraza." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20cojines%20para%20Terraza." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Sillón de terraza en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/sillon-terraza.jpg" srcset="assets/photos/sillon-terraza-sm.jpg 720w, assets/photos/sillon-terraza.jpg 864w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="864" height="960" alt="Sillón de terraza en balcón con cojines beige impermeables" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Terrazas</span><h3>Sillón de terraza</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
-
-                    <!-- 12 -->
                     <article class="work-card" data-category="salas">
-                        <div class="work-thumb">
-                            <img src="assets/photos/banca-elegante.jpg"
-                                 srcset="assets/photos/banca-elegante-sm.jpg 720w, assets/photos/banca-elegante.jpg 1600w"
-                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                 width="800" height="640" loading="lazy" decoding="async"
-                                 alt="Banqueta pie de cama con botones y faldón sastrero">
-                        </div>
-                        <div class="work-body">
-                            <div>
-                                <span class="work-category">Piezas a Medida</span>
-                                <h3 class="work-title">Banqueta Clásica con Faldón</h3>
-                                <p class="work-desc">Tapizado sastrero con pliegues encontrados en las esquinas, asiento capitoné y dos cojines cilíndricos.</p>
-                            </div>
-                            <div class="work-footer">
-                                <span>Acabado Sastrero</span>
-                                <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20una%20Banqueta%20a%20medida." target="_blank" rel="noopener">Cotizar →</a>
-                            </div>
-                        </div>
+                        <a class="work-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20una%20Banqueta%20a%20medida." target="_blank" rel="noopener noreferrer" aria-label="Consultar por Banqueta a medida en WhatsApp (abre otra pestaña)">
+                            <div class="work-thumb"><img src="assets/photos/banca-elegante.jpg" srcset="assets/photos/banca-elegante.jpg 442w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="442" height="983" alt="Banqueta pie de cama con botones y faldón sastrero" loading="lazy" decoding="async"></div>
+                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Banqueta a medida</h3></div><span class="work-arrow" aria-hidden="true">↗</span></div>
+                        </a>
                     </article>
                 </div>
+                <div class="catalog-more"><button id="showMoreBtn" class="button-secondary" type="button" aria-controls="catalogGrid" hidden>Ver más trabajos</button></div>
             </div>
         </section>
 
-        <!-- 7. ANTES Y DESPUÉS INTERACTIVO + CALIDAD INTERNA -->
-        <section id="proceso" class="process-section" aria-labelledby="procesoHeading">
-            <div class="container">
-                <div class="section-header-bar">
-                    <div>
-                        <span class="eyebrow">Transparencia en Materiales · Lo que Va por Dentro</span>
-                        <h2 id="procesoHeading" class="section-title">Antes y Después Real</h2>
-                    </div>
-                    <p class="section-desc">
-                        Un buen tapizado no es solo cambiar la tela exterior: renovamos íntegramente las espumas vencidas por bloques nuevos de alta densidad para que el mueble recupere su firmeza original por muchos años.
-                    </p>
-                </div>
-
-                <div class="comparison-grid">
-                    <!-- Slider interactivo con fotos reales de terraza antes/después -->
-                    <div>
-                        <div class="compare-slider" id="compareSlider" style="--pos: 50%;">
-                            <img src="assets/photos/sofa-cuerda-terraza.jpg"
-                                 srcset="assets/photos/sofa-cuerda-terraza-sm.jpg 720w, assets/photos/sofa-cuerda-terraza.jpg 1600w"
-                                 sizes="(max-width: 1024px) 100vw, 55vw"
-                                 width="1000" height="750" loading="lazy" decoding="async"
-                                 class="compare-img"
-                                 alt="Después: Mueble de terraza restaurado con cojines nuevos">
-
-                            <div class="compare-before-wrap">
-                                <img src="assets/photos/mimbre-antes.jpg"
-                                     srcset="assets/photos/mimbre-antes-sm.jpg 720w, assets/photos/mimbre-antes.jpg 1600w"
-                                     sizes="(max-width: 1024px) 100vw, 55vw"
-                                     width="1000" height="750" loading="lazy" decoding="async"
-                                     class="compare-img"
-                                     alt="Antes: Mueble de terraza con cojín desgastado antes de intervenir">
-                            </div>
-
-                            <span class="compare-badge compare-badge-before">Antes · Desgastado</span>
-                            <span class="compare-badge compare-badge-after">Después · Renovado</span>
-
-                            <div class="compare-handle" aria-hidden="true">
-                                <div class="compare-knob">↔</div>
-                            </div>
-
-                            <input type="range"
-                                   min="5"
-                                   max="95"
-                                   value="50"
-                                   class="compare-range"
-                                   id="compareRange"
-                                   aria-label="Deslizar para comparar el antes y después del mueble">
-                        </div>
-                    </div>
-
-                    <!-- Evidencia real de espumas y telas -->
-                    <div class="anatomy-stack">
-                        <article class="anatomy-card">
-                            <img src="assets/photos/espuma-antes-despues.jpg"
-                                 srcset="assets/photos/espuma-antes-despues-sm.jpg 720w, assets/photos/espuma-antes-despues.jpg 1600w"
-                                 sizes="120px"
-                                 width="240" height="192" loading="lazy" decoding="async"
-                                 alt="Comparación real entre espuma antigua oxidada y espuma nueva rosada de alta densidad">
-                            <div>
-                                <h3>Reemplazo Total de Espuma Interna</h3>
-                                <p>Retiramos la espuma antigua deformada y colocamos espuma Zebra de alta densidad con napa siliconada nueva.</p>
-                            </div>
-                        </article>
-
-                        <article class="anatomy-card">
-                            <img src="assets/photos/espuma-nueva.jpg"
-                                 srcset="assets/photos/espuma-nueva-sm.jpg 720w, assets/photos/espuma-nueva.jpg 1600w"
-                                 sizes="120px"
-                                 width="240" height="192" loading="lazy" decoding="async"
-                                 alt="Corte a medida de bloque nuevo de espuma y recubrimiento de dacrón">
-                            <div>
-                                <h3>Corte Anatómico y Recubrimiento</h3>
-                                <p>Cada cojín se moldea a la medida exacta del mueble para evitar arrugas y mantener las esquinas definidas.</p>
-                            </div>
-                        </article>
-
-                        <article class="anatomy-card">
-                            <img src="assets/photos/telas.jpg"
-                                 srcset="assets/photos/telas-sm.jpg 720w, assets/photos/telas.jpg 1600w"
-                                 sizes="120px"
-                                 width="240" height="192" loading="lazy" decoding="async"
-                                 alt="Muestrario real de telas bouclé, lino, terciopelo y cueros">
-                            <div>
-                                <h3>Muestrario Físico en su Domicilio</h3>
-                                <p>Llevamos catálogos reales de lino, bouclé, terciopelo, chenille y cuero para que elija bajo la luz de su propia sala.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+        <section class="atelier-section" id="maestro" aria-labelledby="maestroHeading">
+            <div class="container atelier-layout">
+                <figure class="atelier-photo"><img src="assets/photos/taller-maestro.jpg" srcset="assets/photos/taller-maestro-sm.jpg 720w, assets/photos/taller-maestro.jpg 1152w" sizes="(max-width: 800px) 100vw, 50vw" width="1152" height="883" alt="Trabajo manual sobre una poltrona en el taller de tapicería" loading="lazy" decoding="async"><figcaption>Un día en el taller.</figcaption></figure>
+                <div class="atelier-copy"><p class="eyebrow">Maestro Rivera · Lima</p><h2 id="maestroHeading">Hecho a mano.<br>Con paciencia.</h2><p>Hace 29 años que trabajamos con telas, madera y espuma. Escuchamos lo que necesita, revisamos su mueble y le ayudamos a elegir cómo renovarlo.</p><p>Desde la primera conversación hasta la entrega, el trato es directo con el maestro tapicero.</p><a class="text-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20un%20mueble." target="_blank" rel="noopener noreferrer">Conversemos sobre su mueble <span aria-hidden="true">↗</span></a></div>
             </div>
         </section>
 
-        <!-- 8. CONVERSIÓN DIRECTA POR WHATSAPP -->
-        <section class="contact-section" aria-labelledby="contactoHeading">
-            <div class="container">
-                <div class="contact-box">
-                    <span class="eyebrow">Atención Personalizada · Lima Metropolitana</span>
-                    <h2 id="contactoHeading" class="section-title">Solicite un Presupuesto sin Compromiso</h2>
-                    <p>
-                        Envíenos una fotografía de su mueble por WhatsApp al <strong>997 317 630</strong>. El Maestro Rivera le responderá personalmente con una cotización clara o coordinará una visita a su domicilio con nuestros muestrarios de telas.
-                    </p>
-
-                    <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20le%20escribo%20desde%20su%20p%C3%A1gina%20web%20para%20solicitar%20un%20presupuesto%20de%20tapicer%C3%ADa."
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn-primary">
-                        Escribir por WhatsApp · 997 317 630
-                    </a>
-
-                    <div class="contact-steps">
-                        <div>
-                            <span class="step-num">PASO 01</span>
-                            <h4>Foto por WhatsApp</h4>
-                            <p>Envíenos 1 o 2 fotos de su mueble actual para evaluar el modelo y las dimensiones aproximadas.</p>
-                        </div>
-                        <div>
-                            <span class="step-num">PASO 02</span>
-                            <h4>Elección de Tela</h4>
-                            <p>Le brindamos el presupuesto y llevamos los catálogos físicos de telas a su casa sin costo adicional.</p>
-                        </div>
-                        <div>
-                            <span class="step-num">PASO 03</span>
-                            <h4>Entrega Puntual</h4>
-                            <p>Recogemos, restauramos a mano en nuestro taller y entregamos en la fecha exacta acordada.</p>
-                        </div>
-                    </div>
-                </div>
+        <section class="process-section" id="proceso" aria-labelledby="procesoHeading">
+            <div class="container process-layout">
+                <div><p class="eyebrow">Lo que también importa</p><h2 id="procesoHeading">Por dentro,<br>también.</h2><p class="section-desc">Revisamos la estructura y el relleno antes de colocar la tela. Lo que no se ve también se siente al sentarse.</p><ol class="process-steps"><li><span>01</span><div><h3>Revisamos su mueble</h3><p>Evaluamos qué se puede conservar y qué necesita renovarse.</p></div></li><li><span>02</span><div><h3>Elegimos los materiales</h3><p>Tela, textura y firmeza según el uso que le dará.</p></div></li><li><span>03</span><div><h3>Trabajamos a medida</h3><p>Ajustamos el relleno y cuidamos cada costura.</p></div></li></ol></div>
+                <figure class="process-photo"><img src="assets/photos/espuma-antes-despues.jpg" srcset="assets/photos/espuma-antes-despues-sm.jpg 720w, assets/photos/espuma-antes-despues.jpg 1536w" sizes="(max-width: 800px) 100vw, 50vw" width="1536" height="792" alt="Relleno de un asiento abierto durante la revisión en el taller" loading="lazy" decoding="async"><figcaption>El trabajo empieza antes de la tela.</figcaption></figure>
             </div>
+        </section>
+
+        <section class="contact-section" id="contacto" aria-labelledby="contactoHeading">
+            <div class="container contact-layout"><div><p class="eyebrow">Empecemos por una foto</p><h2 id="contactoHeading">Su mueble aún<br>tiene historia.</h2></div><div class="contact-copy"><p>Envíenos una foto por WhatsApp. Le orientamos sobre el tapizado y coordinamos los siguientes pasos.</p><a class="button-primary" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20un%20mueble." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp <span aria-hidden="true">↗</span></a><a class="phone-link" href="tel:+51997317630">O llámenos al 997 317 630</a></div></div>
         </section>
     </main>
-
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div>
-                <span class="brand-name" style="font-size: 0.85rem;">Rivera Concierge</span>
-                <p style="margin-top: 0.35rem;">Artesanía en Tapicería Fina · 29 Años de Legado en Miraflores, Surco y San Isidro.</p>
-            </div>
-            <div>
-                <span>WhatsApp Directo: <a href="https://wa.me/51997317630" style="color: var(--text-primary);">+51 997 317 630</a></span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20solicitar%20un%20presupuesto."
-       target="_blank"
-       rel="noopener noreferrer"
-       class="wa-floating"
-       aria-label="Solicitar Presupuesto por WhatsApp al 997 317 630">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.126.556 4.124 1.527 5.856l-1.527 5.574 5.714-1.499c1.682.91 3.606 1.431 5.654 1.431 6.627 0 12-5.373 12-12s-5.373-12-11.368-11.362z"/>
-        </svg>
-        <span>Solicitar Presupuesto</span>
-    </a>
-
-    <!-- ==========================================================================
-         MOTOR JAVASCRIPT LIGERO Y ADAPTATIVO (0 DEPENDENCIAS EXTERNAS)
-         ========================================================================== -->
-    <script>
-        (function () {
-            'use strict';
-
-            const body = document.body;
-
-            /* ------------------------------------------------------------------
-               1. DETECCIÓN INTELIGENTE DE HARDWARE (GAMA ALTA/MEDIA vs GAMA BAJA)
-               ------------------------------------------------------------------ */
-            function detectLowSpecDevice() {
-                const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                if (reducedMotion) return true;
-
-                const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-                if (conn && conn.saveData) return true;
-
-                const cores = navigator.hardwareConcurrency || 4;
-                const memory = navigator.deviceMemory || 4;
-                return (cores <= 2 || memory <= 2);
-            }
-
-            let isHighPerf = !detectLowSpecDevice();
-            const perfToggleBtn = document.getElementById('perfToggleBtn');
-            const perfStatusLabel = document.getElementById('perfStatusLabel');
-            const planes = Array.prototype.slice.call(document.querySelectorAll('.spatial-plane'));
-            const spatialSection = document.getElementById('espacio-3d');
-
-            function applyPerformanceMode(high) {
-                isHighPerf = high;
-                body.classList.toggle('perf-high', high);
-                body.classList.toggle('perf-low', !high);
-
-                if (perfToggleBtn && perfStatusLabel) {
-                    perfToggleBtn.setAttribute('aria-pressed', String(high));
-                    perfStatusLabel.textContent = high ? 'Modo 3D Activo' : 'Modo Estático Ligero';
-                }
-
-                if (!high) {
-                    planes.forEach(function (plane) {
-                        plane.style.removeProperty('--scroll-y');
-                        plane.style.removeProperty('--pointer-x');
-                        plane.style.removeProperty('--pointer-y');
-                    });
-                }
-            }
-
-            applyPerformanceMode(isHighPerf);
-
-            if (perfToggleBtn) {
-                perfToggleBtn.addEventListener('click', function () {
-                    applyPerformanceMode(!isHighPerf);
-                });
-            }
-
-            /* ------------------------------------------------------------------
-               2. INTRO MOTION GRAPHICS (DESVANECE RÁPIDO Y SIN BLOQUEAR)
-               ------------------------------------------------------------------ */
-            const introScreen = document.getElementById('introScreen');
-            const introSkipBtn = document.getElementById('introSkipBtn');
-
-            function dismissIntro() {
-                if (!introScreen || introScreen.classList.contains('is-hidden')) return;
-                introScreen.classList.add('is-hidden');
-            }
-
-            if (introSkipBtn) {
-                introSkipBtn.addEventListener('click', dismissIntro);
-            }
-            window.setTimeout(dismissIntro, isHighPerf ? 1350 : 650);
-
-            /* ------------------------------------------------------------------
-               3. MOTOR ESPACIAL 3D CON PAUSA FUERA DE PANTALLA Y GUARDIA DE FPS
-               ------------------------------------------------------------------ */
-            let sectionVisible = false;
-            let rafId = null;
-            let targetPtrX = 0, targetPtrY = 0;
-            let currentPtrX = 0, currentPtrY = 0;
-            let currentScrollOffset = 0, targetScrollOffset = 0;
-            let slowFrameStreak = 0;
-            let lastFrameTimestamp = 0;
-
-            function updateScrollTarget() {
-                if (!spatialSection || !isHighPerf) return;
-                const rect = spatialSection.getBoundingClientRect();
-                const viewportCenter = window.innerHeight * 0.5;
-                const sectionCenter = rect.top + rect.height * 0.5;
-                targetScrollOffset = (viewportCenter - sectionCenter) * 0.25;
-            }
-
-            function renderSpatialLoop(now) {
-                if (!sectionVisible || !isHighPerf || document.hidden) {
-                    rafId = null;
-                    return;
-                }
-
-                /* Guardia automática de FPS: si un equipo sufre bajones sostenidos, pasa a modo estático */
-                if (lastFrameTimestamp > 0) {
-                    const dt = now - lastFrameTimestamp;
-                    if (dt > 34 && dt < 250) {
-                        slowFrameStreak++;
-                        if (slowFrameStreak > 18) {
-                            applyPerformanceMode(false);
-                            rafId = null;
-                            return;
-                        }
-                    } else if (dt < 22) {
-                        slowFrameStreak = Math.max(0, slowFrameStreak - 1);
-                    }
-                }
-                lastFrameTimestamp = now;
-
-                currentPtrX += (targetPtrX - currentPtrX) * 0.09;
-                currentPtrY += (targetPtrY - currentPtrY) * 0.09;
-                currentScrollOffset += (targetScrollOffset - currentScrollOffset) * 0.1;
-
-                const ptrXStr = currentPtrX.toFixed(3);
-                const ptrYStr = currentPtrY.toFixed(3);
-
-                for (let i = 0; i < planes.length; i++) {
-                    const p = planes[i];
-                    const speed = parseFloat(p.getAttribute('data-speed') || '0.05');
-                    const yPx = (currentScrollOffset * speed * 4).toFixed(1) + 'px';
-                    p.style.setProperty('--scroll-y', yPx);
-                    p.style.setProperty('--pointer-x', ptrXStr);
-                    p.style.setProperty('--pointer-y', ptrYStr);
-                }
-
-                rafId = window.requestAnimationFrame(renderSpatialLoop);
-            }
-
-            function startSpatialLoop() {
-                if (rafId === null && sectionVisible && isHighPerf && !document.hidden) {
-                    lastFrameTimestamp = 0;
-                    updateScrollTarget();
-                    rafId = window.requestAnimationFrame(renderSpatialLoop);
-                }
-            }
-
-            if ('IntersectionObserver' in window && spatialSection) {
-                const observer = new IntersectionObserver(function (entries) {
-                    sectionVisible = entries[0].isIntersecting;
-                    if (sectionVisible) {
-                        startSpatialLoop();
-                    }
-                }, { rootMargin: '120px 0px' });
-                observer.observe(spatialSection);
-            }
-
-            window.addEventListener('scroll', function () {
-                if (sectionVisible && isHighPerf) {
-                    updateScrollTarget();
-                }
-            }, { passive: true });
-
-            if (spatialSection) {
-                spatialSection.addEventListener('pointermove', function (e) {
-                    if (!isHighPerf || !sectionVisible) return;
-                    const rect = spatialSection.getBoundingClientRect();
-                    targetPtrX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-                    targetPtrY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-                }, { passive: true });
-
-                spatialSection.addEventListener('pointerleave', function () {
-                    targetPtrX = 0;
-                    targetPtrY = 0;
-                }, { passive: true });
-            }
-
-            /* ------------------------------------------------------------------
-               4. FILTRO DE CATÁLOGO Y SLIDER ANTES/DESPUÉS
-               ------------------------------------------------------------------ */
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const workCards = document.querySelectorAll('.work-card');
-
-            filterBtns.forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    const filter = btn.getAttribute('data-filter');
-                    filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
-                    btn.classList.add('is-active');
-
-                    workCards.forEach(function (card) {
-                        const cat = card.getAttribute('data-category');
-                        const match = (filter === 'all' || cat === filter);
-                        card.classList.toggle('is-hidden', !match);
-                    });
-                });
-            });
-
-            const compareRange = document.getElementById('compareRange');
-            const compareSlider = document.getElementById('compareSlider');
-            if (compareRange && compareSlider) {
-                compareRange.addEventListener('input', function (e) {
-                    compareSlider.style.setProperty('--pos', e.target.value + '%');
-                });
-            }
-        })();
-    </script>
+    <footer class="site-footer"><div class="container footer-inner"><a class="brand-name" href="#inicio">Rivera Concierge</a><p>Tapicería de muebles · Lima, Perú</p><a class="back-top" href="#inicio">Volver al inicio ↑</a></div></footer>
 </body>
 </html>
