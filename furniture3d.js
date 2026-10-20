@@ -13,17 +13,17 @@ import {
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, Number(value) || 0));
 const PALETTES = {
-    lino: { body: '#bfb39e', cushion: '#d9cdb9', seam: '#a99a83' },
-    terracota: { body: '#975d48', cushion: '#bd8065', seam: '#84533f' },
-    oliva: { body: '#6e7560', cushion: '#969a7f', seam: '#626c53' }
+    lino: { body: '#bfb39e', cushion: '#d9cdb9', seam: '#a6967e' },
+    terracota: { body: '#975d48', cushion: '#bd8065', seam: '#81503c' },
+    oliva: { body: '#6e7560', cushion: '#969a7f', seam: '#5e684f' }
 };
 
 const CAMERA_SHOTS = [
     { at: 0, angle: 0.30, scale: 1, detail: false, x: -0.12, y: 1.04, z: 0, elevation: 0.24 },
     { at: 0.14, angle: 0.32, scale: 0.97, detail: false, x: -0.08, y: 1.05, z: 0.02, elevation: 0.24 },
-    { at: 0.44, angle: 0.60, scale: 1, detail: true, x: 0.86, y: 1.08, z: 0.10, elevation: 0.28 },
-    { at: 0.60, angle: 0.49, scale: 1.015, detail: true, x: 0.77, y: 1.05, z: 0.10, elevation: 0.26 },
-    { at: 0.91, angle: -0.38, scale: 1.03, detail: false, x: 0.16, y: 1.07, z: 0, elevation: 0.22 },
+    { at: 0.44, angle: 0.59, scale: 1.01, detail: true, x: 0.85, y: 1.08, z: 0.10, elevation: 0.28 },
+    { at: 0.60, angle: 0.48, scale: 1.02, detail: true, x: 0.76, y: 1.05, z: 0.10, elevation: 0.26 },
+    { at: 0.90, angle: -0.38, scale: 1.03, detail: false, x: 0.16, y: 1.07, z: 0, elevation: 0.22 },
     { at: 1, angle: -0.44, scale: 1.03, detail: false, x: 0.16, y: 1.07, z: 0, elevation: 0.22 }
 ];
 
@@ -32,13 +32,15 @@ function fabricTexture() {
     canvas.width = canvas.height = 128;
     const context = canvas.getContext('2d');
     const data = context.createImageData(128, 128);
-    // Textura pequeña y determinista; no fotografía ni descarga externa.
+    // Textura pequeña y determinista con relieve de trama cruzada artesanal; sin descargas externas.
     let seed = 17;
     for (let y = 0; y < 128; y++) {
         for (let x = 0; x < 128; x++) {
             seed = (seed * 16807) % 2147483647;
-            const weave = (x % 4 === 0 ? -12 : 4) + (y % 4 === 0 ? -10 : 3);
-            const value = 204 + weave + (seed % 17) - 8;
+            const warp = (x % 4 === 0 ? -14 : (x % 2 === 0 ? 6 : 2));
+            const weft = (y % 4 === 0 ? -12 : (y % 2 === 0 ? 5 : 1));
+            const knot = ((x + y) % 8 === 0) ? 7 : 0;
+            const value = clamp(202 + warp + weft + knot + (seed % 15) - 7, 145, 250);
             const index = (y * 128 + x) * 4;
             data.data[index] = data.data[index + 1] = data.data[index + 2] = value;
             data.data[index + 3] = 255;
@@ -47,7 +49,7 @@ function fabricTexture() {
     context.putImageData(data, 0, 0);
     const texture = new CanvasTexture(canvas);
     texture.wrapS = texture.wrapT = RepeatWrapping;
-    texture.repeat.set(5, 5);
+    texture.repeat.set(6, 6);
     texture.colorSpace = SRGBColorSpace;
     texture.anisotropy = 2;
     return texture;
@@ -57,10 +59,10 @@ function woodTexture() {
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = 64;
     const context = canvas.getContext('2d');
-    context.fillStyle = '#a37a50';
+    context.fillStyle = '#9e7449';
     context.fillRect(0, 0, 64, 64);
     for (let x = 0; x < 64; x += 2) {
-        context.strokeStyle = `rgba(67,38,16,${0.08 + (x % 7) * 0.015})`;
+        context.strokeStyle = `rgba(62,34,14,${0.09 + (x % 7) * 0.016})`;
         context.beginPath();
         context.moveTo(x, 0);
         context.bezierCurveTo(x + 4, 20, x - 4, 45, x + 1, 64);
@@ -83,7 +85,7 @@ function roundedMesh(width, height, depth, radius, material, pillowAxis) {
             const v = pillowAxis === 'y'
                 ? 1 - Math.pow(point.z / (depth / 2), 2)
                 : 1 - Math.pow(point.y / (height / 2), 2);
-            point[pillowAxis] += Math.sign(point[pillowAxis]) * 0.035 * Math.max(0, u * v);
+            point[pillowAxis] += Math.sign(point[pillowAxis]) * 0.038 * Math.max(0, u * v);
             position.setXYZ(i, point.x, point.y, point.z);
         }
         // Conserva las normales suaves del canto redondeado. La deformación es mínima.
@@ -111,7 +113,7 @@ function seam(width, height, radius, material, plane = 'xy') {
         }
     }
     const curve = new CatmullRomCurve3(points, true, 'centripetal');
-    const mesh = new Mesh(new TubeGeometry(curve, 80, 0.0045, 4, true), material);
+    const mesh = new Mesh(new TubeGeometry(curve, 80, 0.005, 4, true), material);
     mesh.castShadow = false;
     return mesh;
 }
@@ -124,7 +126,8 @@ function addSofa(scene, materials) {
         sofa.add(mesh);
         return mesh;
     };
-    // Bastidor tapizado, brazos bajos y patas de madera maciza.
+    // Zócalo inferior de madera noble y bastidor tapizado con brazos bajos.
+    put(roundedMesh(3.34, 0.055, 1.36, 0.022, materials.wood), 0, 0.285, 0);
     put(roundedMesh(3.42, 0.30, 1.43, 0.10, materials.body), 0, 0.45, 0);
     put(roundedMesh(3.32, 0.85, 0.27, 0.10, materials.body), 0, 0.97, -0.60);
     for (const side of [-1, 1]) {
@@ -134,7 +137,7 @@ function addSofa(scene, materials) {
         armSeam.position.set(side * 1.783, 0.79, 0.01);
         sofa.add(armSeam);
         for (const depth of [-0.50, 0.49]) {
-            const leg = new Mesh(new CylinderGeometry(0.065, 0.046, 0.26, 12), materials.wood);
+            const leg = new Mesh(new CylinderGeometry(0.065, 0.044, 0.26, 12), materials.wood);
             leg.position.set(side * 1.45, 0.135, depth);
             leg.rotation.z = side * -0.13;
             leg.rotation.x = depth * 0.17;
@@ -157,11 +160,25 @@ function addSofa(scene, materials) {
         back.add(backSeam);
         sofa.add(back);
     }
-    // Una almohada ligeramente inclinada conserva la silueta limpia.
-    const pillow = roundedMesh(0.49, 0.49, 0.18, 0.085, materials.cushion, 'z');
-    pillow.position.set(-1.16, 1.00, 0.11);
-    pillow.rotation.set(-0.16, 0.12, -0.17);
-    sofa.add(pillow);
+    // Cojines laterales con vivo perimetral que equilibran ambos extremos del sofá.
+    const leftPillowGroup = new Group();
+    leftPillowGroup.position.set(-1.16, 1.00, 0.11);
+    leftPillowGroup.rotation.set(-0.16, 0.12, -0.17);
+    leftPillowGroup.add(roundedMesh(0.49, 0.49, 0.18, 0.085, materials.cushion, 'z'));
+    const leftPillowSeam = seam(0.45, 0.45, 0.075, materials.seam);
+    leftPillowSeam.position.z = 0.086;
+    leftPillowGroup.add(leftPillowSeam);
+    sofa.add(leftPillowGroup);
+
+    const rightLumbarGroup = new Group();
+    rightLumbarGroup.position.set(0.987, 0.91, -0.19);
+    rightLumbarGroup.rotation.set(-0.14, -0.06, 0.02);
+    rightLumbarGroup.add(roundedMesh(0.58, 0.30, 0.15, 0.07, materials.cushion, 'z'));
+    const rightLumbarSeam = seam(0.54, 0.26, 0.06, materials.seam);
+    rightLumbarSeam.position.z = 0.072;
+    rightLumbarGroup.add(rightLumbarSeam);
+    sofa.add(rightLumbarGroup);
+
     sofa.position.y = 0.012;
     return sofa;
 }
@@ -208,7 +225,7 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
         renderer.outputColorSpace = SRGBColorSpace;
         renderer.toneMapping = ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.13;
+        renderer.toneMappingExposure = 1.14;
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = PCFSoftShadowMap;
         renderer.shadowMap.autoUpdate = false;
@@ -218,16 +235,16 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
         textures.push(fabric, wood);
         const palette = PALETTES.lino;
         const upholstery = {
-            body: new MeshStandardMaterial({ color: palette.body, roughness: 0.98, map: fabric, bumpMap: fabric, bumpScale: 0.007 }),
-            cushion: new MeshStandardMaterial({ color: palette.cushion, roughness: 0.98, map: fabric, bumpMap: fabric, bumpScale: 0.009 }),
-            seam: new MeshStandardMaterial({ color: palette.seam, roughness: 1 }),
-            wood: new MeshStandardMaterial({ color: '#ccb18c', map: wood, roughness: 0.76 })
+            body: new MeshStandardMaterial({ color: palette.body, roughness: 0.96, map: fabric, bumpMap: fabric, bumpScale: 0.0085 }),
+            cushion: new MeshStandardMaterial({ color: palette.cushion, roughness: 0.95, map: fabric, bumpMap: fabric, bumpScale: 0.0115 }),
+            seam: new MeshStandardMaterial({ color: palette.seam, roughness: 0.92 }),
+            wood: new MeshStandardMaterial({ color: '#c8ab84', map: wood, roughness: 0.72 })
         };
         materials.push(...Object.values(upholstery));
-        const sofa = addSofa(scene, upholstery);
+        addSofa(scene, upholstery);
         const sky = new HemisphereLight(0xfffaf0, 0x827569, 2.65);
         scene.add(sky);
-        const key = new DirectionalLight(0xfff6e5, 3.0);
+        const key = new DirectionalLight(0xfff6e5, 3.05);
         key.position.set(-2.3, 6.0, 3.7);
         key.castShadow = true;
         key.shadow.mapSize.set(512, 512);
@@ -242,11 +259,14 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
         key.shadow.radius = 3;
         key.target.position.set(0, 0.55, 0);
         scene.add(key, key.target);
-        const fill = new DirectionalLight(0xe9efff, 0.75);
+        const fill = new DirectionalLight(0xe9efff, 0.72);
         fill.position.set(3, 2, -2);
         scene.add(fill);
+        const rim = new DirectionalLight(0xffeed6, 0.52);
+        rim.position.set(-2.4, 2.8, -3.2);
+        scene.add(rim);
 
-        const shadowMaterial = new ShadowMaterial({ color: 0x655747, opacity: 0.12 });
+        const shadowMaterial = new ShadowMaterial({ color: 0x655747, opacity: 0.13 });
         materials.push(shadowMaterial);
         const floor = new Mesh(new PlaneGeometry(30, 30), shadowMaterial);
         floor.rotation.x = -Math.PI / 2;
@@ -257,7 +277,7 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
         contactCanvas.width = contactCanvas.height = 64;
         const contactContext = contactCanvas.getContext('2d');
         const gradient = contactContext.createRadialGradient(32, 32, 3, 32, 32, 32);
-        gradient.addColorStop(0, 'rgba(64,48,29,.20)');
+        gradient.addColorStop(0, 'rgba(64,48,29,.22)');
         gradient.addColorStop(0.65, 'rgba(64,48,29,.12)');
         gradient.addColorStop(1, 'rgba(64,48,29,0)');
         contactContext.fillStyle = gradient;
@@ -274,7 +294,7 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
         const positionCamera = () => {
             const aspect = width / height;
             const wide = Math.max(5.2, 7.1 / aspect);
-            const detail = Math.max(2.8, 3.4 / aspect);
+            const detail = Math.max(2.75, 3.35 / aspect);
             // Tres actos: silueta completa, detalle deliberado y regreso abierto.
             // Los encuadres dejan aire sobre el mueble para la tipografía del sitio.
             let index = 0;

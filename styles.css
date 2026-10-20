@@ -280,7 +280,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 .scene-wash--linen { background: radial-gradient(ellipse at 17% 13%, #fff6e8 0%, transparent 55%), linear-gradient(128deg, #e9d6bc 12%, #e7c4a9 62%, #c8b8b2); }
 .scene-wash--clay { background: radial-gradient(ellipse at 82% 42%, #efd0b0, transparent 58%), linear-gradient(115deg, #c3afb4 5%, #c48f78 54%, #deb19a); opacity: var(--clay-opacity, 0); transform: translate3d(var(--haze-x, 0px), var(--haze-y, 0px), 0) scale(1.04); }
 .scene-wash--sage { background: radial-gradient(ellipse at 22% 30%, #f0e9d3 0%, transparent 58%), linear-gradient(120deg, #c5baaa, #adb59c 54%, #c6a894); opacity: var(--sage-opacity, 0); transform: translate3d(calc(var(--haze-x, 0px) * -1), calc(var(--haze-y, 0px) * -.5), 0) scale(1.04); }
-.scene-light { position: absolute; width: 70%; height: 90%; top: -25%; left: 22%; background: radial-gradient(ellipse, #fff5e680, #fff5e600 68%); opacity: .7; transform: translate3d(var(--light-x, 0px), var(--light-y, 0px), 0); }
+.scene-light { position: absolute; width: 70%; height: 90%; top: -25%; left: 22%; background: radial-gradient(ellipse, #fff5e680, #fff5e600 68%); opacity: .7; transform: translate3d(var(--light-x, 0px), var(--light-y, 0px), 0) scale(var(--light-scale, 1)); }
 .showroom-heading { top: 36px; }
 .showroom-heading .eyebrow { color: #4f5148; letter-spacing: .18em; max-width: none; }
 .showroom-mode { top: 25px; }
@@ -293,6 +293,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 .motion-subtitle { overflow: hidden; font-size: clamp(30px, 3.8vw, 54px); font-weight: 300; line-height: 1.3; letter-spacing: .015em; margin-left: .06em; }
 .motion-subtitle > span { display: block; }
 .showroom-live .motion-word { opacity: var(--word-alpha, 0); }
+.showroom-live .motion-line { letter-spacing: var(--word-tracking, .085em); }
 .showroom-live .motion-line > span { transform: translate3d(0, var(--word-y, 0%), 0) scaleX(var(--word-scale, 1)); }
 .showroom-live .motion-subtitle > span { opacity: var(--sub-alpha, 1); transform: translate3d(0, var(--sub-y, 0%), 0); }
 .sofa-view { inset: 0; z-index: 2; }
