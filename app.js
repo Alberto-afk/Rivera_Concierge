@@ -254,8 +254,13 @@
             else frame = window.requestAnimationFrame(render);
         }
 
-        function startAnimation() {
+        function isSettled() {
+            return Math.abs(targetProgress - progress) < 0.0005 && Math.abs(targetX - pointerX) < 0.001 && Math.abs(targetY - pointerY) < 0.001;
+        }
+
+        function startAnimation(force) {
             if (!active || !scene || !visible || document.hidden || frame !== null) return;
+            if (!force && isSettled()) return;
             previousTime = 0;
             slowFrames = 0;
             stage.classList.add('spatial-active');
@@ -291,7 +296,7 @@
                 updateBounds();
                 scene.resize();
                 readScroll();
-                startAnimation();
+                startAnimation(true);
             } catch (error) {
                 loading = null;
                 fail();
@@ -329,7 +334,7 @@
                 if (label) label.textContent = fabrics[selected].label;
                 if (scene) {
                     scene.setMaterial(selected);
-                    startAnimation();
+                    startAnimation(true);
                 }
             });
         });
@@ -362,9 +367,23 @@
             }, { passive: true });
             window.addEventListener('resize', function () {
                 updateBounds();
-                if (scene) scene.resize();
+                if (!active || !scene) return;
+                scene.resize();
                 readScroll();
-                startAnimation();
+                progress = targetProgress;
+                section.dataset.progress = progress.toFixed(4);
+                stage.style.setProperty('--showroom-progress', progress.toFixed(4));
+                updateChapter(progress);
+                animateTypography(progress);
+                try {
+                    scene.setProgress(progress);
+                    scene.setPointer(pointerX, pointerY);
+                    scene.render();
+                } catch (error) {
+                    fail();
+                    return;
+                }
+                stopAnimation();
             }, { passive: true });
             host.addEventListener('pointerenter', updateBounds, { passive: true });
             host.addEventListener('pointermove', function (event) {
@@ -445,5 +464,24 @@
         updateCatalog();
         const filterBar = document.querySelector('.filter-bar');
         if (filterBar) filterBar.hidden = false;
+    }
+
+    const themeSections = Array.from(document.querySelectorAll('[data-theme-section]'));
+    if (themeSections.length && window.IntersectionObserver) {
+        document.body.classList.add('theme-ready');
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        const applyTheme = function (theme) {
+            if (!theme || document.body.dataset.theme === theme) return;
+            document.body.dataset.theme = theme;
+            if (themeMeta) themeMeta.setAttribute('content', theme === 'dark' ? '#111210' : '#f5f2ec');
+        };
+        const themeObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    applyTheme(entry.target.dataset.themeSection);
+                }
+            });
+        }, { rootMargin: '-42% 0px -48% 0px', threshold: 0 });
+        themeSections.forEach(function (item) { themeObserver.observe(item); });
     }
 })();

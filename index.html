@@ -6,17 +6,34 @@
     <meta name="theme-color" content="#f5f2ec">
     <title>Rivera Concierge · Tapicería de muebles en Lima</title>
     <meta name="description" content="Restauración y tapizado de muebles en Lima. 29 años de oficio, atención directa y trabajo a medida. Consulte por WhatsApp al 997 317 630.">
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
     <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script>
 </head>
-<body class="perf-low">
+<body class="perf-low" data-theme="light">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div class="vertical-corner-brand" aria-hidden="true">
+        <svg class="corner-logo" viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M48 13.5C43.2 8.8 35.8 6.5 27.5 6.5C14.5 6.5 6.5 14.8 6.5 27.5C6.5 40.2 14.5 47.5 28 47.5H52.5"/><path d="M18.5 10.5V35.5"/><path d="M18.5 40.5V47.5"/><path d="M18.5 13.5H32.5C38.2 13.5 42 16.8 42 21.8C42 26.8 38.2 30 32.5 30H21.5"/><path d="M11.5 38H53.5C56.2 38 58 35.8 58 32.8V26.5C58 24.3 56.2 22.5 54 22.5H46.5"/><path d="M31.5 30L42.5 45"/><path d="M14.5 47.5L11.5 53.5"/><path d="M48.5 47.5L51.5 53.5"/></svg>
+        <span>RIVERA CONCIERGE · EST. 1997</span>
+    </div>
     <header class="site-header">
         <div class="container nav-bar">
             <a class="brand-mark" href="#inicio" aria-label="Rivera Concierge, inicio">
-                <span class="brand-name">Rivera Concierge</span>
-                <span class="brand-caption">Tapicería de muebles · Lima</span>
+                <svg class="brand-logo" viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M48 13.5C43.2 8.8 35.8 6.5 27.5 6.5C14.5 6.5 6.5 14.8 6.5 27.5C6.5 40.2 14.5 47.5 28 47.5H52.5"/>
+                    <path d="M18.5 10.5V35.5"/>
+                    <path d="M18.5 40.5V47.5"/>
+                    <path d="M18.5 13.5H32.5C38.2 13.5 42 16.8 42 21.8C42 26.8 38.2 30 32.5 30H21.5"/>
+                    <path d="M11.5 38H53.5C56.2 38 58 35.8 58 32.8V26.5C58 24.3 56.2 22.5 54 22.5H46.5"/>
+                    <path d="M31.5 30L42.5 45"/>
+                    <path d="M14.5 47.5L11.5 53.5"/>
+                    <path d="M48.5 47.5L51.5 53.5"/>
+                </svg>
+                <span class="brand-text">
+                    <span class="brand-name">Rivera Concierge</span>
+                    <span class="brand-caption">Tapicería de muebles · Lima</span>
+                </span>
             </a>
             <nav aria-label="Navegación principal">
                 <a href="#catalogo">Trabajos</a>
@@ -28,21 +45,24 @@
     </header>
 
     <main id="contenido" tabindex="-1">
-        <section class="hero" id="inicio" aria-labelledby="heroHeading">
+        <section class="hero" id="inicio" aria-labelledby="heroHeading" data-theme-section="light">
+            <div class="section-vertical-watermark" aria-hidden="true">RIVERA CONCIERGE</div>
             <div class="container">
                 <div class="hero-header">
                     <div><p class="eyebrow">Tapicería a medida · Desde hace 29 años</p><h1 id="heroHeading" data-reveal><span class="title-line"><span>Muebles con</span></span> <span class="title-line"><span>historia.</span></span></h1></div>
                     <div class="hero-copy"><p data-reveal style="--reveal-delay: 120ms;">Los de siempre, para seguir viviendo.<br>Restauramos y tapizamos sus muebles con el cuidado de un trabajo hecho a mano.</p><a class="text-link" href="#catalogo">Conozca nuestro trabajo <span aria-hidden="true">↓</span></a></div>
                 </div>
                 <figure class="hero-figure">
-                    <img src="assets/photos/sofa-curvo-terracota.jpg" srcset="assets/photos/sofa-curvo-terracota-sm.jpg 720w, assets/photos/sofa-curvo-terracota.jpg 1600w" sizes="(max-width: 1440px) 100vw, 1360px" width="1600" height="582" alt="Sofá curvo tapizado en terracota, junto a una ventana de la residencia" fetchpriority="high">
+                    <div class="photo-zoom-frame">
+                        <img src="assets/photos/sofa-curvo-terracota.jpg" srcset="assets/photos/sofa-curvo-terracota-sm.jpg 720w, assets/photos/sofa-curvo-terracota.jpg 1600w" sizes="(max-width: 1440px) 100vw, 1360px" width="1600" height="582" alt="Sofá curvo tapizado en terracota, junto a una ventana de la residencia" fetchpriority="high">
+                    </div>
                     <figcaption><span>01 / Seccional terracota</span><span>Confección a medida</span></figcaption>
                 </figure>
                 <div class="hero-note"><p>Un oficio que se aprende con las manos.</p><p>Miraflores · Surco · San Isidro</p></div>
             </div>
         </section>
 
-        <section class="showroom-section" id="espacio-3d" aria-labelledby="spatialHeading" data-scene-state="static" data-progress="0">
+        <section class="showroom-section" id="espacio-3d" aria-labelledby="spatialHeading" data-scene-state="static" data-progress="0" data-theme-section="light">
             <div class="showroom-sticky" id="spatialStage">
                 <div class="showroom-atmosphere" aria-hidden="true">
                     <div class="scene-wash scene-wash--linen"></div>
@@ -83,7 +103,8 @@
             </div>
         </section>
 
-        <section class="portfolio-section" id="catalogo" aria-labelledby="catalogoHeading">
+        <section class="portfolio-section" id="catalogo" aria-labelledby="catalogoHeading" data-theme-section="dark">
+            <div class="section-vertical-watermark" aria-hidden="true">RIVERA CONCIERGE</div>
             <div class="container">
                 <div class="section-header"><div><p class="eyebrow">Una selección del taller</p><h2 id="catalogoHeading" data-reveal>Nuestro trabajo.</h2></div><p class="section-desc" data-reveal style="--reveal-delay: 100ms;">Sofás, butacas y piezas a medida.<br>De nuestro taller a su casa.</p></div>
                 <div class="catalog-controls">
@@ -173,24 +194,34 @@
             </div>
         </section>
 
-        <section class="atelier-section" id="maestro" aria-labelledby="maestroHeading">
+        <section class="atelier-section" id="maestro" aria-labelledby="maestroHeading" data-theme-section="light">
             <div class="container atelier-layout">
-                <figure class="atelier-photo"><img src="assets/photos/taller-maestro.jpg" srcset="assets/photos/taller-maestro-sm.jpg 720w, assets/photos/taller-maestro.jpg 1152w" sizes="(max-width: 800px) 100vw, 50vw" width="1152" height="883" alt="Trabajo manual sobre una poltrona en el taller de tapicería" loading="lazy" decoding="async"><figcaption>Un día en el taller.</figcaption></figure>
+                <figure class="atelier-photo"><div class="photo-zoom-frame"><img src="assets/photos/taller-maestro.jpg" srcset="assets/photos/taller-maestro-sm.jpg 720w, assets/photos/taller-maestro.jpg 1152w" sizes="(max-width: 800px) 100vw, 50vw" width="1152" height="883" alt="Trabajo manual sobre una poltrona en el taller de tapicería" loading="lazy" decoding="async"></div><figcaption>Un día en el taller.</figcaption></figure>
                 <div class="atelier-copy"><p class="eyebrow">Maestro Rivera · Lima</p><h2 id="maestroHeading" data-reveal>Hecho a mano.<br>Con paciencia.</h2><p>Hace 29 años que trabajamos con telas, madera y espuma. Escuchamos lo que necesita, revisamos su mueble y le ayudamos a elegir cómo renovarlo.</p><p>Desde la primera conversación hasta la entrega, el trato es directo con el maestro tapicero.</p><a class="text-link" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20un%20mueble." target="_blank" rel="noopener noreferrer">Conversemos sobre su mueble <span aria-hidden="true">↗</span></a></div>
             </div>
         </section>
 
-        <section class="process-section" id="proceso" aria-labelledby="procesoHeading">
+        <section class="process-section" id="proceso" aria-labelledby="procesoHeading" data-theme-section="dark">
             <div class="container process-layout">
                 <div><p class="eyebrow">Lo que también importa</p><h2 id="procesoHeading" data-reveal>Por dentro,<br>también.</h2><p class="section-desc" data-reveal style="--reveal-delay: 100ms;">Revisamos la estructura y el relleno antes de colocar la tela. Lo que no se ve también se siente al sentarse.</p><ol class="process-steps"><li><span>01</span><div><h3>Revisamos su mueble</h3><p>Evaluamos qué se puede conservar y qué necesita renovarse.</p></div></li><li><span>02</span><div><h3>Elegimos los materiales</h3><p>Tela, textura y firmeza según el uso que le dará.</p></div></li><li><span>03</span><div><h3>Trabajamos a medida</h3><p>Ajustamos el relleno y cuidamos cada costura.</p></div></li></ol></div>
-                <figure class="process-photo"><img src="assets/photos/espuma-antes-despues.jpg" srcset="assets/photos/espuma-antes-despues-sm.jpg 720w, assets/photos/espuma-antes-despues.jpg 1536w" sizes="(max-width: 800px) 100vw, 50vw" width="1536" height="792" alt="Relleno de un asiento abierto durante la revisión en el taller" loading="lazy" decoding="async"><figcaption>El trabajo empieza antes de la tela.</figcaption></figure>
+                <figure class="process-photo"><div class="photo-zoom-frame"><img src="assets/photos/espuma-antes-despues.jpg" srcset="assets/photos/espuma-antes-despues-sm.jpg 720w, assets/photos/espuma-antes-despues.jpg 1536w" sizes="(max-width: 800px) 100vw, 50vw" width="1536" height="792" alt="Relleno de un asiento abierto durante la revisión en el taller" loading="lazy" decoding="async"></div><figcaption>El trabajo empieza antes de la tela.</figcaption></figure>
             </div>
         </section>
 
-        <section class="contact-section" id="contacto" aria-labelledby="contactoHeading">
+        <section class="contact-section" id="contacto" aria-labelledby="contactoHeading" data-theme-section="dark">
+            <div class="section-vertical-watermark section-vertical-watermark--footer" aria-hidden="true">RIVERA CONCIERGE</div>
             <div class="container contact-layout"><div><p class="eyebrow">Empecemos por una foto</p><h2 id="contactoHeading" data-reveal>Su mueble aún<br>tiene historia.</h2></div><div class="contact-copy"><p>Envíenos una foto por WhatsApp. Le orientamos sobre el tapizado y coordinamos los siguientes pasos.</p><a class="button-primary" href="https://wa.me/51997317630?text=Hola%20Maestro%20Rivera,%20quisiera%20cotizar%20el%20tapizado%20de%20un%20mueble." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp <span aria-hidden="true">↗</span></a><a class="phone-link" href="tel:+51997317630">O llámenos al 997 317 630</a></div></div>
         </section>
     </main>
-    <footer class="site-footer"><div class="container footer-inner"><a class="brand-name" href="#inicio">Rivera Concierge</a><p>Tapicería de muebles · Lima, Perú</p><a class="back-top" href="#inicio">Volver al inicio ↑</a></div></footer>
+    <footer class="site-footer" data-theme-section="dark">
+        <div class="container footer-inner">
+            <a class="footer-brand" href="#inicio">
+                <svg class="footer-logo" viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M48 13.5C43.2 8.8 35.8 6.5 27.5 6.5C14.5 6.5 6.5 14.8 6.5 27.5C6.5 40.2 14.5 47.5 28 47.5H52.5"/><path d="M18.5 10.5V35.5"/><path d="M18.5 40.5V47.5"/><path d="M18.5 13.5H32.5C38.2 13.5 42 16.8 42 21.8C42 26.8 38.2 30 32.5 30H21.5"/><path d="M11.5 38H53.5C56.2 38 58 35.8 58 32.8V26.5C58 24.3 56.2 22.5 54 22.5H46.5"/><path d="M31.5 30L42.5 45"/><path d="M14.5 47.5L11.5 53.5"/><path d="M48.5 47.5L51.5 53.5"/></svg>
+                <span class="brand-name">Rivera Concierge</span>
+            </a>
+            <p>Tapicería de muebles · Lima, Perú</p>
+            <a class="back-top" href="#inicio">Volver al inicio ↑</a>
+        </div>
+    </footer>
 </body>
 </html>

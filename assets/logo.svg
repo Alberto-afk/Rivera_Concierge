@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 56" fill="none" stroke="#181917" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Rivera Concierge monograma y butaca minimalista">
+  <!-- Minimalist architectural armchair / sofa outer contour integrated with interlocking R & C -->
+  <!-- C: Curved backrest & seat cradle (with negative-space weave gaps for interlocking R) -->
+  <path d="M48 13.5C43.2 8.8 35.8 6.5 27.5 6.5C14.5 6.5 6.5 14.8 6.5 27.5C6.5 40.2 14.5 47.5 28 47.5H52.5"/>
+  <!-- Interlocking R vertical spine (weaves over top of C, under middle cushion line) -->
+  <path d="M18.5 10.5V35.5"/>
+  <path d="M18.5 40.5V47.5"/>
+  <!-- R upper bowl + backrest pillow contour -->
+  <path d="M18.5 13.5H32.5C38.2 13.5 42 16.8 42 21.8C42 26.8 38.2 30 32.5 30H21.5"/>
+  <!-- Seat cushion & sculptural armrest (interlocks across R spine with weave gap) -->
+  <path d="M11.5 38H53.5C56.2 38 58 35.8 58 32.8V26.5C58 24.3 56.2 22.5 54 22.5H46.5"/>
+  <!-- R diagonal leg flowing into the upholstery profile -->
+  <path d="M31.5 30L42.5 45"/>
+  <!-- Minimalist tapered wooden furniture legs -->
+  <path d="M14.5 47.5L11.5 53.5"/>
+  <path d="M48.5 47.5L51.5 53.5"/>
+</svg>
