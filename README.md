@@ -2,6 +2,14 @@
 
 Sitio de tapicería de muebles en Lima: HTML, CSS, JavaScript y una sección de sofá 3D. Sin instalación de paquetes ni compilación para servirlo.
 
+## Continuar con otra IA
+
+- [Guía detallada de la versión y de los dos videos](docs/GUIA_PARA_IA.md).
+- [Prompt listo para copiar](docs/PROMPT_INTERFAZ.md).
+- [Skill portable con lectura selectiva y validación proporcional](.agents/skills/rivera-interfaz-inmersiva/SKILL.md).
+
+La skill se incluye en el repositorio; su detección automática depende de la herramienta. Si no la reconoce, pide a la IA que lea el archivo `SKILL.md`. El detalle se consulta según la tarea para evitar cargar toda la documentación en cada interacción.
+
 ## Desarrollo local
 
 Desde la raíz del repositorio:
