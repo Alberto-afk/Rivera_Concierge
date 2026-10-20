@@ -14,11 +14,13 @@ Publique `index.html`, `styles.css`, `app.js`, `furniture3d.js` y todo `assets/`
 
 ## Recorrido del sofá
 
-La sección «El oficio toma forma» aplica las referencias de los videos aportados por el usuario: un protagonista 3D sobre un escenario amplio, cámara guiada por scroll y texto breve en tres momentos. El análisis visual está en [REFERENCIAS.md](REFERENCIAS.md).
+La sección «El oficio toma forma» aplica las referencias de los videos aportados por el usuario: un escenario con degradados de arena, arcilla y salvia, tipografía cinética y cámara guiada por scroll en tres actos: vista completa, detalle del tapizado y regreso a una vista amplia desde el lado opuesto. El análisis visual está en [REFERENCIAS.md](REFERENCIAS.md).
 
 El sofá es una representación de diseño original construida con geometría. No es un escaneo de un proyecto del taller ni una fotografía de producto. Tiene cojines, ribetes, patas de madera y tres tonos orientativos de tapizado: lino claro, terracota y verde oliva. Las fotografías de trabajos existentes permanecen en el catálogo y el taller.
 
-- `furniture3d.js` crea el modelo, luces y cámara. No inicia bucles de animación.
+- `furniture3d.js` crea el modelo, luces y cámara. No inicia bucles de animación. El sofá permanece fijo y la cámara recorre keyframes suaves, por lo que las sombras del mueble se pueden reutilizar durante el scroll.
+- Un solo progreso de scroll sincroniza cámara, entrada y salida enmascarada de títulos, subtítulos con desfase, texto de los capítulos y capas del degradado. El movimiento se puede recorrer hacia delante y hacia atrás; no depende de temporizadores ni de animaciones de fondo infinitas.
+- Los encabezados y textos de lectura fuera de la escena entran suavemente al acercarse al viewport. Es una mejora progresiva para equipos adecuados; el contenido queda visible sin JavaScript, con reducción de movimiento o en modo ligero. Los enlaces y controles nunca esperan a una animación.
 - `app.js` carga el módulo y Three.js sólo al acercarse a la sección cuando procede activar el 3D. El desplazamiento cambia suavemente la cámara; el navegador conserva su scroll normal. El enlace «Ir a los trabajos» permite saltar el recorrido.
 - El render se detiene al estabilizarse, salir de la sección o esconder la pestaña. El modo estático libera el contexto y los recursos gráficos. El DPR está limitado a 1.5 y las sombras a 512px.
 - El modo automático exige al menos cuatro procesadores lógicos, al menos 4 GB de memoria si el navegador publica ese dato y un puntero fino con hover. Son señales orientativas. Un descenso sostenido de fluidez reduce primero la resolución y las sombras; si persiste, vuelve a la vista estática.
@@ -44,6 +46,6 @@ npm install --prefix /tmp/rivera-browser-tests --no-package-lock playwright
 NODE_PATH=/tmp/rivera-browser-tests/node_modules node tests/smoke.cjs
 ```
 
-También puede indicar un Chromium instalado mediante `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`.
+También puede indicar un Chromium instalado mediante `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Para retomar un diagnóstico puede usar `RIVERA_CHECK_FROM=4` para empezar en la cuarta comprobación; el resultado identifica las comprobaciones omitidas y no equivale a una corrida completa. `RIVERA_ARTIFACT_DIR=/tmp/rivera-motion` guarda capturas de las tres fases y la vista móvil.
 
-Las pruebas arrancan y detienen su propio servidor. Cubren recursos, catálogo, teclado, tamaños de pantalla, contenido sin JavaScript, carga diferida del motor, píxeles del render real, materiales, recorrido, pausa y fallos con vista estática. Chromium usa SwiftShader únicamente en las pruebas para disponer de WebGL en máquinas sin GPU. Las señales de hardware y visibilidad se simulan. En la integración funcional se controla el reloj de los callbacks para separar el recorrido de la lentitud del render por software; otra prueba fuerza un reloj lento para verificar la reducción de calidad y el paso a la vista estática. Estas pruebas no sustituyen medir batería y fluidez en teléfonos físicos.
+Las pruebas arrancan y detienen su propio servidor. Cubren recursos, catálogo, teclado, tamaños de pantalla, contenido sin JavaScript, carga diferida del motor, píxeles del render real, materiales, recorrido, pausa y fallos con vista estática. Chromium usa SwiftShader únicamente en las pruebas para disponer de WebGL en máquinas sin GPU, con DPR 0.35 para reducir el coste del render por software; las anchuras CSS se mantienen en los tamaños indicados. Las señales de hardware y visibilidad se simulan. En la integración funcional se controla el reloj de los callbacks para separar el recorrido de la lentitud del render por software; otra prueba fuerza un reloj lento para verificar la reducción de calidad y el paso a la vista estática. Estas pruebas no sustituyen medir batería y fluidez en teléfonos físicos.

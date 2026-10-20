@@ -25,6 +25,10 @@
         const chapterDescription = document.getElementById('showroomDescription');
         const hint = document.getElementById('showroomHint');
         const announcement = document.getElementById('showroomStatus');
+        const motionWords = Array.from(stage.querySelectorAll('[data-motion-word]'));
+        const motionBeats = [[-0.2, -0.1, 0.19, 0.33], [0.24, 0.40, 0.57, 0.71], [0.64, 0.82, 1.2, 1.3]];
+        const revealItems = Array.from(document.querySelectorAll('[data-reveal]'));
+        let revealObserver = null;
         const chapters = [
             ['01 / La forma', 'Un lugar para quedarse.', 'Líneas sencillas. Proporciones que invitan a sentarse.'],
             ['02 / El tapizado', 'La diferencia se siente.', 'Una textura, un tono, una forma de hacer suyo el espacio.'],
@@ -72,6 +76,64 @@
             if (hint) hint.textContent = active ? 'Deslice para descubrir la forma ↓' : 'Elija un tono para explorar el tapizado.';
         }
 
+        function smoothstep(start, end, value) {
+            const t = Math.max(0, Math.min(1, (value - start) / (end - start)));
+            return t * t * (3 - 2 * t);
+        }
+
+        function animateTypography(value) {
+            // One scroll clock drives masks, background layers, copy and the 3D camera.
+            // No timers, animated blur or perpetual background animation.
+            motionWords.forEach(function (word, index) {
+                const beat = motionBeats[index];
+                const enter = index === 0 ? 1 : smoothstep(beat[0], beat[1], value);
+                const leave = index === 2 ? 0 : smoothstep(beat[2], beat[3], value);
+                const subEnter = index === 0 ? 1 : smoothstep(beat[0] + 0.035, beat[1] + 0.035, value);
+                const subLeave = index === 2 ? 0 : smoothstep(beat[2] + 0.015, beat[3] + 0.015, value);
+                word.style.setProperty('--word-alpha', (enter * (1 - leave)).toFixed(4));
+                word.style.setProperty('--word-y', ((1 - enter) * 110 - leave * 106).toFixed(2) + '%');
+                word.style.setProperty('--word-scale', (0.94 + enter * 0.06 - leave * 0.025).toFixed(4));
+                word.style.setProperty('--sub-alpha', (subEnter * (1 - subLeave)).toFixed(4));
+                word.style.setProperty('--sub-y', ((1 - subEnter) * 115 - subLeave * 110).toFixed(2) + '%');
+            });
+            const clay = smoothstep(0.10, 0.43, value) * (1 - smoothstep(0.65, 0.91, value));
+            stage.style.setProperty('--clay-opacity', clay.toFixed(4));
+            stage.style.setProperty('--sage-opacity', smoothstep(0.58, 0.93, value).toFixed(4));
+            stage.style.setProperty('--haze-x', ((value - 0.5) * 80).toFixed(2) + 'px');
+            stage.style.setProperty('--haze-y', (Math.sin(value * Math.PI) * -35).toFixed(2) + 'px');
+            stage.style.setProperty('--light-x', ((value - 0.5) * -100).toFixed(2) + 'px');
+            stage.style.setProperty('--light-y', (value * 24).toFixed(2) + 'px');
+            const distance = Math.min(Math.abs(value - 1 / 3), Math.abs(value - 2 / 3));
+            const copyOpacity = smoothstep(0, 0.065, distance);
+            stage.style.setProperty('--story-alpha', copyOpacity.toFixed(4));
+            const local = value < 1 / 3 ? value - 1 / 3 : value < 2 / 3 ? value - 2 / 3 : value - 1;
+            stage.style.setProperty('--story-y', ((1 - copyOpacity) * (local < 0 ? -14 : 14)).toFixed(2) + 'px');
+        }
+
+        function configureReveals() {
+            const hardwareSuitable = navigator.hardwareConcurrency >= 4 && (typeof navigator.deviceMemory !== 'number' || navigator.deviceMemory >= 4);
+            const allowed = supported && !motionQuery.matches && !(connection && connection.saveData) && hardwareSuitable && hoverQuery.matches;
+            if (!allowed) {
+                if (revealObserver) revealObserver.disconnect();
+                revealObserver = null;
+                document.body.classList.remove('motion-reveals');
+                // Reset instantly when accessibility or device policy changes.
+                revealItems.forEach(function (item) { item.classList.add('is-revealed'); });
+                return;
+            }
+            if (revealObserver) return;
+            revealObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        if (revealObserver) revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -32px 0px', threshold: 0.12 });
+            document.body.classList.add('motion-reveals');
+            revealItems.forEach(function (item) { revealObserver.observe(item); });
+        }
+
         function updateChapter(value) {
             const next = Math.min(2, Math.floor(value * 3));
             if (next === chapter) return;
@@ -110,6 +172,7 @@
             section.dataset.progress = '0';
             stage.style.setProperty('--showroom-progress', '0');
             updateChapter(0);
+            animateTypography(0);
             if (inside) {
                 window.scrollTo({ top: Math.max(0, window.scrollY + section.getBoundingClientRect().top - headerHeight), behavior: 'instant' });
             }
@@ -184,6 +247,7 @@
             section.dataset.progress = progress.toFixed(4);
             stage.style.setProperty('--showroom-progress', progress.toFixed(4));
             updateChapter(progress);
+            animateTypography(progress);
             if (settled) stopAnimation();
             else frame = window.requestAnimationFrame(render);
         }
@@ -233,6 +297,7 @@
         }
 
         function applyPolicy() {
+            configureReveals();
             const blocked = !supported || motionQuery.matches || Boolean(connection && connection.saveData);
             const hardwareSuitable = navigator.hardwareConcurrency >= 4 && (typeof navigator.deviceMemory !== 'number' || navigator.deviceMemory >= 4);
             const automatic = hardwareSuitable && hoverQuery && hoverQuery.matches;
@@ -271,6 +336,7 @@
         toggle.hidden = false;
         updateBounds();
         updateChapter(0);
+        animateTypography(0);
 
         if (supported) {
             const observer = new IntersectionObserver(function (entries) {

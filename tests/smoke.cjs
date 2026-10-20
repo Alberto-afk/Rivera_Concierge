@@ -2,25 +2,59 @@
 const assert = require('node:assert/strict');
 const { spawn } = require('node:child_process');
 const { once } = require('node:events');
-const { existsSync } = require('node:fs');
+const { existsSync, mkdirSync } = require('node:fs');
 const net = require('node:net');
 const path = require('node:path');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '..');
+const artifactDir = process.env.RIVERA_ARTIFACT_DIR;
+if (artifactDir) mkdirSync(artifactDir, { recursive: true });
 let server, browser;
 let passed = 0;
+let skipped = 0;
+let checkIndex = 0;
+const firstCheck = Number(process.env.RIVERA_CHECK_FROM || 1);
+assert(Number.isInteger(firstCheck) && firstCheck >= 1, 'RIVERA_CHECK_FROM must be a positive check index');
 
 async function check(name, run) {
-    await run();
+    checkIndex++;
+    if (checkIndex < firstCheck) {
+        skipped++;
+        console.log('SKIP ' + name);
+        return;
+    }
+    let timeout;
+    try {
+        await Promise.race([
+            run(),
+            new Promise((resolve, reject) => { timeout = setTimeout(() => reject(new Error('Timed out after 180s: ' + name)), 180000); })
+        ]);
+    } finally {
+        clearTimeout(timeout);
+    }
     passed++;
     console.log('PASS ' + name);
 }
+async function capture(page, name) {
+    if (artifactDir) await page.screenshot({ path: path.join(artifactDir, 'review-' + name + '.png'), animations: 'disabled' });
+}
 async function settled(page) {
-    await page.waitForFunction(() => !document.querySelector('#spatialStage').classList.contains('spatial-active'), null, { timeout: 15000 });
+    try {
+        await page.waitForFunction(() => !document.querySelector('#spatialStage').classList.contains('spatial-active'), null, { timeout: 45000 });
+    } catch (error) {
+        const state = await page.evaluate(() => ({
+            state: document.querySelector('#espacio-3d').dataset.sceneState,
+            progress: document.querySelector('#espacio-3d').dataset.progress,
+            frames: window.__frameCount,
+            chapter: document.querySelector('#showroomChapter').textContent
+        })).catch(() => null);
+        error.message += '\nShowroom state: ' + JSON.stringify(state);
+        throw error;
+    }
 }
 async function createPage(options = {}, setup) {
     // Keep software WebGL affordable in CI; CSS viewport sizes stay unchanged.
-    const context = await browser.newContext({ deviceScaleFactor: .5, ...options });
+    const context = await browser.newContext({ deviceScaleFactor: .35, ...options });
     const page = await context.newPage();
     const errors = [];
     const modules = [];
@@ -86,6 +120,53 @@ async function pixelStats(page) {
         image.src = 'data:image/png;base64,' + base64;
     }), png.toString('base64'));
 }
+async function motionSnapshot(page) {
+    return page.locator('#spatialStage').evaluate(stage => {
+        const style = element => {
+            const computed = getComputedStyle(element);
+            return { opacity: Number(computed.opacity), transform: computed.transform, display: computed.display, visibility: computed.visibility };
+        };
+        return {
+            words: Array.from(stage.querySelectorAll('[data-motion-word]')).map(word => ({
+                ...style(word),
+                line: style(word.querySelector('.motion-line > span')),
+                subtitle: style(word.querySelector('.motion-subtitle > span'))
+            })),
+            clay: style(stage.querySelector('.scene-wash--clay')),
+            sage: style(stage.querySelector('.scene-wash--sage'))
+        };
+    });
+}
+async function readableStaticMotion(page) {
+    const snapshot = await motionSnapshot(page);
+    assert.equal(snapshot.words.length, 3);
+    const visible = word => word.display !== 'none' && word.visibility !== 'hidden' && word.opacity > .95;
+    assert(visible(snapshot.words[0]), 'the first decorative title should remain readable in the static view');
+    assert(snapshot.words.slice(1).every(word => !visible(word)), 'inactive decorative titles should not overlap in the static view');
+    assert.equal(snapshot.words[0].line.transform, 'none', 'static title should not retain a scroll transform');
+    assert.equal(snapshot.words[0].subtitle.transform, 'none', 'static subtitle should not retain a scroll transform');
+    assert.equal(await page.locator('.showroom-kinetic').getAttribute('aria-hidden'), 'true');
+    const hiddenContent = await page.locator('#spatialHeading, #showroomChapter, #showroomDetail, #showroomDescription').evaluateAll(elements => elements.filter(element => {
+        if (!element.textContent.trim() || !element.getClientRects().length) return true;
+        for (let ancestor = element; ancestor; ancestor = ancestor.parentElement) {
+            const style = getComputedStyle(ancestor);
+            if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) < .95) return true;
+        }
+        return false;
+    }).map(element => element.id));
+    assert.deepEqual(hiddenContent, [], 'essential showroom content should stay readable without motion');
+}
+async function readableEntryCopy(page) {
+    const hidden = await page.locator('[data-reveal], .title-line > span').evaluateAll(elements => elements.filter(element => {
+        if (!element.getClientRects().length || getComputedStyle(element).transform !== 'none') return true;
+        for (let ancestor = element; ancestor; ancestor = ancestor.parentElement) {
+            const style = getComputedStyle(ancestor);
+            if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) < .95) return true;
+        }
+        return false;
+    }).map(element => element.id || element.textContent.trim()));
+    assert.deepEqual(hidden, [], 'entry animations should leave all copy readable without motion');
+}
 async function compactStatic(page) {
     await page.waitForFunction(() => {
         const image = document.querySelector('#sofaPoster');
@@ -97,6 +178,7 @@ async function compactStatic(page) {
     assert(await page.locator('body').evaluate(body => body.classList.contains('perf-low')));
     const metrics = await page.locator('#espacio-3d').evaluate(section => ({ height: section.offsetHeight, viewport: innerHeight }));
     assert(metrics.height < metrics.viewport * 2, 'static view must not reserve a long sticky scroll');
+    await readableStaticMotion(page);
     await idle(page);
 }
 
@@ -151,7 +233,7 @@ async function compactStatic(page) {
             assert.match(await page.locator('#catalogStatus').textContent(), new RegExp('de ' + total + ' trabajos'));
         }
     });
-    await check('real 3D pixels, material colors and three scroll chapters', async () => {
+    await check('real 3D pixels, materials, scroll typography and changing gradients', async () => {
         await sceneReady(page);
         const linen = await pixelStats(page);
         assert(linen.colors > 40 && linen.dark > .005, 'WebGL should draw a shaded sofa, not an empty canvas');
@@ -167,7 +249,8 @@ async function compactStatic(page) {
             assert.equal(await page.locator('[data-material="' + material + '"]').getAttribute('aria-pressed'), 'true');
         }
         const details = new Set();
-        for (const [progress, chapter] of [[.05, '01 / La forma'], [.5, '02 / El tapizado'], [.95, '03 / Su espacio']]) {
+        const motionStates = [];
+        async function scrollProgress(progress) {
             await page.evaluate(value => {
                 const section = document.querySelector('#espacio-3d');
                 const start = section.getBoundingClientRect().top + scrollY;
@@ -177,15 +260,34 @@ async function compactStatic(page) {
             }, progress);
             await page.waitForFunction(value => Math.abs(Number(document.querySelector('#espacio-3d').dataset.progress) - value) < .08, progress);
             await settled(page);
+        }
+        for (const [index, [progress, chapter]] of [[.05, '01 / La forma'], [.5, '02 / El tapizado'], [.95, '03 / Su espacio']].entries()) {
+            await scrollProgress(progress);
             const state = await page.locator('#espacio-3d').evaluate(section => ({ state: section.dataset.sceneState, progress: section.dataset.progress }));
             assert.equal(state.state, 'ready', JSON.stringify(state));
             assert.equal((await page.locator('#showroomChapter').textContent()).trim(), chapter, JSON.stringify(state));
             details.add((await page.locator('#showroomDetail').textContent()).trim());
+            const motion = await motionSnapshot(page);
+            assert.equal(motion.words.length, 3);
+            assert(motion.words[index].opacity >= .9, 'the current scroll title should be readable at ' + progress);
+            assert(motion.words.every((word, wordIndex) => wordIndex === index || word.opacity <= .05), 'scroll titles should not overlap at ' + progress);
+            motionStates.push(motion);
+            await capture(page, ['05', '50', '95'][index]);
         }
         assert.equal(details.size, 3, 'each scroll chapter should explain a different detail');
+        assert.notEqual(motionStates[0].words[0].line.transform, motionStates[1].words[0].line.transform, 'typography should move as the scene advances');
+        const opacityRange = key => Math.max(...motionStates.map(state => state[key].opacity)) - Math.min(...motionStates.map(state => state[key].opacity));
+        assert(opacityRange('clay') > .1 || opacityRange('sage') > .1, 'gradient layers should change opacity with scroll');
+        assert(new Set(motionStates.map(state => state.clay.transform + state.sage.transform)).size > 1, 'gradient layers should move with scroll');
+        assert.equal(await page.locator('.showroom-kinetic').getAttribute('aria-hidden'), 'true');
+        await scrollProgress(.05);
+        const reversed = await motionSnapshot(page);
+        assert(reversed.words[0].opacity >= .9 && reversed.words[2].opacity <= .05, 'scrolling back should restore the first title');
+        assert.equal((await page.locator('#showroomChapter').textContent()).trim(), '01 / La forma');
         await idle(page);
     });
     await check('3D stops on idle/hidden/offscreen and resumes after toggle/resize', async () => {
+        await sceneReady(page);
         const rect = await page.locator('#sofaCanvas').boundingBox();
         await page.mouse.move(rect.x + rect.width * .8, rect.y + rect.height * .4);
         await idle(page);
@@ -210,6 +312,7 @@ async function compactStatic(page) {
         assert(await page.locator('#perfToggleBtn').isDisabled());
         assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
         await compactStatic(page);
+        await readableEntryCopy(page);
         await page.emulateMedia({ reducedMotion: 'no-preference' });
         await sceneReady(page);
     });
@@ -228,6 +331,7 @@ async function compactStatic(page) {
         await page.keyboard.press('Enter');
         assert.equal(await page.evaluate(() => document.activeElement.id), 'contenido');
         assert.equal(await page.locator('h1').count(), 1);
+        assert.equal(await page.getByRole('heading', { level: 1, name: 'Muebles con historia.' }).count(), 1);
         const brokenAnchors = await page.locator('a[href^="#"]').evaluateAll(anchors => anchors.filter(a => !document.getElementById(a.hash.slice(1))).map(a => a.hash));
         assert.deepEqual(brokenAnchors, []);
         const contacts = await page.locator('a[href^="https://wa.me/"]').evaluateAll(anchors => anchors.every(a => new URL(a.href).pathname === '/51997317630' && a.rel.includes('noopener')));
@@ -261,6 +365,8 @@ async function compactStatic(page) {
             await run.page.goto(url, { waitUntil: 'networkidle' });
             await run.page.locator('#spatialStage').scrollIntoViewIfNeeded();
             await compactStatic(run.page);
+            await readableEntryCopy(run.page);
+            if (options.isMobile) await capture(run.page, 'mobile');
             assert.equal(run.modules.length, 0, 'static defaults must not download 3D modules');
             assert.equal(await run.page.locator('.work-card:visible').count(), 6);
             if (manualAllowed) {
@@ -345,10 +451,13 @@ async function compactStatic(page) {
         assert(await run.page.locator('#sofaPoster').isVisible());
         assert.equal(await run.page.locator('#sofaCanvas canvas').count(), 0);
         assert.equal(run.modules.length, 0);
+        await readableStaticMotion(run.page);
+        await readableEntryCopy(run.page);
         assert(await run.page.locator('a[href^="tel:"]').isVisible());
         await run.context.close();
     });
-    console.log('\n' + passed + ' checks passed.');
+    assert(passed > 0, 'RIVERA_CHECK_FROM skipped every check');
+    console.log('\n' + passed + ' checks passed.' + (skipped ? ' ' + skipped + ' checks skipped.' : ''));
 })().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => {
     if (browser) await browser.close();
     if (server) server.kill();

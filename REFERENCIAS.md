@@ -19,3 +19,11 @@ Aplicación en Rivera: tres momentos del recorrido —forma, tapizado y espacio�
 El sofá es un modelo original construido con geometría, no un escaneo de un encargo del taller. Se identifica como representación de diseño y permite probar tres tonos orientativos. Las fotografías existentes siguen separadas como muestras del trabajo del taller.
 
 La vista ligera usa imágenes renderizadas del mismo sofá, conserva la selección de tonos y no descarga Three.js. No necesita WebGL ni JavaScript para mostrar el mueble. Así se mantiene la composición visual de la referencia sin exigir animación a todos los dispositivos.
+
+## Motion graphics y color
+
+El recorrido incorpora títulos grandes con entrada por máscara y salida vertical, subtítulos desfasados y un fundido breve de la explicación al cambiar de capítulo. Todos siguen el mismo progreso que la cámara, incluyendo el movimiento inverso al subir la página.
+
+Las capas de degradado se funden desde arena hacia arcilla y salvia; una luz ambiental se desplaza suavemente sobre ellas. Son gradientes estáticos compuestos mediante opacidad y transformaciones, sin desenfoques animados ni video de fondo. El resto de encabezados tiene una entrada suave al entrar en pantalla.
+
+La cámara hace ahora un acercamiento explícito a los cojines y las costuras antes de volver a mostrar el sofá completo desde el lado opuesto. La vista estática conserva el primer título y el degradado inicial, sin animación ni scroll extra.

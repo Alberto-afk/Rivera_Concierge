@@ -18,6 +18,15 @@ const PALETTES = {
     oliva: { body: '#6e7560', cushion: '#969a7f', seam: '#626c53' }
 };
 
+const CAMERA_SHOTS = [
+    { at: 0, angle: 0.30, scale: 1, detail: false, x: -0.12, y: 1.04, z: 0, elevation: 0.24 },
+    { at: 0.14, angle: 0.32, scale: 0.97, detail: false, x: -0.08, y: 1.05, z: 0.02, elevation: 0.24 },
+    { at: 0.44, angle: 0.60, scale: 1, detail: true, x: 0.86, y: 1.08, z: 0.10, elevation: 0.28 },
+    { at: 0.60, angle: 0.49, scale: 1.015, detail: true, x: 0.77, y: 1.05, z: 0.10, elevation: 0.26 },
+    { at: 0.91, angle: -0.38, scale: 1.03, detail: false, x: 0.16, y: 1.07, z: 0, elevation: 0.22 },
+    { at: 1, angle: -0.44, scale: 1.03, detail: false, x: 0.16, y: 1.07, z: 0, elevation: 0.22 }
+];
+
 function fabricTexture() {
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = 128;
@@ -263,14 +272,32 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
         scene.add(contact);
 
         const positionCamera = () => {
-            // La vista recorre sólo el frente; el sofá permanece completo en móvil.
             const aspect = width / height;
-            const radius = Math.max(4.85, 7.1 / aspect);
-            const angle = 0.30 + progress * 0.29 + pointerX * 0.045;
-            const distance = radius * (1 - progress * 0.12);
-            camera.position.set(Math.sin(angle) * distance, 0.85 + distance * 0.25 + pointerY * 0.13, Math.cos(angle) * distance);
-            camera.lookAt(0, 0.80, 0);
-            sofa.rotation.y = -progress * 0.06;
+            const wide = Math.max(5.2, 7.1 / aspect);
+            const detail = Math.max(2.8, 3.4 / aspect);
+            // Tres actos: silueta completa, detalle deliberado y regreso abierto.
+            // Los encuadres dejan aire sobre el mueble para la tipografía del sitio.
+            let index = 0;
+            while (index < CAMERA_SHOTS.length - 2 && progress > CAMERA_SHOTS[index + 1].at) index++;
+            const from = CAMERA_SHOTS[index];
+            const to = CAMERA_SHOTS[index + 1];
+            const fraction = clamp((progress - from.at) / (to.at - from.at), 0, 1);
+            // Smootherstep: entrada y salida con velocidad y aceleración continuas.
+            const eased = fraction * fraction * fraction * (fraction * (fraction * 6 - 15) + 10);
+            const blend = key => from[key] + (to[key] - from[key]) * eased;
+            const angle = blend('angle') + pointerX * 0.035;
+            const fromDistance = (from.detail ? detail : wide) * from.scale;
+            const toDistance = (to.detail ? detail : wide) * to.scale;
+            const distance = fromDistance + (toDistance - fromDistance) * eased;
+            const x = blend('x');
+            const y = blend('y');
+            const z = blend('z');
+            camera.position.set(
+                x + Math.sin(angle) * distance,
+                y + distance * blend('elevation') + pointerY * 0.10,
+                z + Math.cos(angle) * distance
+            );
+            camera.lookAt(x, y, z);
         };
         const resize = () => {
             if (disposed || contextLost) return;
@@ -306,7 +333,7 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
                 if (next === progress) return;
                 progress = next;
                 positionCamera();
-                renderer.shadowMap.needsUpdate = renderer.shadowMap.enabled;
+                // Sólo cambia la cámara: el mapa de sombras del mueble sigue válido.
             },
             setPointer(x, y) {
                 if (disposed) return;
@@ -324,7 +351,7 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
             setQuality(name) {
                 if (disposed || contextLost || (name !== 'low' && name !== 'high') || name === quality) return;
                 quality = name;
-                renderer.setPixelRatio(name === 'low' ? 1 : Math.min(window.devicePixelRatio || 1, 1.5));
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, name === 'low' ? 1 : 1.5));
                 renderer.shadowMap.enabled = name !== 'low';
                 renderer.shadowMap.needsUpdate = renderer.shadowMap.enabled;
                 // Cambia la variante de shader una sola vez al cambiar la calidad.
