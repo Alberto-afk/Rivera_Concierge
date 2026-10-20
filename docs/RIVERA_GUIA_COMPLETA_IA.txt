@@ -1,0 +1,343 @@
+﻿RIVERA CONCIERGE - DOCUMENTO COMPLETO PARA OTRA IA
+
+Repositorio: https://github.com/Alberto-afk/Rivera_Concierge
+Base visual documentada: 5995ce7.
+
+Este TXT reune todo el contenido del paquete de continuidad sin necesidad de
+abrir un ZIP. Incluye la guia detallada, los dos videos de referencia, el
+prompt completo, la skill y los anexos tecnicos. Los bloques conservan la
+sintaxis Markdown como texto para poder copiarlos sin perder instrucciones.
+
+COMO USARLO
+- Puede abrirlo en Bloc de notas o Word, o adjuntarlo directamente a otra IA.
+- Entregue tambien el repositorio o el codigo actual de la pagina.
+- Para comenzar, copie el prompt de la seccion 2 y complete el cambio pedido.
+- Si la IA no reconoce skills, pidale que siga la seccion 3 como instrucciones.
+- Para ahorrar tokens, lea primero la skill y consulte de la guia solo el
+  apartado relacionado con la tarea. Los anexos contienen detalles repetidos
+  a proposito para conservar toda la documentacion original del paquete.
+- Las rutas relativas de los documentos se refieren al repositorio; no es
+  necesario abrir esos enlaces si el contenido ya esta en este TXT.
+
+INDICE
+1. Guia detallada de la pagina y los dos videos.
+2. Prompt completo para otra IA.
+3. Skill portable.
+4. Arranque, arquitectura y pruebas.
+5. Resumen de referencias visuales.
+
+
+========================================================================
+1. GUIA DETALLADA DE LA PAGINA Y LOS DOS VIDEOS
+========================================================================
+
+# Rivera Concierge: guía de continuidad para otra IA
+
+Base visual y funcional descrita: commit `5995ce7` de `Alberto-afk/Rivera_Concierge`. Esta entrega añade documentación y una skill; no rediseña la página. Contrasta esta guía con el código si existen cambios posteriores.
+
+## 1. Objetivo del usuario
+
+Crear una web de tapicería cercana y creíble, accesible para personas mayores y atractiva para jóvenes. Debe mostrar el oficio y las fotografías del taller, con tipografía fina y espaciada, buen tamaño de lectura y una experiencia inmersiva de motion graphics.
+
+La dirección evolucionó: primero se pidió simplificar la interfaz; después el usuario aclaró que una página demasiado plana tampoco servía. Aprobó el sofá 3D y pidió que el desplazamiento animara también los textos, el fondo y los encuadres. El objetivo actual combina claridad con una puesta en escena expresiva y cálida.
+
+## 2. Qué se vio en los dos videos
+
+Las páginas de TikTok no se pudieron abrir por un bloqueo del proxy. Los archivos de texto compartidos inicialmente contenían CSS y metadatos, sin evidencia visual. Más tarde el usuario adjuntó los MP4 y se revisaron secuencias de fotogramas y detalles de las transiciones. El análisis siguiente procede de esos videos, no de sus títulos.
+
+Enlaces originales:
+
+- https://www.tiktok.com/@samanastudio/video/7636745578365373718
+- https://www.tiktok.com/@wearebrand.io/video/7607298809340742934
+
+El análisis se organiza por el nombre de los MP4 inspeccionados. Los archivos originales no están incluidos en el repositorio.
+
+### Video A: «High Design. High Conversions.» — unos 9 segundos
+
+Se ve un monitor mostrando un paisaje frío, gris y volumétrico, con un iglú como protagonista inicial. La navegación ocupa poco espacio en los bordes. Al avanzar el recorrido cambian la escala y el encuadre: aparecen formas suspendidas, anillos y una escultura central. La profundidad y el paso continuo entre composiciones producen la sensación inmersiva.
+
+Lo útil para Rivera es el lenguaje de cámara: un objeto dominante, espacio alrededor, acercamientos deliberados y continuidad entre estados. No interesa reproducir el iglú ni importar esas escenas al negocio de tapicería.
+
+### Video B: «Immersive websites» — unos 17 segundos
+
+Se ve un portátil con una montaña que emerge entre bruma. Un título grande, fino y muy espaciado convive con la escena. El desplazamiento descubre bloques breves de texto y otras composiciones: mar con un barco, planeta y bosque. Los cambios de profundidad, la atmósfera y las transiciones conectan las secciones.
+
+Lo útil para Rivera es relacionar tipografía, objeto, fondo y relato. La inmersión necesita una secuencia visual; mover una fotografía unos píxeles o cambiar un párrafo de golpe resulta insuficiente para esta referencia.
+
+### Qué no se comprobó
+
+Los videos permiten observar resultados visuales, pero no identificar con certeza sus frameworks, motores de render ni implementación del scroll. No atribuyas GSAP, WebGL o una técnica concreta a esas webs sin evidencia adicional. Tampoco afirmes haber vuelto a ver los MP4 si sólo has leído esta guía.
+
+## 3. Estado actual de la página
+
+El sitio es estático: HTML, CSS y JavaScript. No requiere instalar paquetes ni ejecutar un build para servirlo. Three.js está empaquetado y alojado localmente.
+
+| Parte | Comportamiento actual |
+| --- | --- |
+| Cabecera | Marca, navegación visible también en móvil y contacto directo. |
+| Portada | «Muebles con historia», fotografía existente del sofá terracota y fondo cálido con degradado. El título entra mediante máscaras en equipos adecuados. |
+| Sección inmersiva | Sofá 3D, tres actos de cámara, títulos cinéticos, explicaciones y degradados sincronizados con el scroll. |
+| Catálogo | Doce trabajos; con JavaScript se muestran seis inicialmente, filtros por categoría y expansión/contracción. |
+| Taller y proceso | Fotografías existentes y explicación sencilla del trabajo manual y del relleno del mueble. |
+| Contacto | WhatsApp y llamada telefónica; conserva los destinos existentes. |
+| Sin JavaScript | Contenido y contacto disponibles, los doce trabajos visibles y poster del sofá en el tono inicial. |
+
+La fuente Jost es local. Se usan mayúsculas ligeras y espaciadas en títulos, con texto de lectura más sólido; el cuerpo parte de 18 px. Se conservan las fotografías del proyecto sin convertirlas en ilustraciones generadas.
+
+## 4. Qué cambió específicamente en la última versión
+
+La versión anterior ya tenía un sofá 3D con tres materiales. La última iteración añadió la coreografía que faltaba:
+
+| Acto | Título visual | Cámara | Ambiente |
+| --- | --- | --- | --- |
+| 1. La forma | «LA FORMA / de quedarse.» | Vista amplia, frontal en tres cuartos. | Arena, luz cálida. |
+| 2. El tapizado | «EL DETALLE / que se siente.» | Acercamiento explícito a cojines, ribetes y costuras. | Arcilla con matices rosados. |
+| 3. Su espacio | «SU HOGAR / con otra vida.» | Regreso al conjunto desde el lado opuesto. | Salvia y tonos naturales. |
+
+Los títulos entran por máscaras verticales, con desplazamiento y una pequeña variación de escala horizontal. Los subtítulos aparecen con un desfase; los títulos anteriores se retiran. La explicación inferior se atenúa durante el cambio de capítulo. No se trata sólo de sustituir texto en el DOM.
+
+Un único progreso normalizado de 0 a 1 gobierna la cámara, los títulos, los subtítulos, las explicaciones y las capas del fondo. Al subir, la secuencia se revierte. Se conserva el desplazamiento nativo del navegador y el acceso para saltar a los trabajos.
+
+La sección mantiene el escenario fijo durante el recorrido: actualmente reserva 340 svh en escritorio y 280 svh en pantallas de hasta 600 px cuando el 3D está activo. La vista estática elimina ese recorrido largo. Estos valores son parámetros existentes, no objetivos de rendimiento universales.
+
+Los degradados son capas CSS estáticas cuya opacidad y posición cambian. Se desplaza una luz ambiental suave; no hay video de fondo ni desenfoque animado. También se añadieron degradados en portada, taller y contacto para conectar visualmente el conjunto.
+
+Los encabezados y algunos textos fuera del visor tienen entradas suaves mediante IntersectionObserver. Son una mejora progresiva: los enlaces no esperan a la animación y los textos permanecen visibles en los modos ligeros.
+
+La cámara sigue keyframes con suavizado; el sofá permanece fijo. Así se reutiliza su mapa de sombras durante el recorrido. Los tres posters se regeneraron para corresponder al encuadre inicial actualizado.
+
+## 5. Qué representa el sofá
+
+Es un modelo original construido con geometría: tres plazas, cojines, ribetes, una almohada y patas de madera. Las texturas pequeñas de tela y madera se generan en código. Es una representación de diseño, no un escaneo de un encargo real ni una fotografía que demuestre un trabajo del taller.
+
+Lino claro, terracota y verde oliva son tonos orientativos seleccionables. En modo estático, los botones cambian entre renders WebP del mismo modelo sin cargar Three.js. Sin JavaScript se muestra únicamente el poster inicial. Mantén la identificación «Representación 3D» y las fotografías del taller como evidencia diferenciada.
+
+Se retiró un comparador de versiones antiguas porque superponía dos muebles distintos como si documentaran una restauración. No lo repongas sin fotografías verificadas del mismo mueble.
+
+## 6. Rendimiento y accesibilidad que se deben conservar
+
+- Carga diferida del módulo 3D y del bundle local al acercarse a la sección, sólo cuando procede activar el visor.
+- Activación automática con al menos cuatro procesadores lógicos, al menos 4 GB de memoria si el navegador informa ese dato y puntero fino con hover. Son heurísticas, no una detección exacta de la gama del equipo.
+- Táctil y hardware modesto comienzan estáticos; pueden solicitar el 3D manualmente. Reducción de movimiento, ahorro de datos, APIs ausentes y fallos de WebGL mantienen o fuerzan la vista estática.
+- Render bajo demanda: se detiene al estabilizarse, salir de la sección o esconder la pestaña. No añadir bucles permanentes para decorar el fondo.
+- DPR máximo 1.5 y sombras de 512 px. Tras una racha de cuadros lentos reduce resolución y sombras; si persiste, vuelve al poster y libera recursos gráficos.
+- La preferencia del visor se conserva durante la sesión. Los colores y el contacto siguen disponibles en modo ligero.
+- Conservar foco visible, navegación por teclado, botones con estados accesibles, tamaños táctiles útiles y el enlace para saltar el recorrido.
+- Los títulos decorativos cinéticos tienen `aria-hidden`; el encabezado semántico y las explicaciones siguen accesibles. No duplicar todas las letras para el lector de pantalla.
+- Evitar ocultar contenido esencial cuando falla JavaScript o cambia `prefers-reduced-motion`.
+
+## 7. Mapa de archivos: leer sólo lo necesario
+
+| Archivo | Responsabilidad | Cuándo leerlo |
+| --- | --- | --- |
+| `index.html` | Contenido, estructura, controles y semántica. | Cambios de contenido o disposición. |
+| `styles.css` | Tipografía, degradados, máscaras y responsive. | Cambios visuales; atender a las reglas finales de la cascada. |
+| `app.js` | Política de activación, progreso, texto animado, filtros y pausas. | Cambios de movimiento o interacción. |
+| `furniture3d.js` | Geometría, materiales, luces y keyframes de cámara. | Cambios reales del modelo o del encuadre. |
+| `assets/sofa3d/` | Tres posters WebP del modelo. | Si cambia el encuadre inicial, la geometría o el material. |
+| `assets/vendor/` | Three.js 0.170.0, licencia y procedencia. | Sólo para una actualización necesaria de la dependencia. |
+| `tests/smoke.cjs` | Comprobaciones de navegador. | Validar cambios funcionales o diagnosticar fallos. |
+| `README.md`, `REFERENCIAS.md` | Arranque y resumen visual. | Consultas concretas; no duplicar lecturas sin motivo. |
+
+La API del módulo 3D es `createFurnitureScene(container, options)`, que devuelve `setProgress`, `setPointer`, `setMaterial`, `setQuality`, `render`, `resize` y `dispose`. El módulo no inicia su propio bucle de animación.
+
+## 8. Cómo validar y qué evidencia existe
+
+Desde la raíz: `python3 -m http.server 8000 --bind 127.0.0.1`. Para comprobar el comportamiento: `node tests/smoke.cjs`, con Node.js, Python, Playwright y Chromium disponibles. Las instrucciones para otra máquina están en README.md.
+
+El archivo contiene doce comprobaciones. En la entrega visual `5995ce7` quedaron cubiertas entre dos ejecuciones con la misma producción: primero tres aprobadas y después nueve aprobadas, tres omitidas, con salida 0 en la continuación. No se presentó la segunda ejecución parcial como una corrida completa.
+
+Se comprobaron píxeles del render, materiales, tres capítulos, máscaras y degradados cambiantes, recorrido inverso, reposo sin cuadros adicionales, visibilidad, modos estáticos, teclado, cinco anchuras entre 320 y 1440 px, fallos del motor y contenido sin JavaScript.
+
+Las pruebas usan SwiftShader, DPR 0.35 y relojes/señales de hardware controlados. Separan la lógica funcional de la lentitud del render por software; otra prueba fuerza una señal lenta para comprobar la degradación. No acreditan FPS, batería, Lighthouse ni fluidez en teléfonos físicos.
+
+`RIVERA_ARTIFACT_DIR=/tmp/rivera-motion node tests/smoke.cjs` guarda capturas de las tres fases y de móvil. `RIVERA_CHECK_FROM=4` permite retomar desde la cuarta comprobación y declara lo omitido. Reutiliza resultados previos sólo si el código relevante sigue siendo el mismo; después de nuevos cambios, vuelve a comprobar lo afectado.
+
+Para cambios exclusivamente documentales basta revisar enlaces, rutas y exactitud de las instrucciones. No hace falta ejecutar el render pesado.
+
+## 9. Criterio de continuidad
+
+Antes de cambiar, escribe en pocas líneas qué problema visual vas a resolver y qué partes tocarás. Implementa una secuencia completa y revisa capturas al comienzo, durante una transición, en el detalle, al final y en móvil. No evalúes una animación únicamente por una captura fija.
+
+Da el trabajo por terminado cuando la mejora se aprecia, el texto sigue siendo legible, los controles funcionan, el modo ligero está intacto y las comprobaciones necesarias tienen evidencia. Explica las limitaciones pendientes. Un commit en GitHub no demuestra por sí mismo un despliegue web ni una publicación del entorno.
+
+
+========================================================================
+2. PROMPT COMPLETO PARA OTRA IA
+========================================================================
+
+# Prompt para continuar con otra IA
+
+Copia el bloque y sustituye el último campo por el siguiente cambio que quieras realizar. Entrega también el repositorio o el código actual.
+
+```text
+Actúa como diseñador de interacción y desarrollador frontend de Rivera Concierge, un taller de tapicería en Lima. Continúa el proyecto existente sin reconstruirlo desde cero. Usa la skill rivera-interfaz-inmersiva; si tu herramienta no reconoce skills, lee y sigue .agents/skills/rivera-interfaz-inmersiva/SKILL.md.
+
+Empieza por la solicitud concreta y consulta sólo los apartados necesarios de docs/GUIA_PARA_IA.md. La base visual documentada es 5995ce7; verifica el estado real del repositorio antes de editar.
+
+La dirección visual es cálida, natural e inmersiva: tipografía Jost fina y espaciada, textos legibles, fotografías del taller y un sofá 3D como representación de diseño. El usuario ya aprobó el modelo; la prioridad es una coreografía convincente entre cámara, tipografía y ambiente.
+
+Referencias ya analizadas: «High Design. High Conversions.» muestra un paisaje frío con iglú, objetos suspendidos y cambios de escala; «Immersive websites» conecta montaña/bruma, mar/barco, planeta y bosque con tipografía fina. Toma de ellas la profundidad, las transiciones y el protagonismo de la escena. No afirmes haber visto sus originales si sólo leíste el análisis heredado.
+
+Conserva el recorrido de tres actos: LA FORMA / de quedarse.; EL DETALLE / que se siente.; SU HOGAR / con otra vida. Un progreso de scroll debe sincronizar máscaras de texto, subtítulos desfasados, cámara y degradados arena→arcilla→salvia, y revertirlos al subir. Mantén el scroll nativo y la salida hacia los trabajos.
+
+Preserva el catálogo, las fotos, el contacto, la accesibilidad y los modos ligeros. En equipos modestos o con preferencias de movimiento/datos se conserva la composición estática y se evita cargar el motor. El render debe detenerse en reposo, fuera de pantalla y con la pestaña oculta. No prometas rendimiento físico sin medirlo.
+
+Antes de editar, describe en 4–6 líneas la mejora observable y los archivos necesarios. Usa búsquedas y lecturas acotadas, aprovecha lo existente y evita nuevas dependencias salvo necesidad demostrada. Haz una pasada visual coherente, comprueba lo afectado y termina cuando se cumplan los criterios; no repitas pruebas o análisis sin una razón nueva. Para sólo documentación, revisa documentación.
+
+Entrega cambios concretos, capturas o evidencia visual útil, resultados reales de validación y limitaciones. Distingue código subido de sitio desplegado. Respeta el alcance y la autorización de esta sesión para commits, push y publicación.
+
+Cambio concreto solicitado: [ESCRIBE AQUÍ QUÉ QUIERES MEJORAR]
+```
+
+Para reutilizar el enfoque en otro negocio, sustituye marca, contenido, objeto protagonista y materiales; vuelve a verificar las referencias y restricciones de ese proyecto. No arrastres los teléfonos, fotografías o afirmaciones comerciales de Rivera.
+
+
+========================================================================
+3. SKILL PORTABLE: RIVERA-INTERFAZ-INMERSIVA
+========================================================================
+
+---
+name: rivera-interfaz-inmersiva
+description: Mejorar la interfaz de Rivera Concierge con motion graphics de scroll, sofá 3D, degradados cálidos y vistas ligeras, mediante lectura selectiva y validación eficiente en tokens y recursos.
+---
+
+# Interfaz inmersiva de Rivera
+
+Úsala para tareas de diseño, movimiento, 3D o interacción de Rivera, o por invocación del usuario. Sus instrucciones prevalecen. Documentar no exige rediseñar ni ejecutar el visor.
+
+## Contexto mínimo
+
+Sitio estático existente, modelo aprobado. Dirección: oficio real, fotografías del taller, Jost fina y espaciada, degradados arena/arcilla/salvia y tres actos: forma → tapizado → espacio. El sofá es una representación original; conserva su identificación y la distinción respecto a las fotografías del negocio.
+
+## Lee por necesidad
+
+1. Lee la petición, las instrucciones del repositorio y `git status --short`.
+2. Consulta sólo el apartado pertinente de [la guía](../../../docs/GUIA_PARA_IA.md): referencias §2; estado/movimiento §3–4; modelo/rendimiento §5–6; archivos §7; validación §8.
+3. Localiza con `rg -n` y lee rangos acotados. Agrupa lecturas independientes; evita volcar bibliotecas minificadas o el repositorio entero.
+4. Para una animación exacta, inspecciona los videos disponibles: pocos fotogramas primero, detalle sólo en transiciones dudosas. Si el usuario exige una referencia inaccesible, comunica el bloqueo antes de decidir sobre ella. Distingue observación propia de análisis heredado.
+
+## Implementa y comprueba
+
+1. Explica en 4–6 líneas la mejora visible, archivos y comprobaciones. Resuelve decisiones rutinarias; pregunta sólo por un dato imprescindible ausente.
+2. Haz una pasada coherente de composición, tipografía, coreografía e interacción. Reutiliza modelo, fuente y bundle; conserva fotos y contactos salvo nueva instrucción.
+3. Sincroniza cámara, máscaras de texto, subtítulos y ambiente con un progreso reversible. Mantén scroll nativo, lectura, controles y salida hacia los trabajos.
+4. Preserva carga diferida, render bajo demanda y liberación de GPU. Respeta reducción de movimiento y ahorro de datos. El modo estático debe verse cuidado, sin motor ni recorrido largo. Si cambia el modelo o encuadre inicial, actualiza sus posters.
+5. Revisa inicio, transición, detalle, final, movimiento inverso y móvil. Comprueba accesibilidad y fallbacks afectados; una captura fija no demuestra la animación.
+
+## Valida proporcionalmente
+
+- Sirve con `python3 -m http.server 8000 --bind 127.0.0.1` desde la raíz; reutiliza un servidor adecuado.
+- Usa `node tests/smoke.cjs` para la validación funcional que corresponda. Requisitos y diagnóstico: [README.md](../../../README.md). Para sólo documentos, revisa enlaces, rutas y exactitud.
+- Ante fallos, diagnostica una causa y cambia una condición por intento. Repite tras una corrección o evidencia nueva.
+- Reutiliza checks válidos del mismo código y declara lo omitido; una continuación parcial no es una suite completa.
+- No inventes visualizaciones de videos, resultados de pruebas, FPS, batería o puntuaciones. Separa simulación funcional de rendimiento físico.
+
+## Optimiza y termina
+
+- Carga detalle bajo demanda; evita copiar la guía completa en cada turno. Conserva un registro corto de decisiones y checks para no repetir investigación.
+- Delega sólo trabajo independiente que aporte valor. En máquinas sin GPU, ejecuta una prueba WebGL pesada a la vez.
+- Termina cuando la mejora se aprecie, los controles/fallbacks funcionen y la validación necesaria concluya; evita abrir rediseños ajenos al objetivo.
+- Entrega cambios, evidencia y límites. Respeta la autorización vigente; distingue commit, push, despliegue y publicación del entorno.
+
+Skill portable: otra IA puede leer este archivo sin un sistema de skills. Para comenzar usa [el prompt](../../../docs/PROMPT_INTERFAZ.md).
+
+
+========================================================================
+4. ANEXO: ARRANQUE, ARQUITECTURA Y PRUEBAS
+========================================================================
+
+# Rivera Concierge
+
+Sitio de tapicería de muebles en Lima: HTML, CSS, JavaScript y una sección de sofá 3D. Sin instalación de paquetes ni compilación para servirlo.
+
+## Continuar con otra IA
+
+- [Guía detallada de la versión y de los dos videos](docs/GUIA_PARA_IA.md).
+- [Prompt listo para copiar](docs/PROMPT_INTERFAZ.md).
+- [Skill portable con lectura selectiva y validación proporcional](.agents/skills/rivera-interfaz-inmersiva/SKILL.md).
+
+La skill se incluye en el repositorio; su detección automática depende de la herramienta. Si no la reconoce, pide a la IA que lea el archivo `SKILL.md`. El detalle se consulta según la tarea para evitar cargar toda la documentación en cada interacción.
+
+## Desarrollo local
+
+Desde la raíz del repositorio:
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Publique `index.html`, `styles.css`, `app.js`, `furniture3d.js` y todo `assets/` en un alojamiento estático. Los módulos ES requieren servir JavaScript con el tipo MIME correcto; el servidor de Python ya lo hace. Subir un commit no configura por sí solo un despliegue.
+
+## Recorrido del sofá
+
+La sección «El oficio toma forma» aplica las referencias de los videos aportados por el usuario: un escenario con degradados de arena, arcilla y salvia, tipografía cinética y cámara guiada por scroll en tres actos: vista completa, detalle del tapizado y regreso a una vista amplia desde el lado opuesto. El análisis visual está en [REFERENCIAS.md](REFERENCIAS.md).
+
+El sofá es una representación de diseño original construida con geometría. No es un escaneo de un proyecto del taller ni una fotografía de producto. Tiene cojines, ribetes, patas de madera y tres tonos orientativos de tapizado: lino claro, terracota y verde oliva. Las fotografías de trabajos existentes permanecen en el catálogo y el taller.
+
+- `furniture3d.js` crea el modelo, luces y cámara. No inicia bucles de animación. El sofá permanece fijo y la cámara recorre keyframes suaves, por lo que las sombras del mueble se pueden reutilizar durante el scroll.
+- Un solo progreso de scroll sincroniza cámara, entrada y salida enmascarada de títulos, subtítulos con desfase, texto de los capítulos y capas del degradado. El movimiento se puede recorrer hacia delante y hacia atrás; no depende de temporizadores ni de animaciones de fondo infinitas.
+- Los encabezados y textos de lectura fuera de la escena entran suavemente al acercarse al viewport. Es una mejora progresiva para equipos adecuados; el contenido queda visible sin JavaScript, con reducción de movimiento o en modo ligero. Los enlaces y controles nunca esperan a una animación.
+- `app.js` carga el módulo y Three.js sólo al acercarse a la sección cuando procede activar el 3D. El desplazamiento cambia suavemente la cámara; el navegador conserva su scroll normal. El enlace «Ir a los trabajos» permite saltar el recorrido.
+- El render se detiene al estabilizarse, salir de la sección o esconder la pestaña. El modo estático libera el contexto y los recursos gráficos. El DPR está limitado a 1.5 y las sombras a 512px.
+- El modo automático exige al menos cuatro procesadores lógicos, al menos 4 GB de memoria si el navegador publica ese dato y un puntero fino con hover. Son señales orientativas. Un descenso sostenido de fluidez reduce primero la resolución y las sombras; si persiste, vuelve a la vista estática.
+- Pantallas táctiles y equipos modestos empiezan con una imagen y pueden solicitar el 3D manualmente. Reducción de movimiento, ahorro de datos, APIs ausentes y fallos de WebGL mantienen la vista estática.
+- Los tres posters WebP de `assets/sofa3d/` son renders del mismo modelo. Permiten cambiar los tonos sin descargar el motor ni crear un contexto WebGL. La vista estática no reserva la altura del recorrido animado.
+- Three.js se sirve localmente, con su licencia MIT en `assets/vendor/THREE-LICENSE.txt`. No se usan CDN ni fuentes externas en ejecución. Jost y las fotografías también están alojadas en el proyecto.
+
+Sin JavaScript se muestra el poster inicial, todos los trabajos y los enlaces de contacto. Los controles que requieren JavaScript quedan ocultos.
+
+## Comprobaciones
+
+Requieren Node.js, Python 3, Playwright y Chromium. En el entorno de nube están disponibles:
+
+```sh
+node tests/smoke.cjs
+```
+
+En otra máquina puede instalar Playwright fuera del checkout:
+
+```sh
+npm install --prefix /tmp/rivera-browser-tests --no-package-lock playwright
+/tmp/rivera-browser-tests/node_modules/.bin/playwright install chromium
+NODE_PATH=/tmp/rivera-browser-tests/node_modules node tests/smoke.cjs
+```
+
+También puede indicar un Chromium instalado mediante `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Para retomar un diagnóstico puede usar `RIVERA_CHECK_FROM=4` para empezar en la cuarta comprobación; el resultado identifica las comprobaciones omitidas y no equivale a una corrida completa. `RIVERA_ARTIFACT_DIR=/tmp/rivera-motion` guarda capturas de las tres fases y la vista móvil.
+
+Las pruebas arrancan y detienen su propio servidor. Cubren recursos, catálogo, teclado, tamaños de pantalla, contenido sin JavaScript, carga diferida del motor, píxeles del render real, materiales, recorrido, pausa y fallos con vista estática. Chromium usa SwiftShader únicamente en las pruebas para disponer de WebGL en máquinas sin GPU, con DPR 0.35 para reducir el coste del render por software; las anchuras CSS se mantienen en los tamaños indicados. Las señales de hardware y visibilidad se simulan. En la integración funcional se controla el reloj de los callbacks para separar el recorrido de la lentitud del render por software; otra prueba fuerza un reloj lento para verificar la reducción de calidad y el paso a la vista estática. Estas pruebas no sustituyen medir batería y fluidez en teléfonos físicos.
+
+
+========================================================================
+5. ANEXO: RESUMEN DE REFERENCIAS VISUALES
+========================================================================
+
+# Referencias visuales del recorrido 3D
+
+Se revisaron los dos MP4 aportados por el usuario, extrayendo secuencias de fotogramas y detalles de las transiciones. Los videos se usan como referencia visual; no se incorporan al sitio ni se copian sus escenas.
+
+## «High Design. High Conversions.» (9 segundos)
+
+Un paisaje frío con un iglú ocupa la pantalla. La navegación queda en los bordes y los cambios de encuadre descubren objetos suspendidos, anillos y una escultura central. Predominan los grises, la profundidad y los cambios de escala sobre el mismo fondo atmosférico.
+
+Aplicación en Rivera: un único sofá como protagonista, un escenario amplio y sobrio, sombras suaves y un cambio continuo de perspectiva y distancia conforme avanza el scroll.
+
+## «Immersive websites» (17 segundos)
+
+Una montaña emerge entre bruma, con un título fino y espaciado. El desplazamiento alterna escenas de montaña, mar/barco, planeta y bosque con bloques breves de texto. Las capas y transiciones conectan el recorrido sin presentar una sucesión de tarjetas.
+
+Aplicación en Rivera: tres momentos del recorrido —forma, tapizado y espacio—, texto breve en el borde, títulos ligeros y una sección que conserva su escenario mientras la cámara cambia. El scroll sigue siendo el del navegador: no se capturan la rueda ni los gestos táctiles.
+
+## Adaptación al negocio
+
+El sofá es un modelo original construido con geometría, no un escaneo de un encargo del taller. Se identifica como representación de diseño y permite probar tres tonos orientativos. Las fotografías existentes siguen separadas como muestras del trabajo del taller.
+
+La vista ligera usa imágenes renderizadas del mismo sofá, conserva la selección de tonos y no descarga Three.js. No necesita WebGL ni JavaScript para mostrar el mueble. Así se mantiene la composición visual de la referencia sin exigir animación a todos los dispositivos.
+
+## Motion graphics y color
+
+El recorrido incorpora títulos grandes con entrada por máscara y salida vertical, subtítulos desfasados y un fundido breve de la explicación al cambiar de capítulo. Todos siguen el mismo progreso que la cámara, incluyendo el movimiento inverso al subir la página.
+
+Las capas de degradado se funden desde arena hacia arcilla y salvia; una luz ambiental se desplaza suavemente sobre ellas. Son gradientes estáticos compuestos mediante opacidad y transformaciones, sin desenfoques animados ni video de fondo. El resto de encabezados tiene una entrada suave al entrar en pantalla.
+
+La cámara hace ahora un acercamiento explícito a los cojines y las costuras antes de volver a mostrar el sofá completo desde el lado opuesto. La vista estática conserva el primer título y el degradado inicial, sin animación ni scroll extra.
