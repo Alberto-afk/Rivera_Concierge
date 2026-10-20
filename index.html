@@ -42,29 +42,33 @@
             </div>
         </section>
 
-        <section class="spatial-section" id="espacio-3d" aria-labelledby="spatialHeading">
-            <div class="container">
-                <div class="section-header spatial-header">
-                    <div><p class="eyebrow">La textura. La forma. El detalle.</p><h2 id="spatialHeading">El oficio,<br>de cerca.</h2></div>
-                    <div class="spatial-caption"><p>Un recorrido por las piezas y los detalles de nuestro taller.</p><button type="button" id="perfToggleBtn" class="perf-control" hidden aria-pressed="false" aria-label="Movimiento en la galería" aria-controls="spatialStage"><span class="perf-dot" aria-hidden="true"></span><span id="perfStatusLabel">Vista estática</span></button></div>
+        <section class="showroom-section" id="espacio-3d" aria-labelledby="spatialHeading" data-scene-state="static" data-progress="0">
+            <div class="showroom-sticky" id="spatialStage">
+                <div class="showroom-heading">
+                    <p class="eyebrow">Un estudio de formas y texturas</p>
+                    <h2 id="spatialHeading">El oficio<br>toma forma.</h2>
                 </div>
-                <div class="spatial-stage" id="spatialStage">
-                    <div class="spatial-grid">
-                        <figure class="spatial-plane plane-1" data-speed="-0.04" style="--depth-z: 28px; --depth-x: 14px; --depth-y: 10px;">
-                            <img src="assets/photos/seccional-cuero-gris.jpg" srcset="assets/photos/seccional-cuero-gris-sm.jpg 720w, assets/photos/seccional-cuero-gris.jpg 896w" sizes="(max-width: 760px) 100vw, 55vw" width="896" height="1200" alt="Costuras y cojines de un sofá seccional gris en una sala" loading="lazy" decoding="async">
-                            <figcaption><span>01 / La forma</span><span>Seccional gris</span></figcaption>
-                        </figure>
-                        <figure class="spatial-plane plane-2" data-speed="0.06" style="--depth-z: -18px; --depth-x: -12px; --depth-y: -10px;">
-                            <img src="assets/photos/poltrona-detalle.jpg" srcset="assets/photos/poltrona-detalle-sm.jpg 720w, assets/photos/poltrona-detalle.jpg 806w" sizes="(max-width: 760px) 50vw, 30vw" width="806" height="1228" alt="Detalle de la tela, los botones y el vivo de una poltrona" loading="lazy" decoding="async">
-                            <figcaption><span>02 / La costura</span></figcaption>
-                        </figure>
-                        <figure class="spatial-plane plane-3" data-speed="-0.03" style="--depth-z: 16px; --depth-x: 10px; --depth-y: -8px;">
-                            <img src="assets/photos/sillon-cuero-tejido.jpg" srcset="assets/photos/sillon-cuero-tejido-sm.jpg 720w, assets/photos/sillon-cuero-tejido.jpg 1120w" sizes="(max-width: 760px) 50vw, 30vw" width="1120" height="1008" alt="Respaldo tejido de una butaca con cojines claros" loading="lazy" decoding="async">
-                            <figcaption><span>03 / El material</span></figcaption>
-                        </figure>
+                <div class="showroom-mode">
+                    <button type="button" id="perfToggleBtn" class="perf-control" hidden aria-pressed="false" aria-label="Vista 3D del mueble" aria-controls="sofaCanvas"><span class="perf-dot" aria-hidden="true"></span><span id="perfStatusLabel">Ver en 3D</span></button>
+                    <a class="showroom-skip" href="#catalogo">Ir a los trabajos <span aria-hidden="true">↘</span></a>
+                </div>
+                <div class="sofa-view" role="img" aria-label="Representación de un sofá de tres plazas, con cojines de tela y patas de madera. Puede explorar tres tonos de tapizado.">
+                    <img id="sofaPoster" class="sofa-poster" src="assets/sofa3d/sofa-lino.webp" width="1440" height="900" alt="Modelo de un sofá de tres plazas en lino claro y patas de madera" loading="lazy" decoding="async">
+                    <div id="sofaCanvas" class="sofa-canvas" aria-hidden="true"></div>
+                </div>
+                <div class="showroom-bottom">
+                    <div class="showroom-story"><p class="eyebrow" id="showroomChapter">01 / La forma</p><h3 id="showroomDetail">Un lugar para quedarse.</h3><p class="showroom-story-desc" id="showroomDescription">Líneas sencillas. Proporciones que invitan a sentarse.</p></div>
+                    <div class="showroom-materials">
+                        <div class="material-swatches" role="group" aria-label="Tono de tapizado" hidden>
+                            <button type="button" class="material-swatch" data-material="lino" aria-label="Lino claro" aria-pressed="true"><span style="--swatch: #c5bba6;"></span></button>
+                            <button type="button" class="material-swatch" data-material="terracota" aria-label="Terracota" aria-pressed="false"><span style="--swatch: #a1634b;"></span></button>
+                            <button type="button" class="material-swatch" data-material="oliva" aria-label="Verde oliva" aria-pressed="false"><span style="--swatch: #73775c;"></span></button>
+                        </div>
+                        <p id="materialStatus" role="status" aria-live="polite" aria-atomic="true">Lino claro</p>
                     </div>
                 </div>
-                <p class="spatial-footnote">Cada pieza tiene su propia forma de hacerse.</p>
+                <div class="showroom-footer"><p>Estudio de diseño · Representación 3D</p><p class="showroom-scroll-hint" id="showroomHint">Elija un tono para explorar el tapizado.</p><div class="showroom-progress" aria-hidden="true"><span></span></div></div>
+                <p class="sr-only" id="showroomStatus" role="status" aria-live="polite"></p>
             </div>
         </section>
 
