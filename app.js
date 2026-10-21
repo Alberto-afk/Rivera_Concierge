@@ -30,9 +30,9 @@
         const revealItems = Array.from(document.querySelectorAll('[data-reveal]'));
         let revealObserver = null;
         const chapters = [
-            ['01 / La forma', 'Un lugar para quedarse.', 'Líneas sencillas. Proporciones que invitan a sentarse.'],
-            ['02 / El tapizado', 'La diferencia se siente.', 'Una textura, un tono, una forma de hacer suyo el espacio.'],
-            ['03 / Su espacio', 'Hecho para su día a día.', 'Explore la idea. Después, conversemos sobre su mueble.']
+            ['01 / La forma', 'Proporción serena.', 'Líneas simples que invitan a quedarse.'],
+            ['02 / El tapizado', 'Textura viva.', 'Lino, terracota o verde oliva.'],
+            ['03 / Su espacio', 'Hecho a medida.', 'Pensado para su sala.']
         ];
         let preference = null;
         let visible = false;
