@@ -78,7 +78,7 @@ h3 { font-weight: 400; }
 /* Vertical brand signature in corner & architectural background watermark (Uncommon Design Group style) */
 .vertical-corner-brand {
     position: fixed;
-    right: 18px;
+    left: 18px;
     bottom: 28px;
     z-index: 16;
     display: flex;
@@ -90,6 +90,36 @@ h3 { font-weight: 400; }
     pointer-events: none;
     user-select: none;
     transition: color .68s var(--ease-theme), opacity .4s ease;
+}
+
+/* Integrated static floating WhatsApp circle button */
+.whatsapp-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 45;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background-color: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 10px 28px rgba(17, 18, 16, .2);
+    transition: transform .45s var(--ease-zoom), background-color .68s var(--ease-theme), color .68s var(--ease-theme), border-color .68s var(--ease-theme);
+}
+.whatsapp-icon {
+    width: 26px;
+    height: 26px;
+}
+@media (hover: hover) {
+    .whatsapp-float:hover {
+        transform: scale(1.08);
+        background-color: #1f5c3a;
+        color: #f5f2ec;
+        border-color: #1f5c3a;
+    }
 }
 .vertical-corner-brand .corner-logo {
     width: 18px;
@@ -271,7 +301,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     .hero-header { gap: 40px; }
     .atelier-layout, .process-layout { gap: 52px; }
     .catalog-status { max-width: 15ch; text-align: right; }
-    .vertical-corner-brand { right: 10px; bottom: 20px; }
+    .vertical-corner-brand { left: 10px; bottom: 20px; }
 }
 @media (max-width: 800px) {
     html { scroll-padding-top: 138px; }
@@ -333,6 +363,8 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     .contact-copy p { margin-bottom: 20px; }
     .contact-copy .button-primary { width: 100%; gap: 12px; }
     .footer-brand { width: 100%; }
+    .whatsapp-float { right: 16px; bottom: 16px; width: 50px; height: 50px; }
+    .whatsapp-icon { width: 23px; height: 23px; }
 }
 @media (max-width: 350px) {
     .container { width: calc(100% - 32px); }
@@ -375,8 +407,8 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     .showroom-sticky { min-height: 620px; height: 86svh; }
     .showroom-live .showroom-sticky { min-height: 540px; }
     .showroom-section.showroom-live { height: 200svh; }
-    .sofa-view { inset: 18% -2% 20%; }
-    .showroom-bottom { left: 20px; right: 20px; bottom: 32px; gap: 16px; align-items: flex-end; }
+    .sofa-view { inset: 18% -2% 22%; }
+    .showroom-bottom { left: 20px; right: 20px; bottom: 78px; gap: 16px; align-items: flex-end; }
     .showroom-story { max-width: 22ch; }
     .showroom-story .eyebrow { font-size: 10px; margin-bottom: 6px; }
     .showroom-story h3 { font-size: 20px; }
