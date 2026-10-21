@@ -92,7 +92,7 @@ h3 { font-weight: 400; }
     transition: color .68s var(--ease-theme), opacity .4s ease;
 }
 .vertical-corner-brand .corner-logo {
-    width: 20px;
+    width: 18px;
     height: 18px;
 }
 .vertical-corner-brand span {
@@ -138,7 +138,7 @@ h3 { font-weight: 400; }
 }
 .nav-bar { min-height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .brand-mark { display: inline-flex; align-items: center; gap: 14px; }
-.brand-logo { width: 38px; height: 33px; flex-shrink: 0; transition: transform .55s var(--ease-zoom); }
+.brand-logo { width: 34px; height: 34px; flex-shrink: 0; transition: transform .55s var(--ease-zoom); }
 @media (hover: hover) {
     .brand-mark:hover .brand-logo { transform: scale(1.06); }
 }
@@ -261,7 +261,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 .site-footer { background-color: var(--paper); border-top: 1px solid var(--rule); padding-block: 30px; transition: background-color .68s var(--ease-theme), color .68s var(--ease-theme), border-color .68s var(--ease-theme); }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 28px; }
 .footer-brand { display: inline-flex; align-items: center; gap: 12px; }
-.footer-logo { width: 26px; height: 23px; flex-shrink: 0; }
+.footer-logo { width: 24px; height: 24px; flex-shrink: 0; }
 .site-footer .brand-name { font-size: 13px; }
 .site-footer p, .back-top { font-size: 13px; color: var(--muted); }
 .back-top { display: inline-flex; align-items: center; min-height: 44px; }
@@ -277,13 +277,13 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     html { scroll-padding-top: 138px; }
     .nav-bar { flex-wrap: wrap; min-height: 112px; padding-top: 18px; gap: 5px 16px; }
     .brand-mark { gap: 10px; }
-    .brand-logo { width: 30px; height: 26px; }
+    .brand-logo { width: 28px; height: 28px; }
     .brand-name { font-size: 15px; }
     .brand-caption { font-size: 10px; }
     .nav-bar nav { order: 3; width: 100%; justify-content: space-between; gap: 12px; }
     .header-contact { font-size: 14px; gap: 10px; }
     .vertical-corner-brand { right: 6px; bottom: 16px; opacity: .28; }
-    .vertical-corner-brand .corner-logo { width: 15px; height: 14px; }
+    .vertical-corner-brand .corner-logo { width: 14px; height: 14px; }
     .vertical-corner-brand span { font-size: 8px; letter-spacing: .2em; }
     .hero { padding-top: 48px; }
     .hero-header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 34px; }
@@ -315,7 +315,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     h2 { font-size: 32px; letter-spacing: .08em; }
     .eyebrow { font-size: 11px; letter-spacing: .12em; margin-bottom: 20px; }
     .brand-mark { gap: 8px; }
-    .brand-logo { width: 24px; height: 21px; }
+    .brand-logo { width: 22px; height: 22px; }
     .brand-name { font-size: 13px; letter-spacing: .16em; }
     .brand-caption { letter-spacing: .05em; }
     .hero-figure figcaption { font-size: 11px; }
@@ -332,7 +332,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     .container { width: calc(100% - 32px); }
     .nav-bar { gap: 5px 8px; }
     .brand-mark { gap: 6px; }
-    .brand-logo { width: 18px; height: 16px; }
+    .brand-logo { width: 17px; height: 17px; }
     .header-contact { gap: 4px; font-size: 12px; }
     .brand-name { font-size: 11px; letter-spacing: .12em; }
     .brand-caption { font-size: 9px; letter-spacing: .03em; }
