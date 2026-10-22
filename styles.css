@@ -207,7 +207,7 @@ nav a:hover, .back-top:hover { text-decoration: underline; text-underline-offset
 .hero-header { display: grid; grid-template-columns: 1.3fr 1fr; align-items: end; gap: 70px; margin-bottom: 54px; }
 .hero-copy { max-width: 38ch; justify-self: end; padding-bottom: 5px; }
 .hero-copy p { color: var(--muted); margin-bottom: 24px; transition: color .68s var(--ease-theme); }
-.hero-figure img { aspect-ratio: 1600 / 582; object-fit: cover; }
+.hero-figure img { aspect-ratio: 16 / 9; object-fit: cover; object-position: center 54%; }
 figcaption { display: flex; justify-content: space-between; gap: 16px; font-size: 13px; color: var(--muted); padding-top: 14px; transition: color .68s var(--ease-theme); }
 .hero-note { display: flex; justify-content: space-between; gap: 25px; padding-block: 32px; color: var(--muted); font-size: 14px; transition: color .68s var(--ease-theme); }
 
@@ -349,7 +349,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     .brand-name { font-size: 13px; letter-spacing: .16em; }
     .brand-caption { display: none; }
     .hero-figure figcaption { font-size: 11px; }
-    .hero-figure img { aspect-ratio: 4 / 3; object-position: 56% center; }
+    .hero-figure img { aspect-ratio: 4 / 3; object-position: center center; }
     .section-header { flex-direction: column; margin-bottom: 24px; }
     .filter-bar { gap: 18px; }
     .filter-btn { font-size: 15px; }
