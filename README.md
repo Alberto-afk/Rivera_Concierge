@@ -18,7 +18,15 @@ Desde la raíz del repositorio:
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Publique `index.html`, `styles.css`, `app.js`, `furniture3d.js` y todo `assets/` en un alojamiento estático. Los módulos ES requieren servir JavaScript con el tipo MIME correcto; el servidor de Python ya lo hace. Subir un commit no configura por sí solo un despliegue.
+Publique `index.html`, `styles.css`, `app.js`, `hero-collage.js`, `furniture3d.js` y todo `assets/` en un alojamiento estático. Los módulos ES requieren servir JavaScript con el tipo MIME correcto; el servidor de Python ya lo hace. Subir un commit no configura por sí solo un despliegue.
+
+## Collage de inicio
+
+Seis fotografías locales del taller forman una diagonal y convergen en una sola pila al bajar. El recorrido se revierte al subir; el puntero añade una pequeña profundidad. `hero-collage.js` no carga bibliotecas, no usa WebGL y solicita cuadros sólo ante cambios. Pausa fuera de pantalla y al ocultar la pestaña. Móvil, pantallas bajas, movimiento reducido, ahorro de datos y señales de hardware modesto conservan una cuadrícula sin recorrido largo. Sin JavaScript también se ven las seis fotos y los enlaces.
+
+Prueba de lógica sin dependencias: `node tests/hero-collage.cjs`. Verifica convergencia, reversa, agrupación de eventos, reposo, visibilidad y fallbacks. Revisión visual en navegador a 1440 × 900 y 390 × 844. No representa una medición de FPS ni batería en teléfonos físicos. La suite histórica del sofá 3D no se ejecutó para este cambio aislado.
+
+Referencias observadas: [Vyashin](https://vyashin.com/) para la diagonal de tarjetas y su concentración; [Montfort Group](https://mont-fort.com/) para montaña, niebla y alejamiento. [Fort Energy](https://mont-fort.com/fort-energy/) muestra una escena diferente de haces luminosos. La primera etapa implementa sólo el collage. Para una etapa atmosférica posterior, se propone separar fondo, montaña y nubes en pocas capas de imágenes comprimidas, moverlas con transformaciones a distintas velocidades y compartir un progreso de scroll. El planeta se cargaría al acercarse a su sección. Es una propuesta de adaptación ligera, no una afirmación sobre el código interno de Montfort. No se copiaron sus recursos.
 
 ## Recorrido del sofá
 

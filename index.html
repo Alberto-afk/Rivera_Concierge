@@ -10,6 +10,7 @@
     <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script>
+    <script src="hero-collage.js" defer></script>
 </head>
 <body class="perf-low" data-theme="light">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -50,17 +51,19 @@
     <main id="contenido" tabindex="-1">
         <section class="hero" id="inicio" aria-labelledby="heroHeading" data-theme-section="light">
             <div class="section-vertical-watermark" aria-hidden="true">RIVERA CONCIERGE</div>
-            <div class="container">
+            <div class="container hero-stage">
                 <div class="hero-header">
                     <div><p class="eyebrow">Tapicería a medida · 29 años</p><h1 id="heroHeading" data-reveal><span class="title-line"><span>Muebles con</span></span> <span class="title-line"><span>historia.</span></span></h1></div>
                     <div class="hero-copy"><p data-reveal style="--reveal-delay: 120ms;">Hechos a mano para seguir viviendo.<span class="desktop-only"><br>Restauramos y tapizamos sus muebles con el cuidado de un oficio artesanal.</span></p><a class="text-link" href="#catalogo">Conozca nuestro trabajo <span aria-hidden="true">↓</span></a></div>
                 </div>
-                <figure class="hero-figure">
-                    <div class="photo-zoom-frame">
-                        <img src="assets/photos/terraza-pergola.jpg" srcset="assets/photos/terraza-pergola-sm.jpg 600w, assets/photos/terraza-pergola.jpg 2048w" sizes="(max-width: 600px) 100vw, 2048px" width="2048" height="1536" alt="Sala de terraza en L con cojinería a medida bajo pérgola de madera" fetchpriority="high">
-                    </div>
-                    <figcaption><span>01 / Terraza a medida</span><span>Confección a medida</span></figcaption>
-                </figure>
+                <div class="hero-collage" aria-label="Selección de trabajos reales del taller">
+                    <figure class="collage-card"><img src="assets/photos/sofa-terracota-sala-sm.jpg" width="720" height="540" alt="Sofá del taller tapizado en terracota" decoding="async"><figcaption>01 / Sofá terracota</figcaption></figure>
+                    <figure class="collage-card"><img src="assets/photos/butaca-curva-blanca-sm.jpg" width="720" height="540" alt="Butaca curva en cuero blanco" decoding="async"><figcaption>02 / Curvas en blanco</figcaption></figure>
+                    <figure class="collage-card"><img src="assets/photos/banqueta-cuero-crema-sm.jpg" width="720" height="405" alt="Banqueta en cuero crema y madera" decoding="async"><figcaption>03 / Cuero y madera</figcaption></figure>
+                    <figure class="collage-card"><img src="assets/photos/seccional-cuero-gris-sm.jpg" width="720" height="960" alt="Seccional a medida en cuero gris" decoding="async"><figcaption>04 / Hecho a medida</figcaption></figure>
+                    <figure class="collage-card"><img src="assets/photos/sofa-curvo-terracota-sm.jpg" width="720" height="540" alt="Sofá curvo de tapizado terracota" decoding="async"><figcaption>05 / Nuevas formas</figcaption></figure>
+                    <figure class="collage-card"><img src="assets/photos/terraza-pergola-sm.jpg" width="600" height="450" alt="Terraza con cojinería a medida bajo pérgola de madera" fetchpriority="high" decoding="async"><figcaption>06 / Una nueva historia</figcaption></figure>
+                </div>
                 <div class="hero-note"><p class="desktop-only">Un oficio que se aprende con las manos.</p><p>Miraflores · Surco · San Isidro</p></div>
             </div>
         </section>

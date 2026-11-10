@@ -506,3 +506,26 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     .scene-wash--clay, .scene-wash--sage { opacity: 0 !important; transform: none !important; }
     .scene-light { transform: none !important; }
 }
+
+/* The static editorial grid is the default, including without JavaScript. */
+.hero-collage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.collage-card { position: relative; overflow: hidden; border-radius: 8px; background: var(--surface); }
+.collage-card img { width: 100%; height: 100%; aspect-ratio: 1; object-fit: cover; }
+.collage-card figcaption { position: absolute; inset: auto 0 0; padding: 28px 14px 12px; color: #fff; background: linear-gradient(transparent, #0009); font-size: 12px; letter-spacing: .04em; }
+.hero.collage-live { padding: 0; height: 170svh; overflow: visible; }
+.collage-live .hero-stage { position: sticky; top: 92px; height: calc(100svh - 92px); min-height: 500px; }
+.collage-live .hero-header { display: block; margin: 0; }
+.collage-live .hero-header > div:first-child { position: absolute; top: 24px; right: 0; text-align: right; z-index: 2; }
+.collage-live .hero-header .eyebrow { margin-bottom: 12px; }
+.collage-live h1 { font-size: clamp(44px, 5.7vw, 88px); letter-spacing: .045em; line-height: 1.02; }
+.collage-live .hero-copy { position: absolute; bottom: 75px; left: 0; max-width: 34ch; z-index: 2; }
+.collage-live .hero-copy p { margin-bottom: 8px; font-size: 17px; }
+.collage-live .hero-copy .desktop-only { display: none; }
+.collage-live .hero-collage { position: absolute; inset: 0; display: block; pointer-events: none; }
+.collage-live .collage-card { position: absolute; width: clamp(150px, 22vw, 310px); aspect-ratio: 1; top: 48%; left: 50%; margin-left: clamp(-155px, -11vw, -75px); margin-top: clamp(-155px, -11vw, -75px); box-shadow: 0 12px 28px #27201816; }
+.collage-live.collage-visible .collage-card { will-change: transform; }
+.collage-live .hero-note { position: absolute; bottom: 0; left: 0; right: 0; padding-block: 20px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: .06em; }
+@media (max-width: 760px) {
+    .hero-collage { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .collage-card figcaption { font-size: 10px; padding: 24px 8px 8px; }
+}
