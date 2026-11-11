@@ -610,3 +610,17 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
     .hero-collage { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .collage-card figcaption { font-size: 10px; padding: 24px 8px 8px; }
 }
+/* A short brand entrance; all navigation remains usable throughout. */
+@media (prefers-reduced-motion: no-preference) {
+ .brand-intro { position:fixed; inset:0; z-index:90; display:grid; place-content:center; background:#050505; pointer-events:none; animation:intro-away .45s 1s both; }
+ .brand-intro img { width:140px; animation:intro-mark .65s both; }
+ .hero-collage .collage-card a { animation:photo-arrival .8s both; animation-delay:calc(1s + var(--arrival, 0) * .08s); }
+ @keyframes intro-away { to {opacity:0;visibility:hidden;} }
+ @keyframes intro-mark { from {opacity:0;transform:translateY(20px) scale(.85);} to {opacity:1;transform:none;} }
+ @keyframes photo-arrival { from {opacity:0;transform:translateY(45px) scale(.82);} to {opacity:1;transform:none;} }
+}
+@media (prefers-reduced-motion: reduce) { .brand-intro {display:none;} }
+.brand-logo { width:58px; height:44px; object-fit:contain; }
+.footer-logo,.corner-logo { object-fit:contain; }
+.material-swatch[data-material="terracota"] span {background-image:url('assets/materials/chocolate.webp');background-size:cover;}
+.material-swatch[data-material="oliva"] span {background-image:repeating-linear-gradient(45deg,transparent 0 2px,#ffffff30 2px 3px);}

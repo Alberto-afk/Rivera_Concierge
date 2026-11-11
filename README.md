@@ -87,3 +87,8 @@ Las pruebas arrancan y detienen su propio servidor. Cubren recursos, catálogo, 
 La portada presenta «Tapicería de muebles en Lima», un botón inmediato a la galería y un acceso a cotizar por WhatsApp. Las seis fotos son enlaces; los proyectos con destino específico se muestran al abrir su enlace directo. El taller sigue al resumen de trabajos. Montaña, planeta y sofá se conservan en un desplegable opcional cerrado inicialmente, después del proceso.
 
 Se comprobaron el botón, un enlace de foto, la apertura y cierre de la experiencia y el diseño móvil. Pasaron las pruebas de lógica de collage y atmósfera. La suite histórica WebGL se adaptó para abrir el desplegable antes de probar la escena, pero no se ejecutó completa.
+
+## Marca y materiales (noviembre 2026)
+Logo y favicon derivados de la imagen entregada por el propietario. Navegación con Inicio, sin el botón El taller; la sección permanece. Se retiraron el pie de foto y el enlace secundario solicitados. Entrada breve de marca y fotografías inspirada en el video local de Vyashin, omitida con movimiento reducido.
+
+Los cojines auxiliares se elevaron sobre los asientos. El selector distingue lino, cuero chocolate (imagen de grano aportada por el usuario) y tejido oliva mediante mapas, relieve y rugosidad. Se actualizaron los tres posters desde el modelo. Sigue siendo una representación 3D, no una fotografía del taller. Se conservan los límites de GPU y el render bajo demanda. Pruebas de lógica de collage y atmósfera aprobadas; revisión visual del modelo y navegación. No se ejecutó la suite WebGL histórica completa ni se midió rendimiento en teléfonos físicos.

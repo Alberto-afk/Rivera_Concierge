@@ -10,8 +10,8 @@
     const materialButtons = Array.from(document.querySelectorAll('[data-material]'));
     const fabrics = {
         lino: { label: 'Lino claro', description: 'lino claro' },
-        terracota: { label: 'Terracota', description: 'tela terracota' },
-        oliva: { label: 'Verde oliva', description: 'tela verde oliva' }
+        terracota: { label: 'Cuero chocolate', description: 'cuero chocolate con grano' },
+        oliva: { label: 'Tejido oliva', description: 'tejido grueso verde oliva' }
     };
 
     if (section && stage && host && poster && toggle && status) {
@@ -31,7 +31,7 @@
         let revealObserver = null;
         const chapters = [
             ['01 / La forma', 'Proporción serena.', 'Líneas simples que invitan a quedarse.'],
-            ['02 / El tapizado', 'Textura viva.', 'Lino, terracota o verde oliva.'],
+            ['02 / El tapizado', 'Textura viva.', 'Lino, cuero chocolate o tejido oliva.'],
             ['03 / Su espacio', 'Hecho a medida.', 'Pensado para su sala.']
         ];
         let preference = null;
@@ -270,7 +270,7 @@
         async function activate() {
             if (active || loading || !requested || !visible || document.hidden) return;
             setState('loading');
-            loading = import('./furniture3d.js').then(async function (module) {
+            loading = import('./furniture3d.js?v=20261111b').then(async function (module) {
                 if (!requested || !visible || document.hidden) return null;
                 return module.createFurnitureScene(host, { onFailure: fail });
             });
@@ -327,7 +327,7 @@
                 if (!fabrics[selected]) return;
                 material = selected;
                 // Matching pre-rendered posters keep material selection available without WebGL.
-                poster.src = 'assets/sofa3d/sofa-' + selected + '.webp';
+                poster.src = 'assets/sofa3d/sofa-' + selected + '.webp?v=20261111b';
                 poster.alt = 'Modelo de un sofá de tres plazas en ' + fabrics[selected].description + ' y patas de madera';
                 materialButtons.forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
                 const label = document.getElementById('materialStatus');

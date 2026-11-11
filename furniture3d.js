@@ -14,7 +14,7 @@ import {
 const clamp = (value, min, max) => Math.max(min, Math.min(max, Number(value) || 0));
 const PALETTES = {
     lino: { body: '#bfb39e', cushion: '#d9cdb9', seam: '#a6967e' },
-    terracota: { body: '#975d48', cushion: '#bd8065', seam: '#81503c' },
+    terracota: { body: '#bfa795', cushion: '#d1baa9', seam: '#5e4232' },
     oliva: { body: '#6e7560', cushion: '#969a7f', seam: '#5e684f' }
 };
 
@@ -27,7 +27,7 @@ const CAMERA_SHOTS = [
     { at: 1, angle: -0.44, scale: 1.03, detail: false, x: 0.16, y: 1.07, z: 0, elevation: 0.22 }
 ];
 
-function fabricTexture() {
+function fabricTexture(coarse = false) {
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = 128;
     const context = canvas.getContext('2d');
@@ -49,7 +49,7 @@ function fabricTexture() {
     context.putImageData(data, 0, 0);
     const texture = new CanvasTexture(canvas);
     texture.wrapS = texture.wrapT = RepeatWrapping;
-    texture.repeat.set(6, 6);
+    texture.repeat.set(coarse ? 9 : 18, coarse ? 9 : 18);
     texture.colorSpace = SRGBColorSpace;
     texture.anisotropy = 2;
     return texture;
@@ -162,7 +162,7 @@ function addSofa(scene, materials) {
     }
     // Cojines laterales con vivo perimetral que equilibran ambos extremos del sofá.
     const leftPillowGroup = new Group();
-    leftPillowGroup.position.set(-1.16, 1.00, 0.11);
+    leftPillowGroup.position.set(-1.12, 1.145, 0.15);
     leftPillowGroup.rotation.set(-0.16, 0.12, -0.17);
     leftPillowGroup.add(roundedMesh(0.49, 0.49, 0.18, 0.085, materials.cushion, 'z'));
     const leftPillowSeam = seam(0.45, 0.45, 0.075, materials.seam);
@@ -171,7 +171,7 @@ function addSofa(scene, materials) {
     sofa.add(leftPillowGroup);
 
     const rightLumbarGroup = new Group();
-    rightLumbarGroup.position.set(0.987, 0.91, -0.19);
+    rightLumbarGroup.position.set(0.987, 1.025, -0.08);
     rightLumbarGroup.rotation.set(-0.14, -0.06, 0.02);
     rightLumbarGroup.add(roundedMesh(0.58, 0.30, 0.15, 0.07, materials.cushion, 'z'));
     const rightLumbarSeam = seam(0.54, 0.26, 0.06, materials.seam);
@@ -225,14 +225,23 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
         renderer.outputColorSpace = SRGBColorSpace;
         renderer.toneMapping = ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.14;
+        renderer.toneMappingExposure = 1.0;
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = PCFSoftShadowMap;
         renderer.shadowMap.autoUpdate = false;
 
         const fabric = fabricTexture();
+        const woven = fabricTexture(true);
+        const leatherImage = new Image();
+        leatherImage.src = "./assets/materials/chocolate.webp";
+        await leatherImage.decode();
+        const leather = new CanvasTexture(leatherImage);
+        leather.wrapS = leather.wrapT = RepeatWrapping;
+        leather.repeat.set(2, 2);
+        leather.colorSpace = SRGBColorSpace;
+        leather.anisotropy = 2;
         const wood = woodTexture();
-        textures.push(fabric, wood);
+        textures.push(fabric, woven, leather, wood);
         const palette = PALETTES.lino;
         const upholstery = {
             body: new MeshStandardMaterial({ color: palette.body, roughness: 0.96, map: fabric, bumpMap: fabric, bumpScale: 0.0085 }),
@@ -242,9 +251,9 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
         };
         materials.push(...Object.values(upholstery));
         addSofa(scene, upholstery);
-        const sky = new HemisphereLight(0xfffaf0, 0x827569, 2.65);
+        const sky = new HemisphereLight(0xfffaf0, 0x63564a, 1.5);
         scene.add(sky);
-        const key = new DirectionalLight(0xfff6e5, 3.05);
+        const key = new DirectionalLight(0xfff6e5, 3.4);
         key.position.set(-2.3, 6.0, 3.7);
         key.castShadow = true;
         key.shadow.mapSize.set(512, 512);
@@ -367,6 +376,12 @@ export async function createFurnitureScene(container, { onFailure } = {}) {
                 upholstery.body.color.set(next.body);
                 upholstery.cushion.color.set(next.cushion);
                 upholstery.seam.color.set(next.seam);
+                for (const mat of [upholstery.body, upholstery.cushion]) {
+                    mat.map = mat.bumpMap = name === 'terracota' ? leather : name === 'oliva' ? woven : fabric;
+                    mat.roughness = name === 'terracota' ? .58 : name === 'oliva' ? .94 : .87;
+                    mat.bumpScale = name === 'terracota' ? .024 : name === 'oliva' ? .019 : .011;
+                    mat.needsUpdate = true;
+                }
             },
             setQuality(name) {
                 if (disposed || contextLost || (name !== 'low' && name !== 'high') || name === quality) return;
