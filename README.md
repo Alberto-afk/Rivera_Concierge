@@ -94,3 +94,7 @@ Logo y favicon derivados de la imagen entregada por el propietario. Navegación 
 Los cojines auxiliares se elevaron sobre los asientos. El selector distingue lino, cuero chocolate (imagen de grano aportada por el usuario) y tejido oliva mediante mapas, relieve y rugosidad. Se actualizaron los tres posters desde el modelo. Sigue siendo una representación 3D, no una fotografía del taller. Se conservan los límites de GPU y el render bajo demanda. Pruebas de lógica de collage y atmósfera aprobadas; revisión visual del modelo y navegación. No se ejecutó la suite WebGL histórica completa ni se midió rendimiento en teléfonos físicos.
 
 Se retiró el cojín auxiliar izquierdo y se añadieron dos botones tapizados por respaldo. Posters renovados para los tres materiales; revisión visual de los tres acabados y comprobación de sintaxis.
+
+## Tema claro y oscuro
+
+El botón Claro/Oscuro del encabezado controla ambas páginas y guarda la elección en localStorage. Sin elección sigue el tema del sistema; tolera almacenamiento bloqueado. theme.js aplica el tema antes de pintar y sustituye el cambio automático por scroll. El logo y favicon tienen base clara para mantener el contraste. La escena de montaña y el visor conservan su iluminación oscura propia. Verificados ambos modos, navegación a galería, recarga y móvil de 390 px sin desbordamiento.

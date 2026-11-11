@@ -466,22 +466,4 @@
         if (filterBar) filterBar.hidden = false;
     }
 
-    const themeSections = Array.from(document.querySelectorAll('[data-theme-section]'));
-    if (themeSections.length && window.IntersectionObserver) {
-        document.body.classList.add('theme-ready');
-        const themeMeta = document.querySelector('meta[name="theme-color"]');
-        const applyTheme = function (theme) {
-            if (!theme || document.body.dataset.theme === theme) return;
-            document.body.dataset.theme = theme;
-            if (themeMeta) themeMeta.setAttribute('content', theme === 'dark' ? '#111210' : '#f5f2ec');
-        };
-        const themeObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    applyTheme(entry.target.dataset.themeSection);
-                }
-            });
-        }, { rootMargin: '-42% 0px -48% 0px', threshold: 0 });
-        themeSections.forEach(function (item) { themeObserver.observe(item); });
-    }
 })();
