@@ -18,7 +18,13 @@ Desde la raíz del repositorio:
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Publique `index.html`, `styles.css`, `app.js`, `hero-collage.js`, `atmosphere.js`, `furniture3d.js` y todo `assets/` en un alojamiento estático. Los módulos ES requieren servir JavaScript con el tipo MIME correcto; el servidor de Python ya lo hace. Subir un commit no configura por sí solo un despliegue.
+Publique `index.html`, `trabajos.html`, `styles.css`, `app.js`, `hero-collage.js`, `atmosphere.js`, `furniture3d.js` y todo `assets/` en un alojamiento estático. Los módulos ES requieren servir JavaScript con el tipo MIME correcto; el servidor de Python ya lo hace. Subir un commit no configura por sí solo un despliegue.
+
+## Página de trabajos
+
+`trabajos.html` contiene los 12 proyectos y sus filtros. La portada conserva únicamente «Selección del taller / Nuestro trabajo» y el enlace a la galería; a continuación empieza el taller, con su fotografía original. La navegación «Trabajos» y el acceso del sofá abren la nueva página. La galería reutiliza `app.js` sin cargar los scripts del collage ni de la atmósfera; sin JavaScript muestra todos los proyectos.
+
+Se verificaron navegación de ida y regreso, filtro de terrazas, expansión a 12 trabajos y diseño móvil/escritorio. Se ajustaron las rutas del smoke test existente; no se ejecutó la suite WebGL completa para esta reorganización.
 
 ## Collage de inicio
 

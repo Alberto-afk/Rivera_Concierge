@@ -41,7 +41,7 @@
                 </span>
             </a>
             <nav aria-label="Navegación principal">
-                <a href="#catalogo">Trabajos</a>
+                <a href="trabajos.html">Trabajos</a>
                 <a href="#maestro">El taller</a>
                 <a href="#contacto">Contacto</a>
             </nav>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="showroom-mode">
                     <button type="button" id="perfToggleBtn" class="perf-control" hidden aria-pressed="false" aria-label="Vista 3D del mueble" aria-controls="sofaCanvas"><span class="perf-dot" aria-hidden="true"></span><span id="perfStatusLabel">Ver en 3D</span></button>
-                    <a class="showroom-skip" href="#catalogo">Ir a los trabajos <span aria-hidden="true">↘</span></a>
+                    <a class="showroom-skip" href="trabajos.html">Ir a los trabajos <span aria-hidden="true">↘</span></a>
                 </div>
                 <div class="sofa-view" role="img" aria-label="Representación de un sofá de tres plazas, con cojines de tela y patas de madera. Puede explorar tres tonos de tapizado.">
                     <img id="sofaPoster" class="sofa-poster" src="assets/sofa3d/sofa-lino.webp" width="1440" height="900" alt="Modelo de un sofá de tres plazas en lino claro y patas de madera" loading="lazy" decoding="async">
@@ -124,94 +124,9 @@
             </div>
         </section>
 
-        <section class="portfolio-section" id="catalogo" aria-labelledby="catalogoHeading" data-theme-section="dark">
-            <div class="section-vertical-watermark" aria-hidden="true">RIVERA CONCIERGE</div>
+        <section class="portfolio-section portfolio-intro" id="catalogo" aria-labelledby="catalogoHeading" data-theme-section="dark">
             <div class="container">
-                <div class="section-header"><div><p class="eyebrow">Selección del taller</p><h2 id="catalogoHeading" data-reveal>Nuestro trabajo.</h2></div><p class="section-desc" data-reveal style="--reveal-delay: 100ms;">Piezas a medida.<span class="desktop-only"><br>De nuestro taller a su casa.</span></p></div>
-                <div class="catalog-controls">
-                    <div class="filter-bar" hidden role="group" aria-label="Filtrar trabajos" aria-controls="catalogGrid">
-                        <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">Todos</button>
-                        <button class="filter-btn" type="button" data-filter="salas" aria-pressed="false">Sofás</button>
-                        <button class="filter-btn" type="button" data-filter="butacas" aria-pressed="false">Sillas y butacas</button>
-                        <button class="filter-btn" type="button" data-filter="terrazas" aria-pressed="false">Terrazas</button>
-                    </div>
-                    <p id="catalogStatus" class="catalog-status" role="status" aria-live="polite" aria-atomic="true">12 trabajos</p>
-                </div>
-                <div class="catalog-grid" id="catalogGrid">
-                    <article class="work-card" data-category="salas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/sofa-terracota-sala.jpg" srcset="assets/photos/sofa-terracota-sala-sm.jpg 720w, assets/photos/sofa-terracota-sala.jpg 1440w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1440" height="1080" alt="Sofá de dos cuerpos en tela terracota instalado en sala" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Sofá terracota</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="salas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/seccional-cuero-gris.jpg" srcset="assets/photos/seccional-cuero-gris-sm.jpg 720w, assets/photos/seccional-cuero-gris.jpg 1200w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1200" height="1600" alt="Sofá seccional en L tapizado en cuero gris" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Seccional en cuero gris</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="salas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/banqueta-cuero-crema.jpg" srcset="assets/photos/banqueta-cuero-crema-sm.jpg 720w, assets/photos/banqueta-cuero-crema.jpg 1440w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1440" height="810" alt="Banqueta descalzadora tapizada en cuero crema con patas de madera" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Banqueta en cuero crema</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="butacas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/butaca-curva-blanca.jpg" srcset="assets/photos/butaca-curva-blanca-sm.jpg 720w, assets/photos/butaca-curva-blanca.jpg 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1280" height="960" alt="Butaca curva tapizada en cuero blanco con patas negras" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Butaca curva blanca</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="butacas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/banquetas-jacquard.jpg" srcset="assets/photos/banquetas-jacquard-sm.jpg 720w, assets/photos/banquetas-jacquard.jpg 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1280" height="960" alt="Par de banquetas tapizadas en jacquard con tachuelas de bronce" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Banquetas con tachuelas</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="terrazas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/sofa-curvo-terracota.jpg" srcset="assets/photos/sofa-curvo-terracota-sm.jpg 720w, assets/photos/sofa-curvo-terracota.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1600" height="582" alt="Seccional curvo terracota en terraza residencial" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Terrazas</span><h3>Seccional curvo</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="salas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/modulo-rojo-respaldo.jpg" srcset="assets/photos/modulo-rojo-respaldo-sm.jpg 720w, assets/photos/modulo-rojo-respaldo.jpg 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1280" height="960" alt="Banca modular en rojo con respaldo gris a medida" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Banca modular bicolor</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="salas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/sofa-avena-cojines.jpg" srcset="assets/photos/sofa-avena-cojines-sm.jpg 720w, assets/photos/sofa-avena-cojines.jpg 1177w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1177" height="864" alt="Sofá lino avena con cuatro cojines decorativos en sala" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Sofá lino avena</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="salas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/sofa-cuero-caoba.jpg" srcset="assets/photos/sofa-cuero-caoba-sm.jpg 720w, assets/photos/sofa-cuero-caoba.jpg 1408w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="1408" height="936" alt="Sofá en cuero envejecido tono caoba" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Salas y sofás</span><h3>Sofá en cuero caoba</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="butacas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/butaca-boucle.jpg" srcset="assets/photos/butaca-boucle-sm.jpg 720w, assets/photos/butaca-boucle.jpg 755w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="755" height="691" alt="Butaca moderna tapizada en bouclé marfil" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Butaca bouclé</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="butacas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/silla-clasica.jpg" srcset="assets/photos/silla-clasica.jpg 506w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="506" height="675" alt="Sillón de madera tallada con tapiz jacquard geométrico" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Sillas y butacas</span><h3>Sillón en jacquard</h3></div></div>
-                        </div>
-                    </article>
-                    <article class="work-card" data-category="terrazas">
-                        <div class="work-item">
-                            <div class="work-thumb"><img src="assets/photos/sillon-terraza.jpg" srcset="assets/photos/sillon-terraza-sm.jpg 720w, assets/photos/sillon-terraza.jpg 864w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" width="864" height="960" alt="Sillón de terraza en balcón con cojines beige impermeables" loading="lazy" decoding="async"></div>
-                            <div class="work-body"><div><span class="work-category">Terrazas</span><h3>Sillón de terraza</h3></div></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="catalog-more"><button id="showMoreBtn" class="button-secondary" type="button" aria-controls="catalogGrid" hidden>Ver más trabajos</button></div>
+                <div class="section-header"><div><p class="eyebrow">Selección del taller</p><h2 id="catalogoHeading" data-reveal>Nuestro trabajo.</h2></div><a class="text-link" href="trabajos.html">Ver todos los trabajos <span aria-hidden="true">↗</span></a></div>
             </div>
         </section>
 

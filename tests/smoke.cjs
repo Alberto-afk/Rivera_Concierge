@@ -211,10 +211,11 @@ async function compactStatic(page) {
         const candidates = await page.locator('img').evaluateAll(images => images.flatMap(img => img.srcset.split(',').map(src => src.trim().split(' ')[0])));
         for (const candidate of new Set(candidates)) assert.equal((await page.request.get(url + '/' + candidate)).status(), 200, candidate);
         await page.evaluate(() => document.querySelectorAll('img').forEach(img => { img.loading = 'eager'; }));
-        await page.waitForFunction(() => Array.from(document.images).every(image => image.complete && image.naturalWidth > 0));
+        await page.waitForFunction(() => Array.from(document.images).filter(image => image.hasAttribute('src')).every(image => image.complete && image.naturalWidth > 0));
         assert.deepEqual(external, [], 'site should not depend on external assets');
     });
     await check('catalog filters, counts and expand/collapse', async () => {
+        await page.goto(url + '/trabajos.html', { waitUntil: 'networkidle' });
         assert.equal(await page.locator('.work-card:visible').count(), 6);
         await page.locator('#showMoreBtn').click();
         assert.equal(await page.locator('.work-card:visible').count(), 12);
@@ -234,6 +235,7 @@ async function compactStatic(page) {
         }
     });
     await check('real 3D pixels, materials, scroll typography and changing gradients', async () => {
+        await page.goto(url, { waitUntil: 'networkidle' });
         await sceneReady(page);
         const linen = await pixelStats(page);
         assert(linen.colors > 40 && linen.dark > .005, 'WebGL should draw a shaded sofa, not an empty canvas');
@@ -320,7 +322,7 @@ async function compactStatic(page) {
         for (const width of [320, 390, 768, 1024, 1440]) {
             await page.setViewportSize({ width, height: 900 });
             assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'overflow at ' + width);
-            assert(await page.locator('nav a[href="#catalogo"]').isVisible());
+            assert(await page.locator('nav a[href="trabajos.html"]').isVisible());
             assert(await page.locator('.header-contact').isVisible());
         }
     });
@@ -368,7 +370,7 @@ async function compactStatic(page) {
             await readableEntryCopy(run.page);
             if (options.isMobile) await capture(run.page, 'mobile');
             assert.equal(run.modules.length, 0, 'static defaults must not download 3D modules');
-            assert.equal(await run.page.locator('.work-card:visible').count(), 6);
+            assert.equal(await run.page.locator('.work-card').count(), 0);
             if (manualAllowed) {
                 assert(!(await run.page.locator('#perfToggleBtn').isDisabled()));
                 await run.page.locator('#perfToggleBtn').click();
@@ -442,7 +444,7 @@ async function compactStatic(page) {
     await check('without JavaScript: content, all projects and contact remain usable', async () => {
         const run = await createPage({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
         await run.page.goto(url);
-        assert.equal(await run.page.locator('.work-card:visible').count(), 12);
+        assert.equal(await run.page.locator('.work-card').count(), 0);
         assert.equal(await run.page.locator('#showMoreBtn:visible').count(), 0);
         assert.equal(await run.page.locator('[role="dialog"]').count(), 0);
         assert.equal(await run.page.locator('.filter-bar:visible').count(), 0);
@@ -454,6 +456,10 @@ async function compactStatic(page) {
         await readableStaticMotion(run.page);
         await readableEntryCopy(run.page);
         assert(await run.page.locator('a[href^="tel:"]').isVisible());
+        await run.page.goto(url + '/trabajos.html');
+        assert.equal(await run.page.locator('.work-card:visible').count(), 12);
+        assert.equal(await run.page.locator('.filter-bar:visible').count(), 0);
+        assert.equal(await run.page.locator('#showMoreBtn:visible').count(), 0);
         await run.context.close();
     });
     assert(passed > 0, 'RIVERA_CHECK_FROM skipped every check');

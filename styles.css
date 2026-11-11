@@ -253,6 +253,16 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 .filter-btn { min-height: 52px; padding: 8px 0 16px; color: var(--muted); font-size: 16px; border-bottom: 2px solid transparent; transition: color .3s ease, border-color .3s ease; }
 .filter-btn:hover, .filter-btn.is-active { color: var(--ink); border-bottom-color: var(--ink); }
 .catalog-status { color: var(--muted); font-size: 13px; }
+.portfolio-intro { padding-block: 64px; }
+.portfolio-intro .section-header { margin-bottom: 0; }
+.gallery-back { margin-bottom: 40px; }
+.gallery-page .portfolio-section { padding-top: 36px; }
+.gallery-page h1 { font-size: clamp(32px, 3.6vw, 52px); }
+.site-header a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+@media (max-width: 600px) {
+    .portfolio-intro { padding-block: 40px; }
+    .portfolio-intro .section-header { align-items: flex-start; flex-direction: column; gap: 18px; }
+}
 .catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 28px; }
 .work-item { display: block; }
 .work-thumb img { aspect-ratio: 4 / 3; object-fit: cover; }
