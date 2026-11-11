@@ -21,21 +21,21 @@
 }
 
 body[data-theme="dark"] {
-    --paper: #111210;
-    --surface: #181a17;
-    --ink: #f4f1ea;
-    --muted: #a3a29a;
-    --rule: #2b2d29;
+    --paper: #050505;
+    --surface: #151411;
+    --ink: #eee3cf;
+    --muted: #c5baa6;
+    --rule: #363129;
 }
 
 body:not(.theme-ready) [data-theme-section="dark"] {
-    --paper: #111210;
-    --surface: #181a17;
-    --ink: #f4f1ea;
-    --muted: #a3a29a;
-    --rule: #2b2d29;
-    background-color: #111210;
-    color: #f4f1ea;
+    --paper: #050505;
+    --surface: #151411;
+    --ink: #eee3cf;
+    --muted: #c5baa6;
+    --rule: #363129;
+    background-color: #050505;
+    color: #eee3cf;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -201,7 +201,7 @@ nav a:hover, .back-top:hover { text-decoration: underline; text-underline-offset
 }
 
 .hero { padding-top: 74px; padding-bottom: 30px; position: relative; overflow: hidden; }
-.hero-header { display: grid; grid-template-columns: 1.3fr 1fr; align-items: end; gap: 70px; margin-bottom: 54px; }
+.hero-header { display: block; margin-bottom: 54px; }
 .hero-copy { max-width: 38ch; justify-self: end; padding-bottom: 5px; }
 .hero-copy p { color: var(--muted); margin-bottom: 24px; transition: color .68s var(--ease-theme); }
 .hero-figure img { aspect-ratio: 3 / 2; object-fit: cover; object-position: center 50%; }
@@ -525,6 +525,56 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 .collage-live .collage-card { position: absolute; width: clamp(150px, 22vw, 310px); aspect-ratio: 1; top: 48%; left: 50%; margin-left: clamp(-155px, -11vw, -75px); margin-top: clamp(-155px, -11vw, -75px); box-shadow: 0 12px 28px #27201816; }
 .collage-live.collage-visible .collage-card { will-change: transform; }
 .collage-live .hero-note { position: absolute; bottom: 0; left: 0; right: 0; padding-block: 20px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: .06em; }
+.collage-card figcaption { color: #eee3cf; }
+.section-vertical-watermark { color: #eee3cf; opacity: .075; }
+.showroom-section { --scene-paper: #050505; color: #eee3cf; border-color: #363129; }
+.showroom-sticky { background: #050505; }
+.scene-wash--linen { background: radial-gradient(ellipse at 35% 55%, #24201a, #050505 72%); }
+.scene-wash--clay { background: radial-gradient(ellipse at 65% 50%, #2c201b, #050505 72%); }
+.scene-wash--sage { background: radial-gradient(ellipse at 35% 55%, #20251d, #050505 72%); }
+.scene-light { opacity: .08; }
+.showroom-heading .eyebrow, .showroom-story .eyebrow, .showroom-skip, .showroom-footer, .showroom-story-desc, #materialStatus { color: #c5baa6; }
+.material-swatch[aria-pressed="true"] { border-color: #eee3cf; }
+.showroom-progress span { background: #eee3cf; }
+
+/* Atmospheric chapter: the short static composition is the default. */
+.atmosphere { position: relative; background: #050505; color: #eee3cf; }
+.atmosphere-stage { position: relative; height: 780px; overflow: hidden; isolation: isolate; }
+.atmosphere-art { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
+.atmosphere-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(#050505 0%, transparent 18%, transparent 75%, #050505 100%); }
+.atmosphere-mountain { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .85; }
+.atmosphere-planet { position: absolute; width: 180px; height: 180px; object-fit: contain; right: 7%; top: 18%; opacity: .8; }
+.atmosphere-cloud { display: none; position: absolute; width: 110%; max-width: none; height: auto; }
+.atmosphere-cloud:not([src]) { visibility: hidden; }
+.atmosphere-top, .atmosphere-bottom { position: absolute; left: max(56px, calc((100vw - 1360px) / 2)); right: max(56px, calc((100vw - 1360px) / 2)); display: flex; justify-content: space-between; align-items: center; gap: 24px; z-index: 3; }
+.atmosphere-top { top: 28px; }
+.atmosphere-top .eyebrow { margin: 0; font-size: 11px; }
+.atmosphere-top .text-link { font-size: 12px; border: 0; }
+.atmosphere-bottom { bottom: 32px; padding-top: 16px; border-top: 1px solid #eee3cf44; font-size: 12px; color: #c5baa6; }
+.atmosphere-hint { display: none; }
+.atmosphere-progress { position: absolute; top: -1px; left: 0; width: 100%; height: 1px; background: #eee3cf; transform: scaleX(0); transform-origin: left; }
+.atmosphere-title { position: absolute; top: 21%; left: 8%; font-size: clamp(52px, 6.4vw, 98px); font-weight: 300; line-height: 1.02; letter-spacing: -.035em; }
+.atmosphere-title em { font-family: Georgia, serif; font-weight: 400; }
+.atmosphere-title--world { top: auto; bottom: 15%; left: auto; right: 8%; text-align: right; font-size: clamp(36px, 4vw, 60px); }
+.atmosphere.atmosphere-live { height: 280svh; }
+.atmosphere-live .atmosphere-stage { position: sticky; top: 94px; height: calc(100svh - 94px); min-height: 0; }
+.atmosphere-live .atmosphere-planet { width: min(60vw, 680px); height: min(60vw, 680px); right: 6%; top: 50%; margin-top: max(-340px, -30vw); opacity: 0; }
+.atmosphere-live .atmosphere-cloud { display: block; }
+.atmosphere-cloud--back { top: 25%; left: -30%; opacity: .28; }
+.atmosphere-cloud--front { bottom: 5%; right: -30%; opacity: .4; }
+.atmosphere-live .atmosphere-title--world { top: 35%; bottom: auto; left: 8%; right: auto; text-align: left; font-size: clamp(52px, 6.4vw, 98px); opacity: 0; }
+.atmosphere-live .atmosphere-hint { display: inline; }
+.atmosphere-live.atmosphere-visible .atmosphere-art img { will-change: transform, opacity; }
+@media (max-width: 760px) {
+    .atmosphere-stage { height: 680px; }
+    .atmosphere-top, .atmosphere-bottom { left: 20px; right: 20px; gap: 12px; }
+    .atmosphere-top .eyebrow { max-width: 20ch; font-size: 10px; }
+    .atmosphere-mountain { object-position: 52% center; }
+    .atmosphere-planet { width: 140px; height: 140px; top: 12%; right: -2%; }
+    .atmosphere-title { top: 27%; left: 20px; font-size: clamp(42px, 11vw, 68px); }
+    .atmosphere-title--world { top: auto; bottom: 16%; left: auto; right: 20px; font-size: 38px; }
+    .atmosphere-bottom { font-size: 11px; }
+}
 @media (max-width: 760px) {
     .hero-collage { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .collage-card figcaption { font-size: 10px; padding: 24px 8px 8px; }

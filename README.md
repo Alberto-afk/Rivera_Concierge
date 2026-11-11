@@ -18,7 +18,7 @@ Desde la raíz del repositorio:
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Publique `index.html`, `styles.css`, `app.js`, `hero-collage.js`, `furniture3d.js` y todo `assets/` en un alojamiento estático. Los módulos ES requieren servir JavaScript con el tipo MIME correcto; el servidor de Python ya lo hace. Subir un commit no configura por sí solo un despliegue.
+Publique `index.html`, `styles.css`, `app.js`, `hero-collage.js`, `atmosphere.js`, `furniture3d.js` y todo `assets/` en un alojamiento estático. Los módulos ES requieren servir JavaScript con el tipo MIME correcto; el servidor de Python ya lo hace. Subir un commit no configura por sí solo un despliegue.
 
 ## Collage de inicio
 
@@ -26,11 +26,21 @@ Seis fotografías locales del taller forman una diagonal y convergen en una sola
 
 Prueba de lógica sin dependencias: `node tests/hero-collage.cjs`. Verifica convergencia, reversa, agrupación de eventos, reposo, visibilidad y fallbacks. Revisión visual en navegador a 1440 × 900 y 390 × 844. No representa una medición de FPS ni batería en teléfonos físicos. La suite histórica del sofá 3D no se ejecutó para este cambio aislado.
 
-Referencias observadas: [Vyashin](https://vyashin.com/) para la diagonal de tarjetas y su concentración; [Montfort Group](https://mont-fort.com/) para montaña, niebla y alejamiento. [Fort Energy](https://mont-fort.com/fort-energy/) muestra una escena diferente de haces luminosos. La primera etapa implementa sólo el collage. Para una etapa atmosférica posterior, se propone separar fondo, montaña y nubes en pocas capas de imágenes comprimidas, moverlas con transformaciones a distintas velocidades y compartir un progreso de scroll. El planeta se cargaría al acercarse a su sección. Es una propuesta de adaptación ligera, no una afirmación sobre el código interno de Montfort. No se copiaron sus recursos.
+Referencias observadas: [Vyashin](https://vyashin.com/) para la diagonal de tarjetas y su concentración; [Montfort Group](https://mont-fort.com/) para montaña, niebla y alejamiento. [Fort Energy](https://mont-fort.com/fort-energy/) muestra una escena diferente de haces luminosos. No se copiaron sus recursos.
+
+## Tema oscuro y recorrido atmosférico
+
+La segunda etapa aplica fondo negro y tipografía beige claro a todas las secciones, incluido el sofá. Se retiró del inicio el bloque «Hechos a mano para seguir viviendo / Conozca nuestro trabajo» solicitado por el usuario.
+
+Entre el collage y el sofá, `atmosphere.js` coordina una montaña que se aleja, dos capas de nubes que responden al puntero y una transición a un planeta. El scroll es nativo y reversible, con enlace para saltar el recorrido. Las imágenes son ilustraciones decorativas generadas para este proyecto, no fotografías del negocio ni recursos de Montfort.
+
+Los cinco WebP de `assets/atmosphere/` suman 350.828 bytes (343 KiB), incluidas las versiones pequeñas. Las nubes se cargan a 300 px de la sección; el planeta de 800 px se solicita a partir del 28% del recorrido. Sólo se animan transformaciones y opacidad, sin WebGL adicional, vídeos, filtros animados ni bucles en reposo. Fuera de pantalla o con la pestaña oculta no se solicitan cuadros. Móvil, hardware modesto, ahorro de datos y movimiento reducido conservan una composición estática corta; sin JavaScript también es visible.
+
+Validación: `node tests/hero-collage.cjs` y `node tests/atmosphere.cjs` comprueban lógica, convergencia, reversa, puntero, carga diferida, pausas y fallbacks. Se revisaron visualmente inicio, montaña, transición, planeta, regreso, salto al sofá y móvil a 390 × 844; escritorio a 1440 × 900. No se observaron errores de consola. Estas comprobaciones no miden FPS ni batería en dispositivos físicos; no se ejecutó la suite histórica completa del sofá.
 
 ## Recorrido del sofá
 
-La sección «El oficio toma forma» aplica las referencias de los videos aportados por el usuario: un escenario con degradados de arena, arcilla y salvia, tipografía cinética y cámara guiada por scroll en tres actos: vista completa, detalle del tapizado y regreso a una vista amplia desde el lado opuesto. El análisis visual está en [REFERENCIAS.md](REFERENCIAS.md).
+La sección «El oficio toma forma» aplica las referencias de los videos aportados por el usuario: un escenario negro con matices cálidos y salvia, tipografía beige cinética y cámara guiada por scroll en tres actos: vista completa, detalle del tapizado y regreso a una vista amplia desde el lado opuesto. El análisis visual original está en [REFERENCIAS.md](REFERENCIAS.md).
 
 El sofá es una representación de diseño original construida con geometría. No es un escaneo de un proyecto del taller ni una fotografía de producto. Tiene cojines, ribetes, patas de madera y tres tonos orientativos de tapizado: lino claro, terracota y verde oliva. Las fotografías de trabajos existentes permanecen en el catálogo y el taller.
 

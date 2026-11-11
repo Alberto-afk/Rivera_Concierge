@@ -1,0 +1,51 @@
+const assert = require('node:assert/strict');
+const vm = require('node:vm');
+const fs = require('node:fs');
+const path = require('node:path');
+const source = fs.readFileSync(path.join(__dirname, '../atmosphere.js'), 'utf8');
+function setup(options = {}) {
+    const events = {}, media = {}, observers = [], frames = new Map(), classes = new Set();
+    let sequence = 0, top = 94;
+    const element = () => ({ style: { removeProperty(key) { delete this[key]; } }, dataset: {}, getAttribute(key) { return this[key] || null; } });
+    const names = ['stage', 'mountain', 'planet', 'title--origin', 'title--world', 'progress'];
+    const elements = Object.fromEntries(names.map(name => ['.atmosphere-' + name, element()]));
+    const stage = elements['.atmosphere-stage'];
+    stage.offsetHeight = 806;
+    stage.getBoundingClientRect = () => ({ left: 0, top: 94, width: 1440, height: 806 });
+    stage.addEventListener = (name, fn) => { events[name] = fn; };
+    const planet = elements['.atmosphere-planet']; planet.src = 'small'; planet.dataset.fullSrc = 'full';
+    const clouds = [element(), element()]; clouds.forEach(cloud => { cloud.dataset.src = 'cloud'; });
+    const section = { offsetHeight: 2520, dataset: {}, getBoundingClientRect: () => ({ top }), querySelector: s => elements[s], querySelectorAll: () => clouds, classList: { toggle(name, on) { on ? classes.add(name) : classes.delete(name); } } };
+    const document = { hidden: false, querySelector: () => section, addEventListener(name, fn) { events[name] = fn; } };
+    const context = { document, navigator: { hardwareConcurrency: options.cores || 8, deviceMemory: 8, connection: { saveData: !!options.saveData, addEventListener(name, fn) { events.connection = fn; } } }, matchMedia(query) { const key = query.includes('reduced') ? 'reduced' : 'desktop'; return media[key] = { matches: key === 'reduced' ? !!options.reduced : options.desktop !== false, addEventListener(name, fn) { this.change = fn; } }; }, IntersectionObserver: class { constructor(fn) { observers.push(fn); } observe() {} }, requestAnimationFrame(fn) { frames.set(++sequence, fn); return sequence; }, cancelAnimationFrame(id) { frames.delete(id); }, getComputedStyle: () => ({ top: '94px' }), addEventListener(name, fn) { events[name] = fn; }, scrollTo() {}, scrollY: 0 };
+    context.window = context; vm.runInNewContext(source, context);
+    return { classes, frames, section, elements, planet, clouds, document, media, events, visible(on) { observers[0]([{isIntersecting:on}]); }, near(on) { observers[1]([{isIntersecting:on}]); }, scroll(p) { top = 94 - p * (2520 - 806); events.scroll(); }, flush() { const tasks = [...frames.values()]; frames.clear(); tasks.forEach(fn => fn()); } };
+}
+const s = setup();
+assert(s.clouds.every(c => !c.src), 'clouds are deferred');
+s.near(true); assert(s.clouds.every(c => c.src === 'cloud'));
+s.visible(true); s.flush(); assert.equal(s.frames.size,0,'no idle loop');
+const initial = s.elements['.atmosphere-mountain'].style.transform;
+s.events.pointermove({ pointerType:'mouse', clientX:1400, clientY:300 }); s.flush();
+assert.notEqual(s.elements['.atmosphere-mountain'].style.transform, initial,'pointer parallax');
+s.events.pointerleave(); s.flush();
+s.scroll(.25); s.flush(); assert.equal(s.planet.src,'small');
+s.scroll(.5); s.events.scroll(); assert.equal(s.frames.size,1); s.flush(); assert.equal(s.planet.src,'full');
+s.scroll(1); s.flush(); assert.equal(s.planet.style.opacity,'1.0000'); assert.equal(s.elements['.atmosphere-mountain'].style.opacity,'0.0000');
+s.scroll(0); s.flush(); assert.equal(s.elements['.atmosphere-mountain'].style.transform, initial, 'reverse');
+s.visible(false); s.scroll(.5); assert.equal(s.frames.size,0, 'offscreen paused');
+s.visible(true); s.document.hidden=true; s.events.visibilitychange(); assert.equal(s.frames.size,0,'hidden paused');
+s.document.hidden=false; s.events.visibilitychange(); s.flush();
+s.media.reduced.matches=true; s.media.reduced.change(); assert(!s.classes.has('atmosphere-live')); assert.equal(s.planet.style.opacity,undefined);
+for (const options of [{reduced:true}, {desktop:false}, {saveData:true}, {cores:2}]) {
+    const light=setup(options); light.near(true); light.visible(true); light.scroll(.7);
+    assert(!light.classes.has('atmosphere-live')); assert.equal(light.frames.size,0); assert(light.clouds.every(c=>!c.src)); assert.equal(light.planet.src,'small');
+}
+const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+assert(!html.includes('Hechos a mano para seguir viviendo.'));
+assert(!html.includes('Conozca nuestro trabajo'));
+assert(!html.includes('data-theme-section="light"'));
+const assetFiles=fs.readdirSync(path.join(__dirname,'../assets/atmosphere')).filter(f=>f.endsWith('.webp'));
+const bytes=assetFiles.reduce((n,f)=>n+fs.statSync(path.join(__dirname,'../assets/atmosphere',f)).size,0);
+assert(bytes<400000, 'all scene images below 400 KB');
+console.log('PASS: progressive asset loading, pointer, reversible scene, idle/offscreen/hidden pauses, live reduced-motion, static fallbacks, removed copy, dark sections, image budget ('+bytes+' bytes).');
