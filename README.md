@@ -92,3 +92,5 @@ Se comprobaron el botón, un enlace de foto, la apertura y cierre de la experien
 Logo y favicon derivados de la imagen entregada por el propietario. Navegación con Inicio, sin el botón El taller; la sección permanece. Se retiraron el pie de foto y el enlace secundario solicitados. Entrada breve de marca y fotografías inspirada en el video local de Vyashin, omitida con movimiento reducido.
 
 Los cojines auxiliares se elevaron sobre los asientos. El selector distingue lino, cuero chocolate (imagen de grano aportada por el usuario) y tejido oliva mediante mapas, relieve y rugosidad. Se actualizaron los tres posters desde el modelo. Sigue siendo una representación 3D, no una fotografía del taller. Se conservan los límites de GPU y el render bajo demanda. Pruebas de lógica de collage y atmósfera aprobadas; revisión visual del modelo y navegación. No se ejecutó la suite WebGL histórica completa ni se midió rendimiento en teléfonos físicos.
+
+Se retiró el cojín auxiliar izquierdo y se añadieron dos botones tapizados por respaldo. Posters renovados para los tres materiales; revisión visual de los tres acabados y comprobación de sintaxis.

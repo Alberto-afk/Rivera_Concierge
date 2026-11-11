@@ -270,7 +270,7 @@
         async function activate() {
             if (active || loading || !requested || !visible || document.hidden) return;
             setState('loading');
-            loading = import('./furniture3d.js?v=20261111b').then(async function (module) {
+            loading = import('./furniture3d.js?v=20261111c').then(async function (module) {
                 if (!requested || !visible || document.hidden) return null;
                 return module.createFurnitureScene(host, { onFailure: fail });
             });
@@ -327,7 +327,7 @@
                 if (!fabrics[selected]) return;
                 material = selected;
                 // Matching pre-rendered posters keep material selection available without WebGL.
-                poster.src = 'assets/sofa3d/sofa-' + selected + '.webp?v=20261111b';
+                poster.src = 'assets/sofa3d/sofa-' + selected + '.webp?v=20261111c';
                 poster.alt = 'Modelo de un sofá de tres plazas en ' + fabrics[selected].description + ' y patas de madera';
                 materialButtons.forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
                 const label = document.getElementById('materialStatus');

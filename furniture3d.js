@@ -75,7 +75,7 @@ function woodTexture() {
 }
 
 function roundedMesh(width, height, depth, radius, material, pillowAxis) {
-    const geometry = new RoundedBoxGeometry(width, height, depth, 4, radius);
+    const geometry = new RoundedBoxGeometry(width, height, depth, pillowAxis === 'z' && width > .8 ? 12 : 4, radius);
     if (pillowAxis) {
         const position = geometry.attributes.position;
         const point = new Vector3();
@@ -86,9 +86,15 @@ function roundedMesh(width, height, depth, radius, material, pillowAxis) {
                 ? 1 - Math.pow(point.z / (depth / 2), 2)
                 : 1 - Math.pow(point.y / (height / 2), 2);
             point[pillowAxis] += Math.sign(point[pillowAxis]) * 0.038 * Math.max(0, u * v);
+            if (pillowAxis === 'z' && width > .8 && point.z > 0) {
+                for (const bx of [-.23, .23]) {
+                    const distance = (point.x - bx) ** 2 + (point.y - .04) ** 2;
+                    point.z -= .026 * Math.exp(-distance / .009);
+                }
+            }
             position.setXYZ(i, point.x, point.y, point.z);
         }
-        // Conserva las normales suaves del canto redondeado. La deformación es mínima.
+        if (pillowAxis === 'z' && width > .8) geometry.computeVertexNormals();
     }
     const mesh = new Mesh(geometry, material);
     mesh.castShadow = mesh.receiveShadow = true;
@@ -158,18 +164,16 @@ function addSofa(scene, materials) {
         const backSeam = seam(0.92, 0.73, 0.11, materials.seam);
         backSeam.position.z = 0.133;
         back.add(backSeam);
+        for (const bx of [-.23, .23]) {
+            const button = new Mesh(new CylinderGeometry(.028, .028, .014, 20), materials.cushion);
+            button.rotation.x = Math.PI / 2;
+            button.position.set(bx, .04, .178);
+            button.castShadow = button.receiveShadow = true;
+            back.add(button);
+        }
         sofa.add(back);
     }
-    // Cojines laterales con vivo perimetral que equilibran ambos extremos del sofá.
-    const leftPillowGroup = new Group();
-    leftPillowGroup.position.set(-1.12, 1.145, 0.15);
-    leftPillowGroup.rotation.set(-0.16, 0.12, -0.17);
-    leftPillowGroup.add(roundedMesh(0.49, 0.49, 0.18, 0.085, materials.cushion, 'z'));
-    const leftPillowSeam = seam(0.45, 0.45, 0.075, materials.seam);
-    leftPillowSeam.position.z = 0.086;
-    leftPillowGroup.add(leftPillowSeam);
-    sofa.add(leftPillowGroup);
-
+    // Cojín lumbar apoyado sobre el asiento derecho.
     const rightLumbarGroup = new Group();
     rightLumbarGroup.position.set(0.987, 1.025, -0.08);
     rightLumbarGroup.rotation.set(-0.14, -0.06, 0.02);
