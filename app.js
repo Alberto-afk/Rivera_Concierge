@@ -420,7 +420,7 @@
     const catalogStatus = document.getElementById('catalogStatus');
     const initialButton = filterButtons.find(function (button) { return button.getAttribute('aria-pressed') === 'true'; });
     let activeFilter = initialButton ? initialButton.dataset.filter : 'all';
-    let expanded = false;
+    let expanded = cards.some(function (card) { return card.id && '#' + card.id === window.location.hash; });
     const initialCount = 6;
 
     function updateCatalog() {

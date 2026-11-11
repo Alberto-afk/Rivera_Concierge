@@ -38,7 +38,7 @@ Referencias observadas: [Vyashin](https://vyashin.com/) para la diagonal de tarj
 
 La segunda etapa aplica fondo negro y tipografía beige claro a todas las secciones, incluido el sofá. Se retiró del inicio el bloque «Hechos a mano para seguir viviendo / Conozca nuestro trabajo» solicitado por el usuario.
 
-Entre el collage y el sofá, `atmosphere.js` coordina una montaña que se aleja, dos capas de nubes que responden al puntero y una transición a un planeta. El scroll es nativo y reversible, con enlace para saltar el recorrido. Las imágenes son ilustraciones decorativas generadas para este proyecto, no fotografías del negocio ni recursos de Montfort.
+Dentro de «Explorar la experiencia visual», después del proceso del taller y antes del sofá, `atmosphere.js` coordina una montaña que se aleja, dos capas de nubes que responden al puntero y una transición a un planeta. El scroll es nativo y reversible, con enlace para saltar el recorrido. Las imágenes son ilustraciones decorativas generadas para este proyecto, no fotografías del negocio ni recursos de Montfort.
 
 Los cinco WebP de `assets/atmosphere/` suman 350.828 bytes (343 KiB), incluidas las versiones pequeñas. Las nubes se cargan a 300 px de la sección; el planeta de 800 px se solicita a partir del 28% del recorrido. Sólo se animan transformaciones y opacidad, sin WebGL adicional, vídeos, filtros animados ni bucles en reposo. Fuera de pantalla o con la pestaña oculta no se solicitan cuadros. Móvil, hardware modesto, ahorro de datos y movimiento reducido conservan una composición estática corta; sin JavaScript también es visible.
 
@@ -81,3 +81,9 @@ NODE_PATH=/tmp/rivera-browser-tests/node_modules node tests/smoke.cjs
 También puede indicar un Chromium instalado mediante `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Para retomar un diagnóstico puede usar `RIVERA_CHECK_FROM=4` para empezar en la cuarta comprobación; el resultado identifica las comprobaciones omitidas y no equivale a una corrida completa. `RIVERA_ARTIFACT_DIR=/tmp/rivera-motion` guarda capturas de las tres fases y la vista móvil.
 
 Las pruebas arrancan y detienen su propio servidor. Cubren recursos, catálogo, teclado, tamaños de pantalla, contenido sin JavaScript, carga diferida del motor, píxeles del render real, materiales, recorrido, pausa y fallos con vista estática. Chromium usa SwiftShader únicamente en las pruebas para disponer de WebGL en máquinas sin GPU, con DPR 0.35 para reducir el coste del render por software; las anchuras CSS se mantienen en los tamaños indicados. Las señales de hardware y visibilidad se simulan. En la integración funcional se controla el reloj de los callbacks para separar el recorrido de la lentitud del render por software; otra prueba fuerza un reloj lento para verificar la reducción de calidad y el paso a la vista estática. Estas pruebas no sustituyen medir batería y fluidez en teléfonos físicos.
+
+## Inicio orientado a trabajos
+
+La portada presenta «Tapicería de muebles en Lima», un botón inmediato a la galería y un acceso a cotizar por WhatsApp. Las seis fotos son enlaces; los proyectos con destino específico se muestran al abrir su enlace directo. El taller sigue al resumen de trabajos. Montaña, planeta y sofá se conservan en un desplegable opcional cerrado inicialmente, después del proceso.
+
+Se comprobaron el botón, un enlace de foto, la apertura y cierre de la experiencia y el diseño móvil. Pasaron las pruebas de lógica de collage y atmósfera. La suite histórica WebGL se adaptó para abrir el desplegable antes de probar la escena, pero no se ejecutó completa.

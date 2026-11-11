@@ -536,6 +536,27 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 .collage-live.collage-visible .collage-card { will-change: transform; }
 .collage-live .hero-note { position: absolute; bottom: 0; left: 0; right: 0; padding-block: 20px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: .06em; }
 .collage-card figcaption { color: #eee3cf; }
+.hero-actions { display: flex; align-items: flex-start; flex-direction: column; gap: 12px; margin-block: 24px; }
+.hero-actions p { color: var(--muted); max-width: 36ch; font-size: 17px; }
+.hero-actions .text-link { font-size: 14px; }
+.collage-live .hero-actions { position: absolute; bottom: 72px; left: 0; z-index: 3; margin: 0; }
+.collage-live h1 { font-size: clamp(36px, 4.2vw, 64px); }
+.collage-card a { display: block; height: 100%; pointer-events: auto; }
+.collage-card figcaption { pointer-events: none; }
+.collage-card:focus-within { outline: 2px solid #eee3cf; outline-offset: 5px; }
+.collage-card a:focus-visible { outline-offset: -4px; }
+.work-card { scroll-margin-top: 140px; }
+.work-card:target .work-body { border-bottom: 2px solid var(--ink); }
+.visual-experience { border-block: 1px solid var(--rule); }
+.visual-experience > summary { cursor: pointer; padding: 30px max(32px, calc((100vw - 1360px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 24px; list-style: none; font-size: 18px; }
+.visual-experience > summary::-webkit-details-marker { display: none; }
+.experience-label { font-size: 13px; color: var(--muted); }
+.visual-experience[open] .experience-label > span { display: inline-block; transform: rotate(45deg); }
+@media (max-width: 760px) {
+    .hero-actions .button-primary { width: 100%; }
+    .hero-actions { margin-bottom: 28px; }
+    .visual-experience > summary { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+}
 .section-vertical-watermark { color: #eee3cf; opacity: .075; }
 .showroom-section { --scene-paper: #050505; color: #eee3cf; border-color: #363129; }
 .showroom-sticky { background: #050505; }

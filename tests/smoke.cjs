@@ -81,7 +81,13 @@ function highHardware() {
     Object.defineProperty(navigator, 'hardwareConcurrency', { value: 8 });
     Object.defineProperty(navigator, 'deviceMemory', { value: 8 });
 }
+async function openExperience(page) {
+    if (!(await page.locator(".visual-experience").getAttribute("open") !== null)) {
+        await page.locator(".visual-experience > summary").click();
+    }
+}
 async function sceneReady(page) {
+    await openExperience(page);
     await page.locator('#spatialStage').scrollIntoViewIfNeeded();
     await page.waitForFunction(() => document.querySelector('#espacio-3d').dataset.sceneState === 'ready', null, { timeout: 20000 });
     await settled(page);
@@ -365,6 +371,7 @@ async function compactStatic(page) {
         for (const [options, setup, manualAllowed] of variants) {
             const run = await createPage(options, setup);
             await run.page.goto(url, { waitUntil: 'networkidle' });
+            await openExperience(run.page);
             await run.page.locator('#spatialStage').scrollIntoViewIfNeeded();
             await compactStatic(run.page);
             await readableEntryCopy(run.page);
@@ -395,6 +402,7 @@ async function compactStatic(page) {
             const run = await createPage({}, setup);
             if (blocked !== 'webgl') await run.page.route(blocked, route => route.abort());
             await run.page.goto(url);
+            await openExperience(run.page);
             await run.page.locator('#spatialStage').scrollIntoViewIfNeeded();
             await run.page.waitForFunction(() => document.querySelector('#espacio-3d').dataset.sceneState === 'failed');
             await compactStatic(run.page);
@@ -427,7 +435,8 @@ async function compactStatic(page) {
             window.requestAnimationFrame = callback => nativeRAF(() => callback(time += 75));
         });
         await run.page.goto(url);
-        await run.page.locator('#spatialStage').scrollIntoViewIfNeeded();
+        await openExperience(run.page);
+            await run.page.locator('#spatialStage').scrollIntoViewIfNeeded();
         await run.page.waitForFunction(() => document.querySelector('#espacio-3d').dataset.sceneState === 'ready', null, { timeout: 20000, polling: 50 });
         await run.page.evaluate(() => {
             const section = document.querySelector('#espacio-3d');
