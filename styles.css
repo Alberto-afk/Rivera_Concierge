@@ -655,3 +655,17 @@ body:has(:focus-visible) .brand-intro { display:none; }
 .visual-experience[open] .experience-arrow { transform:rotate(180deg); }
 .hero-note { justify-content:flex-end; }
 @media(max-width:760px) { .visual-experience > summary { flex-direction:row; align-items:center; } .experience-arrow { width:56px;height:56px;flex-shrink:0; } }
+.service-areas { padding-block:72px; border-top:1px solid var(--rule); background:var(--paper); }
+.areas-heading { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.areas-heading p { color:var(--muted); max-width:48ch; }
+.areas-details { margin:28px 0 20px; border-block:1px solid var(--rule); }
+.areas-details summary { padding:20px 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; list-style:none; }
+.areas-details summary::-webkit-details-marker { display:none; }
+.areas-details summary span { font-size:28px; }
+.areas-details[open] summary span { transform:rotate(180deg); }
+.areas-grid { display:grid; grid-template-columns:1fr 1.5fr .7fr; gap:32px; padding:8px 0 28px; }
+.areas-grid h3 { font-size:14px; letter-spacing:.05em; margin-bottom:12px; }
+.areas-grid ul { list-style:none; margin:0; padding:0; color:var(--muted); font-size:16px; }
+.areas-grid li { margin:0 0 8px; }
+.hero-note a:hover,.site-footer p a:hover { text-decoration:underline; text-underline-offset:5px; }
+@media(max-width:760px) { .service-areas {padding-block:48px;} .areas-heading,.areas-grid {grid-template-columns:1fr;gap:24px;} .areas-heading h2 {font-size:30px;} .areas-details summary {font-size:16px;} }
