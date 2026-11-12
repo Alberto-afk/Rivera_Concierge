@@ -602,11 +602,10 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 }
 /* A short brand entrance; all navigation remains usable throughout. */
 @media (prefers-reduced-motion: no-preference) {
- .brand-intro { position:fixed; inset:0; z-index:90; display:grid; place-content:center; background:#050505; pointer-events:none; animation:intro-away .45s 1s both; }
- .brand-intro img { width:140px; animation:intro-mark .65s both; }
- .hero-collage .collage-card a { animation:photo-arrival .8s both; animation-delay:calc(1s + var(--arrival, 0) * .08s); }
+ .brand-intro { position:fixed; inset:0; z-index:90; display:grid; place-content:center; background:#050505; pointer-events:none; animation:intro-away .5s 2.1s both; }
+
+ .hero-collage .collage-card a { animation:photo-arrival .8s both; animation-delay:calc(2.1s + var(--arrival, 0) * .08s); }
  @keyframes intro-away { to {opacity:0;visibility:hidden;} }
- @keyframes intro-mark { from {opacity:0;transform:translateY(20px) scale(.85);} to {opacity:1;transform:none;} }
  @keyframes photo-arrival { from {opacity:0;transform:translateY(45px) scale(.82);} to {opacity:1;transform:none;} }
 }
 @media (prefers-reduced-motion: reduce) { .brand-intro {display:none;} }
@@ -622,7 +621,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 html[data-theme="light"] .brand-logo,html[data-theme="light"] .footer-logo { background:#fffaf0; border-color:#b6a487; }
 .section-vertical-watermark { color:var(--ink); }
 .brand-intro { background:var(--paper); }
-.brand-intro img { background:#f0e4ce; padding:12px; border-radius:14px; }
+
 .showroom-section,.atmosphere { --ink:#eee3cf; --muted:#c5baa6; --paper:#050505; --rule:#363129; }
 @media(max-width:1000px) { .nav-bar { gap:16px; } .header-contact { display:none; } }
 @media(max-width:760px) {
@@ -631,3 +630,13 @@ html[data-theme="light"] .brand-logo,html[data-theme="light"] .footer-logo { bac
  .brand-logo { width:52px; height:40px; }
 }
 @media(prefers-reduced-motion:reduce) { body,.site-header,.portfolio-section,.atelier-section,.process-section,.contact-section,.site-footer {transition:none;} }
+
+/* Four clipped pieces reveal the supplied logo; no canvas or render loop. */
+.intro-logo { position:relative; width:clamp(148px,18vw,200px); aspect-ratio:340/252; border-radius:14px; background:#f0e4ce; border:1px solid #b6a487; overflow:hidden; }
+.intro-piece { position:absolute; inset:12px; clip-path:inset(0 calc((3 - var(--piece)) * 25%) 0 calc(var(--piece) * 25%)); }
+.intro-piece img { width:100%; height:100%; object-fit:contain; }
+@media(prefers-reduced-motion:no-preference) {
+ .intro-piece img { animation:logo-fill .85s cubic-bezier(.22,1,.36,1) both; animation-delay:calc(.15s + var(--piece) * .22s); }
+ @keyframes logo-fill { from {clip-path:inset(100% 0 0 0);opacity:0;} to {clip-path:inset(0);opacity:1;} }
+}
+body:has(:focus-visible) .brand-intro { display:none; }

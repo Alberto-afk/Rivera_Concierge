@@ -98,3 +98,5 @@ Se retiró el cojín auxiliar izquierdo y se añadieron dos botones tapizados po
 ## Tema claro y oscuro
 
 El botón Claro/Oscuro del encabezado controla ambas páginas y guarda la elección en localStorage. Sin elección sigue el tema del sistema; tolera almacenamiento bloqueado. theme.js aplica el tema antes de pintar y sustituye el cambio automático por scroll. El logo y favicon tienen base clara para mantener el contraste. La escena de montaña y el visor conservan su iluminación oscura propia. Verificados ambos modos, navegación a galería, recarga y móvil de 390 px sin desbordamiento.
+
+La entrada del logo se revela en cuatro franjas progresivas y se retira a los 2,6 segundos, seguida por el collage. Usa CSS, respeta movimiento reducido y se oculta al navegar con teclado. Se revisaron fases parciales y completa en una vista de prueba con tiempos congelados, además de la salida real y acceso a trabajos. Meta descripción de 143 caracteres actualizada con el nombre confirmado Rivera Concierge. La experiencia visible pasa a «más de 39 años» según información del propietario; se retiró la fecha de fundación anterior para no inferir una nueva.
