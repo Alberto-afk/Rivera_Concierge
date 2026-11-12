@@ -541,7 +541,7 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 .visual-experience > summary { cursor: pointer; padding: 30px max(32px, calc((100vw - 1360px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 24px; list-style: none; font-size: 18px; }
 .visual-experience > summary::-webkit-details-marker { display: none; }
 .experience-label { font-size: 13px; color: var(--muted); }
-.visual-experience[open] .experience-label > span { display: inline-block; transform: rotate(45deg); }
+
 @media (max-width: 760px) {
     .hero-actions .button-primary { width: 100%; }
     .hero-actions { margin-bottom: 28px; }
@@ -602,9 +602,9 @@ figcaption { display: flex; justify-content: space-between; gap: 16px; font-size
 }
 /* A short brand entrance; all navigation remains usable throughout. */
 @media (prefers-reduced-motion: no-preference) {
- .brand-intro { position:fixed; inset:0; z-index:90; display:grid; place-content:center; background:#050505; pointer-events:none; animation:intro-away .5s 2.1s both; }
+ .brand-intro { position:fixed; inset:0; z-index:90; display:grid; place-content:center; background:#050505; pointer-events:none; animation:intro-away .25s 1.35s both; }
 
- .hero-collage .collage-card a { animation:photo-arrival .8s both; animation-delay:calc(2.1s + var(--arrival, 0) * .08s); }
+ .hero-collage .collage-card a { animation:photo-arrival .8s both; animation-delay:calc(1.3s + var(--arrival, 0) * .05s); }
  @keyframes intro-away { to {opacity:0;visibility:hidden;} }
  @keyframes photo-arrival { from {opacity:0;transform:translateY(45px) scale(.82);} to {opacity:1;transform:none;} }
 }
@@ -631,12 +631,27 @@ html[data-theme="light"] .brand-logo,html[data-theme="light"] .footer-logo { bac
 }
 @media(prefers-reduced-motion:reduce) { body,.site-header,.portfolio-section,.atelier-section,.process-section,.contact-section,.site-footer {transition:none;} }
 
-/* Four clipped pieces reveal the supplied logo; no canvas or render loop. */
-.intro-logo { position:relative; width:clamp(148px,18vw,200px); aspect-ratio:340/252; border-radius:14px; background:#f0e4ce; border:1px solid #b6a487; overflow:hidden; }
-.intro-piece { position:absolute; inset:12px; clip-path:inset(0 calc((3 - var(--piece)) * 25%) 0 calc(var(--piece) * 25%)); }
-.intro-piece img { width:100%; height:100%; object-fit:contain; }
+/* The actual two dark shapes enter first; the leather band arrives last. */
+.intro-logo { position:relative; width:clamp(180px,20vw,240px); aspect-ratio:340/252; }
+.intro-logo::before { content:''; position:absolute; inset:-65%; background:radial-gradient(ellipse,#dbcbb340,transparent 66%); pointer-events:none; }
+.intro-part { position:absolute; inset:0; filter:drop-shadow(0 0 1px #d8c6a4); }
+.intro-part img { width:100%; height:100%; object-fit:contain; }
+.intro-part--left img { clip-path:polygon(0 0,65% 0,1% 100%,0 100%); }
+.intro-part--right img { clip-path:polygon(100% 0,100% 100%,34% 100%); }
+.intro-part--band img { clip-path:polygon(64% 0,100% 0,35% 100%,0 100%); }
 @media(prefers-reduced-motion:no-preference) {
- .intro-piece img { animation:logo-fill .85s cubic-bezier(.22,1,.36,1) both; animation-delay:calc(.15s + var(--piece) * .22s); }
- @keyframes logo-fill { from {clip-path:inset(100% 0 0 0);opacity:0;} to {clip-path:inset(0);opacity:1;} }
+ .intro-part { animation:logo-assemble .48s cubic-bezier(.16,1,.3,1) both; }
+ .intro-part--left { --from-x:-70px; --from-y:26px; --from-angle:-12deg; animation-delay:.05s; }
+ .intro-part--right { --from-x:70px; --from-y:-26px; --from-angle:12deg; animation-delay:.25s; }
+ .intro-part--band { --from-x:48px; --from-y:-100px; --from-angle:-8deg; animation-delay:.65s; }
+ @keyframes logo-assemble { from {opacity:0;transform:translate(var(--from-x),var(--from-y)) rotate(var(--from-angle));} to {opacity:1;transform:none;} }
 }
 body:has(:focus-visible) .brand-intro { display:none; }
+.visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.visual-experience > summary { min-height:128px; }
+.experience-arrow { display:grid; place-items:center; width:64px; height:64px; background:var(--ink); color:var(--paper); border-radius:50%; transition:transform .2s; }
+.experience-arrow svg { width:32px; height:32px; }
+.visual-experience > summary:hover .experience-arrow { transform:translateY(5px); }
+.visual-experience[open] .experience-arrow { transform:rotate(180deg); }
+.hero-note { justify-content:flex-end; }
+@media(max-width:760px) { .visual-experience > summary { flex-direction:row; align-items:center; } .experience-arrow { width:56px;height:56px;flex-shrink:0; } }
